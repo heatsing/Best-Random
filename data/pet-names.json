@@ -1,0 +1,25 @@
+{
+  "petNames": {
+    "dogs": [
+      "Max", "Bella", "Charlie", "Lucy", "Cooper", "Daisy", "Milo", "Luna",
+      "Buddy", "Sadie", "Rocky", "Molly", "Bear", "Lola", "Duke", "Sophie",
+      "Jack", "Stella", "Tucker", "Penny", "Oliver", "Zoe", "Bentley", "Chloe",
+      "Zeus", "Lily", "Riley", "Mia", "Murphy", "Coco", "Gus", "Ruby"
+    ],
+    "cats": [
+      "Whiskers", "Fluffy", "Shadow", "Smokey", "Tiger", "Mittens", "Patches",
+      "Oreo", "Ginger", "Simba", "Luna", "Bella", "Chloe", "Lucy", "Lily",
+      "Sophie", "Mia", "Zoe", "Stella", "Penny", "Coco", "Ruby", "Max", "Charlie",
+      "Oliver", "Jack", "Tiger", "Shadow", "Smokey", "Patches", "Oreo", "Ginger"
+    ],
+    "birds": [
+      "Polly", "Charlie", "Kiwi", "Sunny", "Rio", "Coco", "Pepper", "Mango",
+      "Blue", "Jade", "Sky", "Rainbow", "Aurora", "Phoenix", "Ziggy", "Pippin"
+    ],
+    "other": [
+      "Nibbles", "Fluffy", "Snowball", "Cocoa", "Peanut", "Honey", "Cookie",
+      "Muffin", "Pumpkin", "Cinnamon", "Ginger", "Pepper", "Oreo", "Chip",
+      "Buddy", "Lucky", "Happy", "Sunny", "Cheerful", "Joy"
+    ]
+  }
+}

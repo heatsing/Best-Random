@@ -1,0 +1,14 @@
+{
+  "companies": [
+    "Apple", "Microsoft", "Google", "Amazon", "Meta", "Tesla", "Netflix",
+    "Disney", "Nike", "Adidas", "Coca-Cola", "Pepsi", "McDonald's", "Starbucks",
+    "Walmart", "Target", "IKEA", "Home Depot", "Lowe's", "Best Buy", "Costco",
+    "Samsung", "Sony", "Intel", "AMD", "NVIDIA", "IBM", "Oracle", "Salesforce",
+    "Adobe", "Uber", "Airbnb", "Spotify", "Twitter", "LinkedIn", "PayPal",
+    "Visa", "Mastercard", "JPMorgan Chase", "Bank of America", "Goldman Sachs",
+    "Ford", "General Motors", "BMW", "Mercedes-Benz", "Volkswagen", "Toyota",
+    "Honda", "Nissan", "Hyundai", "Boeing", "Airbus", "FedEx", "UPS", "DHL",
+    "AT&T", "Verizon", "T-Mobile", "Comcast", "Time Warner", "Viacom",
+    "Universal", "Warner Bros", "Paramount", "20th Century", "Lionsgate"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "words": [
+    "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon",
+    "mango", "orange", "papaya", "quince", "raspberry", "strawberry", "tangerine", "watermelon", "apricot", "blueberry",
+    "coconut", "dragonfruit", "guava", "jackfruit", "lime", "lychee", "mulberry", "nectarine", "olive", "peach",
+    "pear", "plum", "pomegranate", "pomelo", "quinoa", "rhubarb", "starfruit", "tamarind", "ugli", "vanilla",
+    "book", "chair", "table", "lamp", "phone", "computer", "keyboard", "mouse", "screen", "desk",
+    "window", "door", "wall", "floor", "ceiling", "roof", "room", "house", "building", "street",
+    "car", "bus", "train", "plane", "bike", "boat", "ship", "truck", "motorcycle", "scooter",
+    "dog", "cat", "bird", "fish", "rabbit", "hamster", "turtle", "snake", "lizard", "frog",
+    "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black", "white",
+    "happy", "sad", "angry", "excited", "calm", "nervous", "brave", "shy", "confident", "curious",
+    "run", "walk", "jump", "swim", "fly", "climb", "dance", "sing", "play", "read",
+    "write", "draw", "paint", "cook", "eat", "sleep", "wake", "think", "learn", "teach",
+    "mountain", "river", "ocean", "lake", "forest", "desert", "valley", "hill", "beach", "island",
+    "sun", "moon", "star", "cloud", "rain", "snow", "wind", "storm", "lightning", "thunder",
+    "spring", "summer", "autumn", "winter", "morning", "afternoon", "evening", "night", "dawn", "dusk",
+    "music", "song", "dance", "art", "poetry", "story", "novel", "movie", "theater", "concert",
+    "friend", "family", "love", "peace", "joy", "hope", "dream", "wish", "goal", "success"
+  ]
+}

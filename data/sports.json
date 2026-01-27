@@ -1,0 +1,12 @@
+{
+  "sports": [
+    "Soccer", "Basketball", "Tennis", "Baseball", "Football", "Volleyball",
+    "Swimming", "Golf", "Running", "Cycling", "Boxing", "Martial Arts",
+    "Hockey", "Cricket", "Rugby", "Badminton", "Table Tennis", "Skiing",
+    "Snowboarding", "Surfing", "Skateboarding", "Climbing", "Yoga", "Pilates",
+    "Weightlifting", "CrossFit", "Dancing", "Gymnastics", "Archery", "Fencing",
+    "Wrestling", "Judo", "Karate", "Taekwondo", "Rowing", "Sailing", "Diving",
+    "Water Polo", "Lacrosse", "Handball", "Squash", "Racquetball", "Bowling",
+    "Darts", "Billiards", "Chess", "Poker", "Bridge", "E-Sports"
+  ]
+}

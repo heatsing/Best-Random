@@ -1,0 +1,26 @@
+{
+  "firstNames": {
+    "modern": [
+      "Aiden", "Aria", "Avery", "Blake", "Cameron", "Carter", "Charlie", "Dakota", "Ellis", "Emery",
+      "Finley", "Harper", "Hayden", "Jordan", "Kai", "Logan", "Morgan", "Parker", "Quinn", "Riley",
+      "River", "Rowan", "Sage", "Skylar", "Taylor", "Alex", "Casey", "Drew", "Jamie", "Kendall",
+      "Lane", "Phoenix", "Reese", "Sawyer", "Sloane", "Tatum", "Zion", "Zoe", "Luna", "Maya",
+      "Nova", "Aurora", "Willow", "Ivy", "Hazel", "Jade", "Ruby", "Scarlett", "Violet", "Iris"
+    ],
+    "classic": [
+      "James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth",
+      "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Sarah", "Charles", "Karen",
+      "Christopher", "Nancy", "Daniel", "Lisa", "Matthew", "Betty", "Anthony", "Margaret", "Mark", "Sandra",
+      "Donald", "Ashley", "Steven", "Kimberly", "Paul", "Emily", "Andrew", "Donna", "Joshua", "Michelle",
+      "Kenneth", "Carol", "Kevin", "Amanda", "Brian", "Dorothy", "George", "Melissa", "Edward", "Deborah"
+    ]
+  },
+  "lastNames": [
+    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez",
+    "Hernandez", "Lopez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee",
+    "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young",
+    "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams",
+    "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez", "Phillips",
+    "Evans", "Turner", "Diaz", "Parker", "Cruz", "Edwards", "Collins", "Reyes", "Stewart", "Morris"
+  ]
+}

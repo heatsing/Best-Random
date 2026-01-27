@@ -1,0 +1,15 @@
+{
+  "food": [
+    "Pizza", "Burger", "Pasta", "Sushi", "Tacos", "Burrito", "Ramen", "Curry",
+    "Steak", "Chicken", "Salmon", "Shrimp", "Lobster", "Crab", "Soup", "Salad",
+    "Sandwich", "Wrap", "Quesadilla", "Nachos", "Fries", "Onion Rings", "Wings",
+    "Ribs", "BBQ", "Hot Dog", "Sausage", "Bacon", "Eggs", "Pancakes", "Waffles",
+    "French Toast", "Omelet", "Cereal", "Oatmeal", "Yogurt", "Ice Cream", "Cake",
+    "Pie", "Cookies", "Brownies", "Donuts", "Muffins", "Bagel", "Croissant",
+    "Bread", "Rice", "Noodles", "Dumplings", "Spring Rolls", "Fried Rice",
+    "Pad Thai", "Pho", "Kimchi", "Sashimi", "Tempura", "Teriyaki", "Kebab",
+    "Falafel", "Hummus", "Pita", "Gyro", "Paella", "Risotto", "Lasagna",
+    "Ravioli", "Gnocchi", "Mac and Cheese", "Chili", "Gumbo", "Jambalaya",
+    "Clam Chowder", "Bisque", "Gazpacho", "Ratatouille", "Bouillabaisse"
+  ]
+}

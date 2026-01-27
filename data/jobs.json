@@ -1,0 +1,34 @@
+{
+  "jobs": {
+    "tech": [
+      "Software Engineer", "Data Scientist", "Product Manager", "UX Designer", "DevOps Engineer",
+      "Frontend Developer", "Backend Developer", "Full Stack Developer", "Mobile Developer",
+      "QA Engineer", "Security Engineer", "Cloud Architect", "Machine Learning Engineer",
+      "Blockchain Developer", "Game Developer", "Technical Writer", "Scrum Master"
+    ],
+    "health": [
+      "Doctor", "Nurse", "Pharmacist", "Physical Therapist", "Dentist", "Veterinarian",
+      "Psychologist", "Surgeon", "Radiologist", "Pediatrician", "Cardiologist",
+      "Neurologist", "Oncologist", "Anesthesiologist", "Optometrist", "Chiropractor"
+    ],
+    "creative": [
+      "Graphic Designer", "Web Designer", "Illustrator", "Photographer", "Video Editor",
+      "Animator", "Art Director", "Copywriter", "Content Creator", "Fashion Designer",
+      "Interior Designer", "Architect", "Musician", "Writer", "Filmmaker", "Game Designer"
+    ],
+    "business": [
+      "Marketing Manager", "Sales Manager", "Business Analyst", "Financial Analyst",
+      "Accountant", "Consultant", "Project Manager", "HR Manager", "Operations Manager",
+      "CEO", "CFO", "CTO", "Investment Banker", "Real Estate Agent", "Entrepreneur"
+    ],
+    "education": [
+      "Teacher", "Professor", "Principal", "Librarian", "Tutor", "Curriculum Developer",
+      "School Counselor", "Education Administrator", "Research Scientist", "Academic Advisor"
+    ],
+    "service": [
+      "Chef", "Waiter", "Bartender", "Barista", "Hotel Manager", "Travel Agent",
+      "Event Planner", "Personal Trainer", "Massage Therapist", "Hair Stylist",
+      "Makeup Artist", "Fitness Instructor", "Life Coach", "Social Worker"
+    ]
+  }
+}
