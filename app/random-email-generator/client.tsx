@@ -62,11 +62,11 @@ export function RandomEmailGeneratorClient() {
     router.replace(url.pathname + url.search, { scroll: false })
   }, [router])
 
-  const generate = useCallback(() => {
+  const generate = useCallback((overrideSeed?: string) => {
     setIsGenerating(true)
     
     setTimeout(() => {
-      const currentSeed = getOrCreateSeed()
+      const currentSeed = overrideSeed || getOrCreateSeed()
       const params: EmailGeneratorParams = {
         count,
         format,
@@ -93,11 +93,14 @@ export function RandomEmailGeneratorClient() {
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
     setSeed(newSeed)
-    generate()
+    generate(newSeed)
   }, [generate])
 
   const repeat = useCallback(() => {
-    generate()
+    // Generate new seed for each regeneration to get different results
+    const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
+    setSeed(newSeed)
+    generate(newSeed)
   }, [generate])
 
   useEffect(() => {
