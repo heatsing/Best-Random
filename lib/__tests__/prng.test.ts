@@ -1,9 +1,9 @@
-import { SeededPRNG } from '../prng'
+import { Mulberry32, createPRNG } from '../prng'
 
-describe('SeededPRNG', () => {
+describe('Mulberry32 PRNG', () => {
   test('相同种子产生相同序列', () => {
-    const prng1 = new SeededPRNG(12345)
-    const prng2 = new SeededPRNG(12345)
+    const prng1 = createPRNG('test-seed-12345')
+    const prng2 = createPRNG('test-seed-12345')
     
     for (let i = 0; i < 10; i++) {
       expect(prng1.next()).toBe(prng2.next())
@@ -11,8 +11,8 @@ describe('SeededPRNG', () => {
   })
 
   test('不同种子产生不同序列', () => {
-    const prng1 = new SeededPRNG(12345)
-    const prng2 = new SeededPRNG(67890)
+    const prng1 = createPRNG('test-seed-12345')
+    const prng2 = createPRNG('test-seed-67890')
     
     const values1 = Array.from({ length: 10 }, () => prng1.next())
     const values2 = Array.from({ length: 10 }, () => prng2.next())
@@ -21,7 +21,7 @@ describe('SeededPRNG', () => {
   })
 
   test('nextInt 在范围内', () => {
-    const prng = new SeededPRNG(12345)
+    const prng = createPRNG('test-seed-12345')
     
     for (let i = 0; i < 100; i++) {
       const value = prng.nextInt(1, 10)
@@ -31,7 +31,7 @@ describe('SeededPRNG', () => {
   })
 
   test('nextFloat 在范围内', () => {
-    const prng = new SeededPRNG(12345)
+    const prng = createPRNG('test-seed-12345')
     
     for (let i = 0; i < 100; i++) {
       const value = prng.nextFloat(0, 1)
@@ -41,7 +41,7 @@ describe('SeededPRNG', () => {
   })
 
   test('shuffle 保持元素', () => {
-    const prng = new SeededPRNG(12345)
+    const prng = createPRNG('test-seed-12345')
     const array = [1, 2, 3, 4, 5]
     const shuffled = prng.shuffle(array)
     
@@ -50,7 +50,7 @@ describe('SeededPRNG', () => {
   })
 
   test('pick 从数组中选取', () => {
-    const prng = new SeededPRNG(12345)
+    const prng = createPRNG('test-seed-12345')
     const array = [1, 2, 3, 4, 5]
     const picked = prng.pick(array)
     
@@ -58,7 +58,7 @@ describe('SeededPRNG', () => {
   })
 
   test('pickMultiple 返回正确数量', () => {
-    const prng = new SeededPRNG(12345)
+    const prng = createPRNG('test-seed-12345')
     const array = [1, 2, 3, 4, 5]
     const picked = prng.pickMultiple(array, 3)
     

@@ -1,9 +1,10 @@
 import Link from "next/link"
-import { TOOL_REGISTRY } from "@/lib/tool-registry"
+import { tools, getPopularTools } from "@/lib/registry"
 
 export function Footer() {
-  const mainTools = TOOL_REGISTRY.slice(0, 4)
-  const moreTools = TOOL_REGISTRY.slice(4)
+  const popularTools = getPopularTools()
+  const mainTools = popularTools.slice(0, 4)
+  const moreTools = tools.filter(t => !t.popular).slice(0, 8)
 
   return (
     <footer className="border-t bg-background">
@@ -20,7 +21,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               {mainTools.map((tool) => (
                 <li key={tool.slug}>
-                  <Link href={`/${tool.slug}`} className="text-muted-foreground hover:text-primary">
+                  <Link href={`/${tool.category}/${tool.slug}`} className="text-muted-foreground hover:text-primary">
                     {tool.name}
                   </Link>
                 </li>
@@ -32,7 +33,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               {moreTools.map((tool) => (
                 <li key={tool.slug}>
-                  <Link href={`/${tool.slug}`} className="text-muted-foreground hover:text-primary">
+                  <Link href={`/${tool.category}/${tool.slug}`} className="text-muted-foreground hover:text-primary">
                     {tool.name}
                   </Link>
                 </li>

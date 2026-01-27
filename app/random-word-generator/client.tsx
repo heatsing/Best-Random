@@ -36,6 +36,16 @@ export function RandomWordGeneratorClient() {
     return newSeed
   }, [seed])
 
+  const updateURL = useCallback((currentSeed: string, params: WordGeneratorParams) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("count", String(params.count))
+    url.searchParams.set("minLength", String(params.minLength))
+    url.searchParams.set("maxLength", String(params.maxLength))
+    url.searchParams.set("unique", String(params.unique || false))
+    url.searchParams.set("seed", currentSeed)
+    router.replace(url.pathname + url.search, { scroll: false })
+  }, [router])
+
   const generate = useCallback(() => {
     setIsGenerating(true)
     
@@ -63,7 +73,7 @@ export function RandomWordGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [count, minLength, maxLength, unique, seed, getOrCreateSeed, tool.slug])
+  }, [count, minLength, maxLength, unique, getOrCreateSeed, tool.slug, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -75,23 +85,13 @@ export function RandomWordGeneratorClient() {
     generate()
   }, [generate])
 
-  const updateURL = (currentSeed: string, params: WordGeneratorParams) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set("count", String(params.count))
-    url.searchParams.set("minLength", String(params.minLength))
-    url.searchParams.set("maxLength", String(params.maxLength))
-    url.searchParams.set("unique", String(params.unique || false))
-    url.searchParams.set("seed", currentSeed)
-    router.replace(url.pathname + url.search, { scroll: false })
-  }
-
   useEffect(() => {
     const urlSeed = searchParams.get("seed")
     if (urlSeed) {
       setSeed(urlSeed)
       // Don't auto-generate on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const handleCopyAll = () => {
     return results.map(r => r.word).join("\n")

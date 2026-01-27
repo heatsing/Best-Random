@@ -42,6 +42,15 @@ export function RandomTeamGeneratorClient() {
     return newSeed
   }, [seed])
 
+  const updateURL = useCallback((currentSeed: string, params: TeamGeneratorParams) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("members", membersText)
+    url.searchParams.set("teamCount", String(params.teamCount))
+    url.searchParams.set("balanced", String(params.balanced))
+    url.searchParams.set("seed", currentSeed)
+    router.replace(url.pathname + url.search, { scroll: false })
+  }, [router, membersText])
+
   const generate = useCallback(() => {
     if (members.length === 0) {
       toast({
@@ -86,7 +95,7 @@ export function RandomTeamGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [members, teamCount, balanced, seed, getOrCreateSeed, tool.slug, toast])
+  }, [members, teamCount, balanced, getOrCreateSeed, tool.slug, toast, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -98,15 +107,6 @@ export function RandomTeamGeneratorClient() {
     generate()
   }, [generate])
 
-  const updateURL = (currentSeed: string, params: TeamGeneratorParams) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set("members", membersText)
-    url.searchParams.set("teamCount", String(params.teamCount))
-    url.searchParams.set("balanced", String(params.balanced))
-    url.searchParams.set("seed", currentSeed)
-    router.replace(url.pathname + url.search, { scroll: false })
-  }
-
   useEffect(() => {
     const urlSeed = searchParams.get("seed")
     const urlMembers = searchParams.get("members")
@@ -115,7 +115,7 @@ export function RandomTeamGeneratorClient() {
       setMembersText(urlMembers)
       // Don't auto-generate on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const shareUrl = () => {
     const currentSeed = seed || getOrCreateSeed()

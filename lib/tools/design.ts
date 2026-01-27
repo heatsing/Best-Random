@@ -1,4 +1,4 @@
-import { Palette } from "lucide-react"
+import { Palette, Sparkles } from "lucide-react"
 import type { ToolConfig } from "../registry"
 
 // Random Color Generator
@@ -116,6 +116,106 @@ export const randomColorTool: ToolConfig = {
   popular: true
 }
 
+// Gradient Generator
+export const gradientGeneratorTool: ToolConfig = {
+  slug: "gradient-generator",
+  category: "design",
+  name: "Gradient Generator",
+  shortDescription: "Generate beautiful CSS gradients",
+  longDescription: "Generate beautiful CSS gradients instantly. Create linear, radial, or conic gradients with customizable colors and angles. Export CSS code ready to use in your projects.",
+  generatorType: "gradient",
+  defaultOptions: {
+    type: "linear",
+    colorCount: 3,
+    angle: 90
+  },
+  optionSchema: {
+    fields: [
+      {
+        key: "type",
+        label: "Gradient Type",
+        type: "select",
+        default: "linear",
+        options: [
+          { value: "linear", label: "Linear" },
+          { value: "radial", label: "Radial" },
+          { value: "conic", label: "Conic (Angular)" }
+        ]
+      },
+      { key: "colorCount", label: "Number of Colors", type: "number", default: 3, min: 2, max: 10 },
+      { key: "angle", label: "Angle (degrees)", type: "number", default: 90, min: 0, max: 360, helpText: "Only applies to linear and conic gradients" }
+    ]
+  },
+  run: (ctx) => {
+    const { type, colorCount, angle } = ctx.options
+    const rng = ctx.rng
+    
+    // Generate colors
+    const colors: string[] = []
+    for (let i = 0; i < colorCount; i++) {
+      const r = Math.floor(rng() * 256)
+      const g = Math.floor(rng() * 256)
+      const b = Math.floor(rng() * 256)
+      const hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+      colors.push(hex)
+    }
+    
+    // Generate color stops with positions
+    const stops = colors.map((color, i) => {
+      const position = Math.round((i / (colors.length - 1)) * 100)
+      return { color, position }
+    })
+    
+    // Generate CSS
+    let css = ""
+    if (type === "linear") {
+      css = `linear-gradient(${angle}deg, ${stops.map(s => `${s.color} ${s.position}%`).join(", ")})`
+    } else if (type === "radial") {
+      css = `radial-gradient(circle, ${stops.map(s => `${s.color} ${s.position}%`).join(", ")})`
+    } else {
+      // conic
+      css = `conic-gradient(from ${angle}deg, ${stops.map(s => `${s.color} ${s.position}%`).join(", ")})`
+    }
+    
+    const fullCSS = `background: ${css};`
+    
+    return {
+      items: [{
+        id: "gradient-1",
+        value: css,
+        formatted: css,
+        type,
+        colors,
+        stops,
+        angle: type !== "radial" ? angle : undefined,
+        css: fullCSS,
+        cssProperty: css
+      }],
+      meta: {
+        seedUsed: ctx.seed,
+        count: 1,
+        generatedAt: Date.now()
+      },
+      previewText: `${type} gradient with ${colorCount} colors`
+    }
+  },
+  seo: {
+    title: "Gradient Generator – CSS Gradients | BestRandom",
+    description: "Generate beautiful CSS gradients instantly. Create linear, radial, or conic gradients with customizable colors and export CSS code.",
+    h1: "Gradient Generator",
+    faq: [
+      { question: "What gradient types are supported?", answer: "Linear, radial, and conic (angular) gradients are supported." },
+      { question: "How many colors can I use?", answer: "You can use 2 to 10 colors in your gradient." },
+      { question: "Can I customize the angle?", answer: "Yes. Set the angle for linear and conic gradients (0-360 degrees)." },
+      { question: "Can I export CSS code?", answer: "Yes. Copy the CSS code directly to use in your projects." },
+      { question: "Are gradients repeatable?", answer: "Yes. Use the same seed to reproduce the same gradient." }
+    ]
+  },
+  icon: Sparkles,
+  popular: true
+}
+
 export const designTools: ToolConfig[] = [
-  randomColorTool
+  randomColorTool,
+  gradientGeneratorTool
 ]

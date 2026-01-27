@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer"
 import { Toaster } from "@/components/ui/toaster"
 import { generateWebsiteSchema } from "@/lib/seo"
 import { CommandPalette } from "@/components/SearchCommand"
+import { ThemeProvider } from "@/components/ThemeProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -54,7 +55,7 @@ export default function RootLayout({
   const websiteSchema = generateWebsiteSchema()
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -62,13 +63,15 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <Header />
-        <main className="min-h-[calc(100vh-4rem)]">
-          {children}
-        </main>
-        <Footer />
-        <CommandPalette />
-        <Toaster />
+        <ThemeProvider>
+          <Header />
+          <main className="min-h-[calc(100vh-4rem)]">
+            {children}
+          </main>
+          <Footer />
+          <CommandPalette />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { SearchCommand } from "./SearchCommand"
+import { ThemeToggle } from "./ThemeToggle"
 import { Button } from "@/components/ui/button"
 import { Menu, ChevronDown } from "lucide-react"
 import { useState } from "react"
@@ -54,6 +55,7 @@ export function Header() {
           <div className="hidden md:block w-64">
             <SearchCommand />
           </div>
+          <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"

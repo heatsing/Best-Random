@@ -6,7 +6,7 @@ import { Search, X, Copy, Share2, RotateCcw, RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter, usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { TOOL_REGISTRY } from "@/lib/tool-registry"
+import { tools } from "@/lib/registry"
 
 interface SearchCommandProps {
   className?: string
@@ -18,21 +18,21 @@ export function CommandPalette({ className }: SearchCommandProps) {
   const router = useRouter()
   const pathname = usePathname()
 
-  const filtered = TOOL_REGISTRY.filter(
+  const filtered = tools.filter(
     tool =>
       tool.name.toLowerCase().includes(query.toLowerCase()) ||
-      tool.intro.toLowerCase().includes(query.toLowerCase()) ||
+      tool.shortDescription.toLowerCase().includes(query.toLowerCase()) ||
       tool.category.toLowerCase().includes(query.toLowerCase())
   )
 
-  const handleSelect = (slug: string) => {
-    router.push(`/${slug}`)
+  const handleSelect = (slug: string, category: string) => {
+    router.push(`/${category}/${slug}`)
     setOpen(false)
     setQuery("")
   }
 
-  const isToolPage = TOOL_REGISTRY.some(tool => pathname === `/${tool.slug}`)
-  const currentTool = TOOL_REGISTRY.find(tool => pathname === `/${tool.slug}`)
+  const isToolPage = tools.some(tool => pathname === `/${tool.category}/${tool.slug}`)
+  const currentTool = tools.find(tool => pathname === `/${tool.category}/${tool.slug}`)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -145,18 +145,18 @@ export function CommandPalette({ className }: SearchCommandProps) {
             ) : (
               <div className="space-y-1">
                 {filtered.map((tool) => {
-                  const Icon = tool.icon
+                  const Icon = tool.icon || (() => null)
                   return (
                     <button
                       key={tool.slug}
-                      onClick={() => handleSelect(tool.slug)}
+                      onClick={() => handleSelect(tool.slug, tool.category)}
                       className="w-full text-left px-4 py-3 rounded-md hover:bg-accent transition-colors flex items-center gap-3"
                     >
-                      <Icon className="h-5 w-5 text-muted-foreground" />
+                      {Icon && <Icon className="h-5 w-5 text-muted-foreground" />}
                       <div className="flex-1">
                         <div className="font-medium">{tool.name}</div>
                         <div className="text-sm text-muted-foreground line-clamp-1">
-                          {tool.intro}
+                          {tool.shortDescription}
                         </div>
                         <div className="text-xs text-muted-foreground mt-1">
                           {tool.category}

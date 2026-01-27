@@ -49,6 +49,14 @@ export function RandomPickerClient() {
     return newSeed
   }, [seed])
 
+  const updateURL = useCallback((currentSeed: string) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("items", itemsText)
+    url.searchParams.set("wheelMode", String(wheelMode))
+    url.searchParams.set("seed", currentSeed)
+    router.replace(url.pathname + url.search, { scroll: false })
+  }, [router, itemsText, wheelMode])
+
   const pick = useCallback((newSeed?: string) => {
     if (items.length === 0) return
 
@@ -116,7 +124,7 @@ export function RandomPickerClient() {
       
       updateURL(currentSeed)
     }
-  }, [items, seed, getOrCreateSeed, wheelMode, wheelRotation, tool.slug])
+  }, [items, getOrCreateSeed, wheelMode, wheelRotation, tool.slug, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -128,14 +136,6 @@ export function RandomPickerClient() {
     pick()
   }, [pick])
 
-  const updateURL = (currentSeed: string) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set("items", itemsText)
-    url.searchParams.set("wheelMode", String(wheelMode))
-    url.searchParams.set("seed", currentSeed)
-    router.replace(url.pathname + url.search, { scroll: false })
-  }
-
   useEffect(() => {
     const urlSeed = searchParams.get("seed")
     const urlItems = searchParams.get("items")
@@ -144,7 +144,7 @@ export function RandomPickerClient() {
       setItemsText(urlItems)
       // Don't auto-pick on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const shareUrl = () => {
     const currentSeed = seed || getOrCreateSeed()

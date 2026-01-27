@@ -42,6 +42,19 @@ export function RandomPasswordGeneratorClient() {
     return newSeed
   }, [seed])
 
+  const updateURL = useCallback((currentSeed: string, params: PasswordGeneratorParams) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("length", String(params.length))
+    url.searchParams.set("includeUppercase", String(params.includeUppercase))
+    url.searchParams.set("includeLowercase", String(params.includeLowercase))
+    url.searchParams.set("includeNumbers", String(params.includeNumbers))
+    url.searchParams.set("includeSymbols", String(params.includeSymbols))
+    url.searchParams.set("excludeAmbiguous", String(params.excludeAmbiguous))
+    url.searchParams.set("count", String(params.count || 1))
+    url.searchParams.set("seed", currentSeed)
+    router.replace(url.pathname + url.search, { scroll: false })
+  }, [router])
+
   const generate = useCallback(() => {
     if (!includeUppercase && !includeLowercase && !includeNumbers && !includeSymbols) {
       toast({
@@ -81,7 +94,7 @@ export function RandomPasswordGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, excludeAmbiguous, count, seed, getOrCreateSeed, tool.slug, toast])
+  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, excludeAmbiguous, count, getOrCreateSeed, tool.slug, toast, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -93,26 +106,13 @@ export function RandomPasswordGeneratorClient() {
     generate()
   }, [generate])
 
-  const updateURL = (currentSeed: string, params: PasswordGeneratorParams) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set("length", String(params.length))
-    url.searchParams.set("includeUppercase", String(params.includeUppercase))
-    url.searchParams.set("includeLowercase", String(params.includeLowercase))
-    url.searchParams.set("includeNumbers", String(params.includeNumbers))
-    url.searchParams.set("includeSymbols", String(params.includeSymbols))
-    url.searchParams.set("excludeAmbiguous", String(params.excludeAmbiguous))
-    url.searchParams.set("count", String(params.count || 1))
-    url.searchParams.set("seed", currentSeed)
-    router.replace(url.pathname + url.search, { scroll: false })
-  }
-
   useEffect(() => {
     const urlSeed = searchParams.get("seed")
     if (urlSeed) {
       setSeed(urlSeed)
       // Don't auto-generate on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const handleCopyAll = () => {
     return results.map(r => r.password).join("\n")

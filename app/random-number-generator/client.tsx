@@ -77,22 +77,24 @@ export function RandomNumberGeneratorClient() {
       
       // Preserve locked items
       if (preserveLocks && lockedIds.size > 0) {
-        const lockedResults = results.filter(r => lockedIds.has(r.id))
-        const unlockedCount = count - lockedResults.length
-        
-        if (unlockedCount > 0) {
-          const unlockedParams = { ...params, count: unlockedCount }
-          const unlockedResults = generateNumbers(unlockedParams)
+        setResults(prevResults => {
+          const lockedResults = prevResults.filter(r => lockedIds.has(r.id))
+          const unlockedCount = count - lockedResults.length
           
-          // Combine locked and unlocked
-          const combined = [...lockedResults, ...unlockedResults]
-          if (sort) {
-            combined.sort((a, b) => a.value - b.value)
+          if (unlockedCount > 0) {
+            const unlockedParams = { ...params, count: unlockedCount }
+            const unlockedResults = generateNumbers(unlockedParams)
+            
+            // Combine locked and unlocked
+            const combined = [...lockedResults, ...unlockedResults]
+            if (sort) {
+              combined.sort((a, b) => a.value - b.value)
+            }
+            return combined
+          } else {
+            return lockedResults
           }
-          setResults(combined)
-        } else {
-          setResults(lockedResults)
-        }
+        })
       } else {
         setResults(newResults)
       }
@@ -109,7 +111,7 @@ export function RandomNumberGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [min, max, count, integer, unique, sort, decimals, seed, getOrCreateSeed, lockedIds, results, tool.slug, updateURL])
+  }, [min, max, count, integer, unique, sort, decimals, getOrCreateSeed, lockedIds, tool.slug, updateURL])
 
   // Reroll with new seed
   const reroll = useCallback(() => {
@@ -131,7 +133,7 @@ export function RandomNumberGeneratorClient() {
       setSeed(urlSeed)
       // Don't auto-generate on load, let user click
     }
-  }, []) // Only on mount
+  }, [searchParams])
 
   const handleLockToggle = (id: string) => {
     const newLocked = new Set(lockedIds)

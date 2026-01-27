@@ -2,7 +2,7 @@ import {
   Hash, User, FileText, Shuffle, Palette, Key, PawPrint, Type,
   Users, Mail, Globe, Dice1, Coins, AtSign, Smile, Briefcase,
   MessageSquare, GitBranch, Trophy, Sparkles, Globe2, MapPin,
-  Activity, Zap, Lock, Code, Hash as HashIcon
+  Activity, Zap, Lock, Code, Hash as HashIcon, Fingerprint
 } from "lucide-react"
 import { createPRNG, stableStringify, hashStringToUint32 } from "./prng"
 
@@ -94,7 +94,7 @@ export interface ToolConfig {
   generatorType: GeneratorType
   defaultOptions: Record<string, any>
   optionSchema: OptionSchema
-  run: (ctx: GeneratorContext) => GeneratedResult
+  run: (ctx: GeneratorContext) => GeneratedResult | Promise<GeneratedResult>
   seo: {
     title: string
     description: string

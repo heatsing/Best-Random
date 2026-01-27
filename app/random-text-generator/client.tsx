@@ -35,6 +35,14 @@ export function RandomTextGeneratorClient() {
     return newSeed
   }, [seed])
 
+  const updateURL = useCallback((currentSeed: string, params: TextGeneratorParams) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("length", params.length)
+    url.searchParams.set("lines", String(params.lines))
+    url.searchParams.set("seed", currentSeed)
+    router.replace(url.pathname + url.search, { scroll: false })
+  }, [router])
+
   const generate = useCallback(() => {
     setIsGenerating(true)
     
@@ -60,7 +68,7 @@ export function RandomTextGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [length, lines, seed, getOrCreateSeed, tool.slug])
+  }, [length, lines, getOrCreateSeed, tool.slug, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -72,21 +80,13 @@ export function RandomTextGeneratorClient() {
     generate()
   }, [generate])
 
-  const updateURL = (currentSeed: string, params: TextGeneratorParams) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set("length", params.length)
-    url.searchParams.set("lines", String(params.lines))
-    url.searchParams.set("seed", currentSeed)
-    router.replace(url.pathname + url.search, { scroll: false })
-  }
-
   useEffect(() => {
     const urlSeed = searchParams.get("seed")
     if (urlSeed) {
       setSeed(urlSeed)
       // Don't auto-generate on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const shareUrl = () => {
     const currentSeed = seed || getOrCreateSeed()

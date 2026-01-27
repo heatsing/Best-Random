@@ -27,12 +27,7 @@ interface ToolPageClientProps {
 }
 
 export function ToolPageClient({ toolData }: ToolPageClientProps) {
-  // Get full tool config including run function on client side
-  const tool = getToolBySlug(toolData.slug)
-  
-  if (!tool) {
-    return <div>Tool not found</div>
-  }
+  // All hooks must be called before any conditional returns
   const searchParams = useSearchParams()
   const router = useRouter()
   
@@ -59,6 +54,9 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
   const [result, setResult] = useState<GeneratedResult | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Get full tool config including run function on client side
+  const tool = getToolBySlug(toolData.slug)
 
   // Generate random seed if not provided
   const getOrCreateSeed = useCallback(() => {
@@ -70,6 +68,8 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
 
   // Generate results
   const generate = useCallback(() => {
+    if (!tool) return
+    
     // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
@@ -89,23 +89,39 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
           options
         }
         
-        const generated = tool.run(ctx)
-        setResult(generated)
+        // Handle both sync and async run functions
+        const runResult = tool.run(ctx)
         
-        // Update URL
-        const params = new URLSearchParams({
-          seed: currentSeed,
-          ...Object.entries(options).reduce((acc, [k, v]) => {
-            if (v !== null && v !== undefined && v !== '') {
-              acc[k] = String(v)
-            }
-            return acc
-          }, {} as Record<string, string>)
-        })
-        router.replace(`/${toolData.category}/${toolData.slug}?${params.toString()}`, { scroll: false })
+        const updateURLAndFinish = (generated: GeneratedResult) => {
+          setResult(generated)
+          
+          // Update URL
+          const params = new URLSearchParams({
+            seed: currentSeed,
+            ...Object.entries(options).reduce((acc, [k, v]) => {
+              if (v !== null && v !== undefined && v !== '') {
+                acc[k] = String(v)
+              }
+              return acc
+            }, {} as Record<string, string>)
+          })
+          router.replace(`/${toolData.category}/${toolData.slug}?${params.toString()}`, { scroll: false })
+          
+          setIsGenerating(false)
+          timeoutRef.current = null
+        }
+        
+        if (runResult instanceof Promise) {
+          runResult.then(updateURLAndFinish).catch(error => {
+            console.error("Generation error:", error)
+            setIsGenerating(false)
+            timeoutRef.current = null
+          })
+        } else {
+          updateURLAndFinish(runResult)
+        }
       } catch (error) {
         console.error("Generation error:", error)
-      } finally {
         setIsGenerating(false)
         timeoutRef.current = null
       }
@@ -131,6 +147,10 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
     }
   }, [])
 
+  if (!tool) {
+    return <div>Tool not found</div>
+  }
+
   return (
     <>
       <Script
@@ -145,6 +165,7 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
           name: toolData.name,
           longDescription: toolData.longDescription,
           optionSchema: toolData.optionSchema,
+          generatorType: toolData.generatorType,
           seo: {
             h1: toolData.seo.h1
           }

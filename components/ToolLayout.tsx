@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button"
 import { SeedBar } from "./SeedBar"
 import { OptionsRenderer } from "./OptionsRenderer"
 import { ResultList } from "./ResultList"
+import { GradientDisplay } from "./GradientDisplay"
 import { RollingReveal } from "./RollingReveal"
+import { ResultSkeleton, ColorSkeleton } from "./LoadingSkeleton"
 import type { OptionSchema, GeneratedResult } from "@/lib/registry"
 import { Download, FileJson } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
@@ -17,6 +19,7 @@ interface ToolLayoutProps {
     name: string
     longDescription: string
     optionSchema: OptionSchema
+    generatorType?: string
     seo: {
       h1: string
     }
@@ -211,19 +214,31 @@ export function ToolLayout({
           </div>
 
           {isGenerating ? (
-            <div key="generating" className="border rounded-lg p-12 text-center text-muted-foreground">
-              <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
-              Generating...
+            <div key="generating" className="border rounded-lg p-6">
+              {tool.generatorType === "color" || tool.generatorType === "gradient" ? (
+                <ColorSkeleton count={options.count || 5} />
+              ) : (
+                <ResultSkeleton count={Math.min(options.count || 10, 10)} />
+              )}
             </div>
           ) : result && result.items.length > 0 ? (
-            <RollingReveal key="results" delay={300}>
-              <ResultList
-                items={resultItems}
-                onCopyAll={handleCopyAll}
-                onDownloadCSV={handleDownloadCSV}
-                showDownload={true}
-              />
-            </RollingReveal>
+            tool.generatorType === "gradient" ? (
+              <div key="results" className="border rounded-lg p-6">
+                <GradientDisplay
+                  gradient={result.items[0] as any}
+                  onCopy={handleCopyAll}
+                />
+              </div>
+            ) : (
+              <RollingReveal key="results" delay={300}>
+                <ResultList
+                  items={resultItems}
+                  onCopyAll={handleCopyAll}
+                  onDownloadCSV={handleDownloadCSV}
+                  showDownload={true}
+                />
+              </RollingReveal>
+            )
           ) : (
             <div key="empty" className="border rounded-lg p-12 text-center text-muted-foreground">
               Click &quot;Generate&quot; to create results

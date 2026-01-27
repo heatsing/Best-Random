@@ -49,6 +49,19 @@ export function RandomEmailGeneratorClient() {
     return newSeed
   }, [seed])
 
+  const updateURL = useCallback((currentSeed: string, params: EmailGeneratorParams) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("count", String(params.count))
+    url.searchParams.set("format", params.format || 'name')
+    if (params.domain) {
+      url.searchParams.set("domain", params.domain)
+    } else {
+      url.searchParams.delete("domain")
+    }
+    url.searchParams.set("seed", currentSeed)
+    router.replace(url.pathname + url.search, { scroll: false })
+  }, [router])
+
   const generate = useCallback(() => {
     setIsGenerating(true)
     
@@ -75,7 +88,7 @@ export function RandomEmailGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [count, format, domain, seed, getOrCreateSeed, tool.slug])
+  }, [count, format, domain, getOrCreateSeed, tool.slug, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -87,26 +100,13 @@ export function RandomEmailGeneratorClient() {
     generate()
   }, [generate])
 
-  const updateURL = (currentSeed: string, params: EmailGeneratorParams) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set("count", String(params.count))
-    url.searchParams.set("format", params.format || 'name')
-    if (params.domain) {
-      url.searchParams.set("domain", params.domain)
-    } else {
-      url.searchParams.delete("domain")
-    }
-    url.searchParams.set("seed", currentSeed)
-    router.replace(url.pathname + url.search, { scroll: false })
-  }
-
   useEffect(() => {
     const urlSeed = searchParams.get("seed")
     if (urlSeed) {
       setSeed(urlSeed)
       // Don't auto-generate on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const handleCopyAll = () => {
     return results.map(r => r.email).join("\n")

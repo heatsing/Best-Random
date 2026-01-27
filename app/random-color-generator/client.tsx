@@ -61,16 +61,18 @@ export function RandomColorGeneratorClient() {
       
       // Preserve locked items
       if (preserveLocks && lockedIds.size > 0) {
-        const lockedResults = results.filter(r => lockedIds.has(r.id))
-        const unlockedCount = count - lockedResults.length
-        
-        if (unlockedCount > 0) {
-          const unlockedParams = { ...params, count: unlockedCount }
-          const unlockedResults = generateColors(unlockedParams)
-          setResults([...lockedResults, ...unlockedResults])
-        } else {
-          setResults(lockedResults)
-        }
+        setResults(prevResults => {
+          const lockedResults = prevResults.filter(r => lockedIds.has(r.id))
+          const unlockedCount = count - lockedResults.length
+          
+          if (unlockedCount > 0) {
+            const unlockedParams = { ...params, count: unlockedCount }
+            const unlockedResults = generateColors(unlockedParams)
+            return [...lockedResults, ...unlockedResults]
+          } else {
+            return lockedResults
+          }
+        })
       } else {
         setResults(newResults)
       }
@@ -86,7 +88,7 @@ export function RandomColorGeneratorClient() {
       updateURL(currentSeed, params)
       setIsGenerating(false)
     }, 100)
-  }, [count, format, seed, getOrCreateSeed, lockedIds, results, tool.slug, updateURL])
+  }, [count, format, getOrCreateSeed, lockedIds, tool.slug, updateURL])
 
   const reroll = useCallback(() => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -105,7 +107,7 @@ export function RandomColorGeneratorClient() {
       setSeed(urlSeed)
       // Don't auto-generate on load, let user click
     }
-  }, [])
+  }, [searchParams])
 
   const handleLockToggle = (id: string) => {
     const newLocked = new Set(lockedIds)
