@@ -23,19 +23,17 @@ export function Header() {
         <nav className="hidden lg:flex items-center space-x-0.5" aria-label="Main navigation">
           {categories.map((category) => {
             const isActive = pathname?.startsWith(`/${category.id}`)
-            const Icon = category.icon
             return (
               <Link
                 key={category.id}
                 href={`/${category.id}`}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                   isActive
                     ? "border-primary text-primary"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
                 }`}
               >
-                <Icon className="h-4 w-4" aria-hidden="true" />
-                <span>{category.name}</span>
+                {category.name}
               </Link>
             )
           })}
@@ -77,20 +75,18 @@ export function Header() {
             <nav className="flex flex-col space-y-1" aria-label="Mobile navigation">
               {categories.map((category) => {
                 const isActive = pathname?.startsWith(`/${category.id}`)
-                const Icon = category.icon
                 return (
                   <Link
                     key={category.id}
                     href={`/${category.id}`}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                    className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                       isActive
                         ? "bg-primary/10 text-primary"
                         : "text-muted-foreground hover:text-foreground hover:bg-accent"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Icon className="h-4 w-4" aria-hidden="true" />
-                    <span>{category.name}</span>
+                    {category.name}
                   </Link>
                 )
               })}
