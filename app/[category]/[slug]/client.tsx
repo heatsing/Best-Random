@@ -21,21 +21,31 @@ interface ToolPageClientProps {
     defaultOptions: Record<string, any>
     optionSchema: any
     seo: any
-    icon?: any
     popular?: boolean
   }
 }
 
 export function ToolPageClient({ toolData }: ToolPageClientProps) {
-  // All hooks must be called before any conditional returns
+  // All hooks MUST be called unconditionally at the top level
   const searchParams = useSearchParams()
   const router = useRouter()
   
-  // Initialize state from URL params or defaults
-  const [seed, setSeed] = useState(() => searchParams.get("seed") || "")
-  const [options, setOptions] = useState(() => {
+  // Initialize state - start with defaults, will sync from URL in useEffect
+  const [seed, setSeed] = useState<string>("")
+  const [options, setOptions] = useState<Record<string, any>>(toolData.defaultOptions)
+  const [result, setResult] = useState<GeneratedResult | null>(null)
+  const [isGenerating, setIsGenerating] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const initializedRef = useRef(false)
+  
+  // Initialize state from URL params on mount and when searchParams change
+  useEffect(() => {
+    if (initializedRef.current) return
+    
+    const urlSeed = searchParams.get("seed") || ""
+    setSeed(urlSeed)
+    
     const opts = { ...toolData.defaultOptions }
-    // Load from URL params
     toolData.optionSchema.fields.forEach((field: any) => {
       const param = searchParams.get(field.key)
       if (param !== null) {
@@ -48,12 +58,36 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
         }
       }
     })
-    return opts
-  })
+    setOptions(opts)
+    initializedRef.current = true
+  }, [searchParams, toolData.defaultOptions, toolData.optionSchema])
   
-  const [result, setResult] = useState<GeneratedResult | null>(null)
-  const [isGenerating, setIsGenerating] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  // Sync state when searchParams change (after initial load)
+  useEffect(() => {
+    if (!initializedRef.current) return
+    
+    const urlSeed = searchParams.get("seed") || ""
+    if (urlSeed !== seed) {
+      setSeed(urlSeed)
+    }
+    
+    const opts = { ...toolData.defaultOptions }
+    toolData.optionSchema.fields.forEach((field: any) => {
+      const param = searchParams.get(field.key)
+      if (param !== null) {
+        if (field.type === "number" || field.type === "range") {
+          opts[field.key] = Number(param)
+        } else if (field.type === "checkbox") {
+          opts[field.key] = param === "true"
+        } else {
+          opts[field.key] = param
+        }
+      }
+    })
+    
+    setOptions(opts)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
   
   // Get full tool config including run function on client side
   const tool = getToolBySlug(toolData.slug)

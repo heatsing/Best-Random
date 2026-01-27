@@ -14,13 +14,13 @@ export function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl font-bold">BestRandom</span>
+    <header className="sticky top-0 z-40 w-full border-b-2 border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between border-x border-border px-6">
+        <Link href="/" className="flex items-center space-x-2 group">
+          <span className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">BestRandom</span>
         </Link>
 
-        <nav className="hidden lg:flex items-center space-x-1" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center space-x-0.5" aria-label="Main navigation">
           {categories.map((category) => {
             const isActive = pathname?.startsWith(`/${category.id}`)
             const Icon = category.icon
@@ -28,10 +28,10 @@ export function Header() {
               <Link
                 key={category.id}
                 href={`/${category.id}`}
-                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                   isActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    ? "border-primary text-primary"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
                 }`}
               >
                 <Icon className="h-4 w-4" aria-hidden="true" />

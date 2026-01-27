@@ -2,6 +2,7 @@ import { getToolBySlug } from "@/lib/tool-registry"
 import { generateMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 import { RandomWordGeneratorClient } from "./client"
+import { Suspense } from "react"
 
 const tool = getToolBySlug("random-word-generator")!
 
@@ -12,5 +13,9 @@ export const metadata: Metadata = generateMetadata({
 })
 
 export default function RandomWordGeneratorPage() {
-  return <RandomWordGeneratorClient />
+  return (
+    <Suspense fallback={<div className="container py-12">Loading...</div>}>
+      <RandomWordGeneratorClient />
+    </Suspense>
+  )
 }

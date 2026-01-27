@@ -143,39 +143,49 @@ export function ToolLayout({
   }) || []
 
   return (
-    <div className={`container py-8 max-w-6xl mx-auto ${className || ""}`}>
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{tool.seo.h1}</h1>
-        <p className="text-muted-foreground text-lg">{tool.longDescription}</p>
-      </div>
+    <div className={`min-h-screen ${className || ""}`}>
+      {/* Header Section with Structural Line */}
+      <section className="border-b-2 border-border">
+        <div className="container max-w-7xl mx-auto px-6 py-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">{tool.seo.h1}</h1>
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">{tool.longDescription}</p>
+        </div>
+      </section>
 
-      {/* Seed Bar */}
-      <div className="mb-6 p-4 bg-muted/50 rounded-lg border">
-        <SeedBar
-          seed={seed}
-          onSeedChange={onSeedChange}
-          onRandomSeed={onRandomSeed}
-          onShare={handleShare}
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Options Panel */}
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Options</h2>
-            <OptionsRenderer
-              schema={tool.optionSchema}
-              values={options}
-              onChange={onOptionChange}
+      {/* Seed Bar with Structural Border */}
+      <section className="border-b-2 border-border">
+        <div className="container max-w-7xl mx-auto px-6 py-6">
+          <div className="structure-card">
+            <SeedBar
+              seed={seed}
+              onSeedChange={onSeedChange}
+              onRandomSeed={onRandomSeed}
+              onShare={handleShare}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Grid */}
+      <section>
+        <div className="container max-w-7xl mx-auto px-6 py-12">
+          <div className="grid md:grid-cols-2 gap-8 border-t-2 border-border pt-12">
+        {/* Options Panel with Structural Border */}
+        <div className="space-y-6 border-r-2 border-border pr-8">
+          <div>
+            <h2 className="text-xl font-semibold mb-6 tracking-tight border-b-2 border-border pb-3">Options</h2>
+            <div className="space-y-4">
+              <OptionsRenderer
+                schema={tool.optionSchema}
+                values={options}
+                onChange={onOptionChange}
+              />
+            </div>
           </div>
           
           <Button
             onClick={result ? onRegenerate : onGenerate}
-            className="w-full"
+            className="w-full border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
             size="lg"
             disabled={isGenerating}
             aria-label={isGenerating ? "Generating results" : result ? "Regenerate results" : "Generate results"}
@@ -186,9 +196,9 @@ export function ToolLayout({
         </div>
 
         {/* Results Panel */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Results</h2>
+        <div className="space-y-4 pl-8">
+          <div className="flex items-center justify-between border-b-2 border-border pb-3">
+            <h2 className="text-xl font-semibold tracking-tight">Results</h2>
             {result && (
               <div className="flex gap-2">
                 <Button
@@ -214,7 +224,7 @@ export function ToolLayout({
           </div>
 
           {isGenerating ? (
-            <div key="generating" className="border rounded-lg p-6">
+            <div key="generating" className="structure-card">
               {tool.generatorType === "color" || tool.generatorType === "gradient" ? (
                 <ColorSkeleton count={options.count || 5} />
               ) : (
@@ -223,7 +233,7 @@ export function ToolLayout({
             </div>
           ) : result && result.items.length > 0 ? (
             tool.generatorType === "gradient" ? (
-              <div key="results" className="border rounded-lg p-6">
+              <div key="results" className="structure-card">
                 <GradientDisplay
                   gradient={result.items[0] as any}
                   onCopy={handleCopyAll}
@@ -231,21 +241,25 @@ export function ToolLayout({
               </div>
             ) : (
               <RollingReveal key="results" delay={300}>
-                <ResultList
-                  items={resultItems}
-                  onCopyAll={handleCopyAll}
-                  onDownloadCSV={handleDownloadCSV}
-                  showDownload={true}
-                />
+                <div className="structure-card">
+                  <ResultList
+                    items={resultItems}
+                    onCopyAll={handleCopyAll}
+                    onDownloadCSV={handleDownloadCSV}
+                    showDownload={true}
+                  />
+                </div>
               </RollingReveal>
             )
           ) : (
-            <div key="empty" className="border rounded-lg p-12 text-center text-muted-foreground">
-              Click &quot;Generate&quot; to create results
+            <div key="empty" className="structure-card text-center text-muted-foreground py-16">
+              <p className="text-lg">Click &quot;Generate&quot; to create results</p>
             </div>
           )}
         </div>
-      </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

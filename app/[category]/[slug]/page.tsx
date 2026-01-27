@@ -3,6 +3,7 @@ import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 import { ToolPageClient } from "./client"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 
 interface PageProps {
   params: {
@@ -43,7 +44,7 @@ export default function ToolPage({ params }: PageProps) {
     notFound()
   }
   
-  // Only pass serializable data to client component
+  // Only pass serializable data to client component (no functions/components)
   const toolData = {
     slug: tool.slug,
     category: tool.category,
@@ -54,9 +55,12 @@ export default function ToolPage({ params }: PageProps) {
     defaultOptions: tool.defaultOptions,
     optionSchema: tool.optionSchema,
     seo: tool.seo,
-    icon: tool.icon,
     popular: tool.popular
   }
   
-  return <ToolPageClient toolData={toolData} />
+  return (
+    <Suspense fallback={<div className="container py-12">Loading...</div>}>
+      <ToolPageClient toolData={toolData} />
+    </Suspense>
+  )
 }
