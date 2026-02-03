@@ -19,6 +19,15 @@ export const metadata: Metadata = {
   keywords: ["random generator", "random number", "random name", "random password", "random color", "random tool"],
   authors: [{ name: "BestRandom" }],
   creator: "BestRandom",
+  icons: {
+    icon: [
+      { url: "/favicon-v2.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon-v2.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest-v2.json",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -28,7 +37,7 @@ export const metadata: Metadata = {
     description: "Generate truly random numbers, names, words, colors, passwords, and more. All tools support seeds for repeatability and shareable links.",
     images: [
       {
-        url: "https://bestrandom.net/og-image.png",
+        url: "https://bestrandom.net/og-image-v2.png",
         width: 1200,
         height: 630,
         alt: "BestRandom – Fast, Seeded & Shareable Random Generators",
@@ -39,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BestRandom – Fast, Seeded & Shareable Random Generators",
     description: "Generate truly random numbers, names, words, colors, passwords, and more. All tools support seeds for repeatability and shareable links.",
-    images: ["https://bestrandom.net/og-image.png"],
+    images: ["https://bestrandom.net/og-image-v2.png"],
   },
   robots: {
     index: true,

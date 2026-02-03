@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { generateMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
@@ -20,6 +21,14 @@ export default function HomePage() {
       <section className="border-b-2 border-border">
         <div className="container max-w-7xl mx-auto px-6 py-20">
           <div className="text-center mb-16">
+            <Image
+              src="/logo-v2.svg"
+              alt="BestRandom Logo"
+              width={80}
+              height={80}
+              className="mx-auto mb-6"
+              priority
+            />
             <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
               BestRandom
             </h1>

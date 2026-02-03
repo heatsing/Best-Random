@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { SearchCommand } from "./SearchCommand"
 import { ThemeToggle } from "./ThemeToggle"
 import { Button } from "@/components/ui/button"
@@ -17,6 +18,14 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b-2 border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between border-x border-border px-6">
         <Link href="/" className="flex items-center space-x-2 group">
+          <Image
+            src="/logo-v2.svg"
+            alt="BestRandom"
+            width={32}
+            height={32}
+            className="group-hover:opacity-80 transition-opacity"
+            priority
+          />
           <span className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">BestRandom</span>
         </Link>
 
