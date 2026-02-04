@@ -4,8 +4,8 @@ import { generateMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = generateMetadata({
-  title: "名字转盘 – 随机选择器 | BestRandom",
-  description: "随机选择器转盘，支持权重设置。输入名字列表，旋转转盘选择获胜者。",
+  title: "Wheel of Names – Spin to Pick a Random Name | BestRandom",
+  description: "Spin a virtual wheel to pick a random name or item. Add names with optional weights and let the wheel decide.",
   path: "/wheel-of-names",
 })
 

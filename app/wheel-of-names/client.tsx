@@ -9,35 +9,35 @@ import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/CopyButton"
 import { ShareLink } from "@/components/ShareLink"
 import { RotateCcw, Play } from "lucide-react"
-import { saveToHistory } from "@/lib/utils"
+import { saveToHistory } from "@/lib/history"
 import { useSearchParams, useRouter } from "next/navigation"
 import { generateFAQSchema } from "@/lib/seo"
 import Script from "next/script"
 
 const faqs = [
   {
-    question: "如何使用名字转盘？",
-    answer: "在文本框中输入名字列表（每行一个），可选设置权重（格式：名字:权重），然后点击'旋转'按钮。",
+    question: "How do I use the Wheel of Names?",
+    answer: "Enter a list of names in the text area (one per line), optionally set weights (format: name:weight), then click 'Spin' to pick a random winner.",
   },
   {
-    question: "如何设置权重？",
-    answer: "使用格式'名字:权重'，例如'张三:2'表示张三的权重是2，权重越高被选中的概率越大。",
+    question: "How do I set weights?",
+    answer: "Use the format 'name:weight', e.g., 'Alice:2' means Alice has a weight of 2. Higher weight means higher probability of being selected.",
   },
   {
-    question: "可以重复输入相同的名字吗？",
-    answer: "系统会自动去重，相同的名字只会保留一个。",
+    question: "Can I add duplicate names?",
+    answer: "Duplicate names are automatically removed. Each name appears only once.",
   },
   {
-    question: "转盘结果可以分享吗？",
-    answer: "可以，点击'分享'按钮，会生成一个包含种子参数的链接，其他人打开链接会看到相同的转盘和结果。",
+    question: "Can I share the result?",
+    answer: "Yes. Click the share button to generate a link with the seed parameter. Others will see the same wheel and result.",
   },
   {
-    question: "转盘历史记录在哪里？",
-    answer: "转盘结果会保存在浏览器本地历史记录中，您可以查看最近20次的结果。",
+    question: "Where is the spin history?",
+    answer: "Spin results are saved in your browser's local storage. You can view the last 20 results.",
   },
   {
-    question: "支持多少个名字？",
-    answer: "理论上没有限制，但建议不超过100个名字以保证最佳性能。",
+    question: "How many names can I add?",
+    answer: "There is no hard limit, but we recommend up to 100 names for best performance.",
   },
 ]
 
@@ -69,7 +69,7 @@ export function WheelOfNamesClient() {
     if (items.length === 0) {
       const parsed = parseWheelInput(input)
       if (parsed.length === 0) {
-        alert("请输入至少一个名字")
+        alert("Please enter at least one name")
         return
       }
       setItems(parsed)
@@ -80,7 +80,13 @@ export function WheelOfNamesClient() {
       const params = { items, seed: seed || undefined }
       const newResult = spinWheel(params)
       setResult(newResult)
-      saveToHistory("wheel", { items, result: newResult })
+      saveToHistory({
+        toolSlug: "wheel-of-names",
+        seed: seed || "random",
+        params: { items: items.map(i => i.name).join(", ") },
+        outputPreview: newResult.winner,
+        timestamp: Date.now(),
+      })
       setIsSpinning(false)
       updateURL(params)
     }, 3000)
@@ -88,7 +94,7 @@ export function WheelOfNamesClient() {
 
   const updateURL = (params: { items: WheelItem[], seed?: string }) => {
     const url = new URL(window.location.href)
-    const itemsText = params.items.map(item => 
+    const itemsText = params.items.map(item =>
       item.weight !== 1 ? `${item.name}:${item.weight}` : item.name
     ).join("\n")
     url.searchParams.set("items", itemsText)
@@ -108,12 +114,6 @@ export function WheelOfNamesClient() {
     router.replace("/wheel-of-names")
   }
 
-  const totalWeight = items.reduce((sum, item) => sum + item.weight, 0)
-  const itemAngles = items.map((item, i) => {
-    const prevWeight = items.slice(0, i).reduce((sum, it) => sum + it.weight, 0)
-    return (prevWeight / totalWeight) * 360
-  })
-
   return (
     <div className="container py-12">
       <Script
@@ -122,59 +122,59 @@ export function WheelOfNamesClient() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqs)) }}
       />
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2">🎡 名字转盘</h1>
+        <h1 className="text-3xl font-bold mb-2">Wheel of Names</h1>
         <p className="text-muted-foreground mb-8">
-          随机选择器转盘，支持权重设置。输入名字列表，旋转转盘选择获胜者。
+          Spin a virtual wheel to pick a random name or item. Add names with optional weights and let the wheel decide.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="input">名字列表（每行一个，可选权重：名字:权重）</Label>
+              <Label htmlFor="input">Names (one per line, optional weight: name:weight)</Label>
               <Textarea
                 id="input"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="张三&#10;李四&#10;王五:2&#10;赵六:3"
+                placeholder={"Alice\nBob\nCharlie:2\nDiana:3"}
                 rows={10}
               />
               <p className="text-xs text-muted-foreground">
-                当前有 {items.length} 个名字
+                {items.length} name{items.length !== 1 ? "s" : ""} entered
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="seed">种子（可选，用于重现结果）</Label>
+              <Label htmlFor="seed">Seed (optional, for reproducibility)</Label>
               <Input
                 id="seed"
                 value={seed}
                 onChange={(e) => setSeed(e.target.value)}
-                placeholder="留空则随机生成"
+                placeholder="Leave empty for random seed"
               />
             </div>
 
             <div className="flex gap-2">
-              <Button 
-                onClick={handleSpin} 
+              <Button
+                onClick={handleSpin}
                 className="flex-1"
                 disabled={isSpinning || items.length === 0}
               >
                 <Play className="mr-2 h-4 w-4" />
-                {isSpinning ? "旋转中..." : "旋转"}
+                {isSpinning ? "Spinning..." : "Spin"}
               </Button>
               <Button variant="outline" onClick={handleReset}>
                 <RotateCcw className="mr-2 h-4 w-4" />
-                重置
+                Reset
               </Button>
             </div>
 
             {items.length > 0 && (
               <div className="border rounded-lg p-4">
-                <h3 className="font-semibold mb-2">名字列表</h3>
+                <h3 className="font-semibold mb-2">Name List</h3>
                 <div className="space-y-1 max-h-40 overflow-y-auto">
                   {items.map((item, i) => (
                     <div key={i} className="text-sm">
-                      {item.name} {item.weight !== 1 && <span className="text-muted-foreground">(权重: {item.weight})</span>}
+                      {item.name} {item.weight !== 1 && <span className="text-muted-foreground">(weight: {item.weight})</span>}
                     </div>
                   ))}
                 </div>
@@ -184,7 +184,7 @@ export function WheelOfNamesClient() {
 
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">结果</h2>
+              <h2 className="text-xl font-semibold">Result</h2>
               {result && (
                 <div className="flex gap-2">
                   <CopyButton text={result.winner} />
@@ -198,19 +198,19 @@ export function WheelOfNamesClient() {
                 <div className="text-4xl mb-4">🎉</div>
                 <div className="text-2xl font-bold mb-2">{result.winner}</div>
                 <div className="text-sm text-muted-foreground">
-                  获胜者
+                  Winner
                 </div>
               </div>
             ) : (
               <div className="border rounded-lg p-12 text-center text-muted-foreground">
-                {items.length === 0 ? "输入名字列表并点击'旋转'开始" : "点击'旋转'按钮开始"}
+                {items.length === 0 ? "Enter names and click 'Spin' to start" : "Click 'Spin' to start"}
               </div>
             )}
           </div>
         </div>
 
         <div className="mt-12 space-y-4">
-          <h2 className="text-2xl font-semibold">常见问题</h2>
+          <h2 className="text-2xl font-semibold">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <div key={i} className="border rounded-lg p-4">

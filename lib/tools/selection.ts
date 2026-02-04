@@ -1,4 +1,4 @@
-import { Shuffle, Users } from "lucide-react"
+import { Shuffle, Users, CircleDot } from "lucide-react"
 import type { ToolConfig } from "../registry"
 
 // Random Picker
@@ -410,8 +410,122 @@ export const secretSantaTool: ToolConfig = {
   popular: true
 }
 
+// Wheel of Names
+export const wheelOfNamesTool: ToolConfig = {
+  slug: "wheel-of-names",
+  category: "selection",
+  name: "Wheel of Names",
+  shortDescription: "Spin a wheel to pick a random name",
+  longDescription: "Spin a virtual wheel to pick a random name or item from your list. Add names, assign optional weights, and let the wheel decide. Every spin uses a seed for repeatability—share your seed to reproduce the exact same result.",
+  generatorType: "picker",
+  defaultOptions: {
+    items: "",
+  },
+  optionSchema: {
+    fields: [
+      {
+        key: "items",
+        label: "Names (one per line, optional weight: name:weight)",
+        type: "textarea",
+        default: "",
+        placeholder: "Alice\nBob\nCharlie:2\nDiana:3",
+        required: true
+      }
+    ]
+  },
+  run: (ctx) => {
+    const { items } = ctx.options
+    const rng = ctx.rng
+
+    if (!items || items.trim() === "") {
+      return {
+        items: [],
+        meta: { seedUsed: ctx.seed, count: 0, generatedAt: Date.now() },
+        previewText: ""
+      }
+    }
+
+    const lines = items.split('\n').map((l: string) => l.trim()).filter((l: string) => l.length > 0)
+    const wheelItems: Array<{ name: string; weight: number }> = []
+    const seen = new Set<string>()
+
+    for (const line of lines) {
+      const colonIndex = line.lastIndexOf(':')
+      if (colonIndex > 0) {
+        const name = line.substring(0, colonIndex).trim()
+        const weightStr = line.substring(colonIndex + 1).trim()
+        const weight = parseFloat(weightStr)
+        if (name && !isNaN(weight) && weight >= 0 && !seen.has(name.toLowerCase())) {
+          wheelItems.push({ name, weight: Math.max(0, weight) })
+          seen.add(name.toLowerCase())
+        } else if (name && !seen.has(name.toLowerCase())) {
+          wheelItems.push({ name, weight: 1 })
+          seen.add(name.toLowerCase())
+        }
+      } else if (!seen.has(line.toLowerCase())) {
+        wheelItems.push({ name: line, weight: 1 })
+        seen.add(line.toLowerCase())
+      }
+    }
+
+    if (wheelItems.length === 0) {
+      return {
+        items: [],
+        meta: { seedUsed: ctx.seed, count: 0, generatedAt: Date.now() },
+        previewText: ""
+      }
+    }
+
+    const totalWeight = wheelItems.reduce((sum, item) => sum + item.weight, 0)
+    let random = rng() * totalWeight
+    let selectedIndex = wheelItems.length - 1
+
+    for (let i = 0; i < wheelItems.length; i++) {
+      random -= wheelItems[i].weight
+      if (random <= 0) {
+        selectedIndex = i
+        break
+      }
+    }
+
+    const winner = wheelItems[selectedIndex]
+
+    return {
+      items: [{
+        id: "winner",
+        value: winner.name,
+        formatted: winner.name,
+        index: selectedIndex,
+        isWinner: true
+      }],
+      meta: {
+        seedUsed: ctx.seed,
+        count: 1,
+        generatedAt: Date.now()
+      },
+      previewText: winner.name
+    }
+  },
+  seo: {
+    title: "Wheel of Names – Spin to Pick a Random Name | BestRandom",
+    description: "Spin a virtual wheel to pick a random name or item. Add names with optional weights and let the wheel decide. Shareable and repeatable.",
+    h1: "Wheel of Names",
+    faq: [
+      { question: "How do I use the Wheel of Names?", answer: "Enter a list of names (one per line), optionally set weights (format: name:weight), then click 'Spin' to pick a random winner." },
+      { question: "How do I set weights?", answer: "Use the format 'name:weight', e.g., 'Alice:2' means Alice has a weight of 2. Higher weight means higher probability of being selected." },
+      { question: "Can I add duplicate names?", answer: "Duplicate names are automatically removed. Each name appears only once." },
+      { question: "Can I share the result?", answer: "Yes. Click the share button to generate a link with the seed parameter. Others will see the same wheel and result." },
+      { question: "How many names can I add?", answer: "There is no hard limit, but we recommend up to 100 names for best performance." },
+      { question: "Is the result repeatable?", answer: "Yes. Using the same seed and names will always produce the same winner." }
+    ]
+  },
+  icon: CircleDot,
+  popular: true
+}
+
 export const selectionTools: ToolConfig[] = [
   randomPickerTool,
   randomTeamTool,
-  secretSantaTool
+  secretSantaTool,
+  wheelOfNamesTool
 ]
