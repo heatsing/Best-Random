@@ -1,5 +1,9 @@
-import { Code, Type, Phone } from "lucide-react"
+import { Code, Type, Phone, AtSign, MapPin, Package, Smile } from "lucide-react"
 import type { ToolConfig } from "../registry"
+import usernamesData from "@/data/usernames.json"
+import addressesData from "@/data/addresses.json"
+import itemsData from "@/data/items.json"
+import emojisData from "@/data/emojis.json"
 
 // Random Letter Generator
 export const randomLetterTool: ToolConfig = {
@@ -174,7 +178,332 @@ export const randomPhoneNumberTool: ToolConfig = {
   popular: true
 }
 
+// Random Username Generator
+export const randomUsernameTool: ToolConfig = {
+  slug: "random-username-generator",
+  category: "utilities",
+  name: "Random Username Generator",
+  shortDescription: "Generate creative random usernames",
+  longDescription: "Generate creative random usernames for social media, gaming, or any online account. Usernames are created by combining adjectives, nouns, and optional suffixes.",
+  generatorType: "list",
+  defaultOptions: {
+    count: 10,
+    style: "adjective_noun",
+    unique: true
+  },
+  optionSchema: {
+    fields: [
+      { key: "count", label: "Count", type: "number", default: 10, min: 1, max: 50 },
+      {
+        key: "style",
+        label: "Style",
+        type: "select",
+        default: "adjective_noun",
+        options: [
+          { value: "adjective_noun", label: "AdjectiveNoun (e.g., CoolWolf)" },
+          { value: "adjective_noun_suffix", label: "AdjectiveNounSuffix (e.g., CoolWolf99)" },
+          { value: "noun_suffix", label: "NounSuffix (e.g., Wolf99)" }
+        ]
+      },
+      { key: "unique", label: "Unique usernames", type: "checkbox", default: true }
+    ]
+  },
+  run: (ctx) => {
+    const { count, style, unique } = ctx.options
+    const rng = ctx.rng
+    const results: any[] = []
+    const seen = new Set<string>()
+
+    const { adjectives, nouns, suffixes } = usernamesData
+
+    for (let i = 0; i < count; i++) {
+      let username: string
+      let attempts = 0
+      do {
+        const adj = adjectives[Math.floor(rng() * adjectives.length)]
+        const noun = nouns[Math.floor(rng() * nouns.length)]
+        const suffix = suffixes[Math.floor(rng() * suffixes.length)]
+
+        if (style === "adjective_noun") {
+          username = `${adj}${noun}`
+        } else if (style === "adjective_noun_suffix") {
+          username = `${adj}${noun}${suffix}`
+        } else {
+          username = `${noun}${suffix}`
+        }
+        attempts++
+      } while (unique && seen.has(username) && attempts < 1000)
+      seen.add(username)
+
+      results.push({
+        id: `username-${i}`,
+        value: username,
+        formatted: username
+      })
+    }
+
+    return {
+      items: results,
+      meta: { seedUsed: ctx.seed, count: results.length, generatedAt: Date.now() },
+      previewText: results.slice(0, 3).map(r => r.value).join(", ")
+    }
+  },
+  seo: {
+    title: "Random Username Generator – Creative Usernames | BestRandom",
+    description: "Generate creative random usernames for social media, gaming, or any online account.",
+    h1: "Random Username Generator",
+    faq: [
+      { question: "What styles are available?", answer: "AdjectiveNoun (e.g., CoolWolf), AdjectiveNounSuffix (e.g., CoolWolf99), and NounSuffix (e.g., Wolf99)." },
+      { question: "Are usernames unique?", answer: "Yes, by default. Disable 'Unique usernames' to allow duplicates." },
+      { question: "Can I repeat the same result?", answer: "Yes. Use the same seed to reproduce results." },
+      { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
+    ]
+  },
+  icon: AtSign,
+  popular: true
+}
+
+// Random Address Generator
+export const randomAddressTool: ToolConfig = {
+  slug: "random-address-generator",
+  category: "utilities",
+  name: "Random Address Generator",
+  shortDescription: "Generate random US addresses",
+  longDescription: "Generate random US street addresses with city, state, and ZIP code. Perfect for testing forms, development, or placeholder data. All addresses are fictional.",
+  generatorType: "list",
+  defaultOptions: {
+    count: 5,
+    unique: true
+  },
+  optionSchema: {
+    fields: [
+      { key: "count", label: "Count", type: "number", default: 5, min: 1, max: 20 },
+      { key: "unique", label: "Unique addresses", type: "checkbox", default: true }
+    ]
+  },
+  run: (ctx) => {
+    const { count, unique } = ctx.options
+    const rng = ctx.rng
+    const results: any[] = []
+    const seen = new Set<string>()
+
+    const { streets, cities } = addressesData
+
+    for (let i = 0; i < count; i++) {
+      let address: string
+      let attempts = 0
+      do {
+        const streetNum = Math.floor(100 + rng() * 9900)
+        const street = streets[Math.floor(rng() * streets.length)]
+        const city = cities[Math.floor(rng() * cities.length)]
+        const zipSuffix = Math.floor(rng() * 90 + 10)
+        address = `${streetNum} ${street}, ${city.name}, ${city.state} ${city.zip.substring(0, 3)}${zipSuffix}`
+        attempts++
+      } while (unique && seen.has(address) && attempts < 1000)
+      seen.add(address)
+
+      results.push({
+        id: `address-${i}`,
+        value: address,
+        formatted: address
+      })
+    }
+
+    return {
+      items: results,
+      meta: { seedUsed: ctx.seed, count: results.length, generatedAt: Date.now() },
+      previewText: results.slice(0, 2).map(r => r.value).join("; ")
+    }
+  },
+  seo: {
+    title: "Random Address Generator – Fake US Addresses | BestRandom",
+    description: "Generate random US street addresses with city, state, and ZIP code. Perfect for testing and development.",
+    h1: "Random Address Generator",
+    faq: [
+      { question: "Are these real addresses?", answer: "No. All addresses are randomly generated and fictional." },
+      { question: "What format are the addresses?", answer: "US format: Street Number + Street Name, City, State ZIP." },
+      { question: "Can I repeat the same result?", answer: "Yes. Use the same seed to reproduce results." },
+      { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
+    ]
+  },
+  icon: MapPin,
+  popular: true
+}
+
+// Random Item Generator
+export const randomItemTool: ToolConfig = {
+  slug: "random-item-generator",
+  category: "utilities",
+  name: "Random Item Generator",
+  shortDescription: "Generate random everyday items",
+  longDescription: "Generate random everyday items from categories like household, kitchen, office, outdoor, tech, and clothing. Over 120 items to discover. Great for scavenger hunts, creative writing, or games.",
+  generatorType: "list",
+  defaultOptions: {
+    count: 10,
+    category: "all",
+    unique: true
+  },
+  optionSchema: {
+    fields: [
+      { key: "count", label: "Count", type: "number", default: 10, min: 1, max: 50 },
+      {
+        key: "category",
+        label: "Category",
+        type: "select",
+        default: "all",
+        options: [
+          { value: "all", label: "All Categories" },
+          { value: "household", label: "Household" },
+          { value: "kitchen", label: "Kitchen" },
+          { value: "office", label: "Office" },
+          { value: "outdoor", label: "Outdoor" },
+          { value: "tech", label: "Tech" },
+          { value: "clothing", label: "Clothing" }
+        ]
+      },
+      { key: "unique", label: "Unique items", type: "checkbox", default: true }
+    ]
+  },
+  run: (ctx) => {
+    const { count, category, unique } = ctx.options
+    const rng = ctx.rng
+    const results: any[] = []
+    const seen = new Set<string>()
+
+    let itemPool: string[] = []
+    if (category === "all") {
+      itemPool = Object.values(itemsData.items).flat()
+    } else {
+      itemPool = itemsData.items[category as keyof typeof itemsData.items] || []
+    }
+
+    for (let i = 0; i < count; i++) {
+      let item: string
+      let attempts = 0
+      do {
+        item = itemPool[Math.floor(rng() * itemPool.length)]
+        attempts++
+      } while (unique && seen.has(item) && attempts < 1000)
+      seen.add(item)
+
+      results.push({
+        id: `item-${i}`,
+        value: item,
+        formatted: item
+      })
+    }
+
+    return {
+      items: results,
+      meta: { seedUsed: ctx.seed, count: results.length, generatedAt: Date.now() },
+      previewText: results.slice(0, 3).map(r => r.value).join(", ")
+    }
+  },
+  seo: {
+    title: "Random Item Generator – Everyday Objects | BestRandom",
+    description: "Generate random everyday items from 6 categories. Over 120 items for scavenger hunts, creative writing, or games.",
+    h1: "Random Item Generator",
+    faq: [
+      { question: "What categories are available?", answer: "Household, kitchen, office, outdoor, tech, and clothing." },
+      { question: "How many items are in the database?", answer: "Over 120 everyday items across 6 categories." },
+      { question: "Can I repeat the same result?", answer: "Yes. Use the same seed to reproduce results." },
+      { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
+    ]
+  },
+  icon: Package,
+  popular: true
+}
+
+// Random Emoji Generator
+export const randomEmojiTool: ToolConfig = {
+  slug: "random-emoji-generator",
+  category: "utilities",
+  name: "Random Emoji Generator",
+  shortDescription: "Generate random emojis",
+  longDescription: "Generate random emojis from categories including smileys, animals, food, activities, travel, and objects. Over 180 emojis to discover. Copy and paste them anywhere.",
+  generatorType: "list",
+  defaultOptions: {
+    count: 10,
+    category: "all",
+    unique: true
+  },
+  optionSchema: {
+    fields: [
+      { key: "count", label: "Count", type: "number", default: 10, min: 1, max: 50 },
+      {
+        key: "category",
+        label: "Category",
+        type: "select",
+        default: "all",
+        options: [
+          { value: "all", label: "All Categories" },
+          { value: "smileys", label: "Smileys & People" },
+          { value: "animals", label: "Animals & Nature" },
+          { value: "food", label: "Food & Drink" },
+          { value: "activities", label: "Activities & Sports" },
+          { value: "travel", label: "Travel & Places" },
+          { value: "objects", label: "Objects" }
+        ]
+      },
+      { key: "unique", label: "Unique emojis", type: "checkbox", default: true }
+    ]
+  },
+  run: (ctx) => {
+    const { count, category, unique } = ctx.options
+    const rng = ctx.rng
+    const results: any[] = []
+    const seen = new Set<string>()
+
+    let emojiPool: string[] = []
+    if (category === "all") {
+      emojiPool = Object.values(emojisData.emojis).flat()
+    } else {
+      emojiPool = emojisData.emojis[category as keyof typeof emojisData.emojis] || []
+    }
+
+    for (let i = 0; i < count; i++) {
+      let emoji: string
+      let attempts = 0
+      do {
+        emoji = emojiPool[Math.floor(rng() * emojiPool.length)]
+        attempts++
+      } while (unique && seen.has(emoji) && attempts < 1000)
+      seen.add(emoji)
+
+      results.push({
+        id: `emoji-${i}`,
+        value: emoji,
+        formatted: emoji
+      })
+    }
+
+    return {
+      items: results,
+      meta: { seedUsed: ctx.seed, count: results.length, generatedAt: Date.now() },
+      previewText: results.slice(0, 10).map(r => r.value).join("")
+    }
+  },
+  seo: {
+    title: "Random Emoji Generator – Fun Emojis | BestRandom",
+    description: "Generate random emojis from 6 categories. Over 180 emojis for messaging, social media, or fun.",
+    h1: "Random Emoji Generator",
+    faq: [
+      { question: "What categories are available?", answer: "Smileys, animals, food, activities, travel, and objects." },
+      { question: "How many emojis are available?", answer: "Over 180 emojis across 6 categories." },
+      { question: "Can I copy the emojis?", answer: "Yes. Use the copy button to copy them to your clipboard." },
+      { question: "Can I repeat the same result?", answer: "Yes. Use the same seed to reproduce results." },
+      { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
+    ]
+  },
+  icon: Smile,
+  popular: true
+}
+
 export const utilitiesTools: ToolConfig[] = [
   randomLetterTool,
-  randomPhoneNumberTool
+  randomPhoneNumberTool,
+  randomUsernameTool,
+  randomAddressTool,
+  randomItemTool,
+  randomEmojiTool
 ]

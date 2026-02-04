@@ -1,0 +1,63 @@
+{
+  "movies": {
+    "action": [
+      "Die Hard", "Mad Max: Fury Road", "John Wick", "The Dark Knight", "Gladiator",
+      "Kill Bill: Volume 1", "The Matrix", "Inception", "Mission: Impossible – Fallout",
+      "Top Gun: Maverick", "The Bourne Identity", "Terminator 2: Judgment Day",
+      "Raiders of the Lost Ark", "Lethal Weapon", "Speed", "Point Break",
+      "The Raid: Redemption", "Edge of Tomorrow", "300", "Rambo: First Blood"
+    ],
+    "comedy": [
+      "The Big Lebowski", "Superbad", "Bridesmaids", "Anchorman", "Step Brothers",
+      "The Hangover", "Monty Python and the Holy Grail", "Groundhog Day",
+      "Ferris Bueller's Day Off", "Airplane!", "The Grand Budapest Hotel",
+      "Napoleon Dynamite", "Shaun of the Dead", "Hot Fuzz", "Borat",
+      "Mean Girls", "21 Jump Street", "Ghostbusters", "The 40-Year-Old Virgin",
+      "Dumb and Dumber"
+    ],
+    "drama": [
+      "The Shawshank Redemption", "Forrest Gump", "Fight Club", "The Godfather",
+      "Schindler's List", "Goodfellas", "Pulp Fiction", "The Green Mile",
+      "A Beautiful Mind", "The Pianist", "There Will Be Blood", "No Country for Old Men",
+      "Parasite", "Whiplash", "The Social Network", "12 Angry Men", "Casablanca",
+      "Manchester by the Sea", "Moonlight", "Nomadland"
+    ],
+    "horror": [
+      "The Shining", "Get Out", "A Quiet Place", "The Exorcist", "Hereditary",
+      "The Conjuring", "Alien", "It", "The Ring", "Scream",
+      "Halloween", "Midsommar", "The Babadook", "The Witch", "Us",
+      "A Nightmare on Elm Street", "28 Days Later", "The Sixth Sense",
+      "Psycho", "Jaws"
+    ],
+    "scifi": [
+      "Blade Runner 2049", "Interstellar", "Arrival", "The Martian", "Ex Machina",
+      "Star Wars: A New Hope", "Dune", "2001: A Space Odyssey", "Alien",
+      "E.T. the Extra-Terrestrial", "Back to the Future", "Jurassic Park",
+      "District 9", "Gravity", "The Fifth Element", "WALL-E", "Annihilation",
+      "Tenet", "Looper", "Her"
+    ],
+    "animation": [
+      "Spirited Away", "Toy Story", "The Lion King", "Up", "Inside Out",
+      "Finding Nemo", "Coco", "WALL-E", "Ratatouille", "Frozen",
+      "Shrek", "How to Train Your Dragon", "The Incredibles", "Monsters, Inc.",
+      "Spider-Man: Into the Spider-Verse", "Zootopia", "Moana", "Brave",
+      "Soul", "Encanto"
+    ],
+    "romance": [
+      "The Notebook", "Pride and Prejudice", "Titanic", "La La Land",
+      "Before Sunrise", "When Harry Met Sally", "10 Things I Hate About You",
+      "Crazy Rich Asians", "The Princess Bride", "Notting Hill",
+      "Eternal Sunshine of the Spotless Mind", "500 Days of Summer",
+      "About Time", "Silver Linings Playbook", "Atonement",
+      "Call Me by Your Name", "Roman Holiday", "Love Actually",
+      "Amélie", "Sleepless in Seattle"
+    ],
+    "thriller": [
+      "Se7en", "Gone Girl", "Silence of the Lambs", "Zodiac", "Memento",
+      "Prisoners", "Shutter Island", "The Departed", "The Usual Suspects",
+      "Heat", "Nightcrawler", "Sicario", "Wind River", "Black Swan",
+      "Oldboy", "The Girl with the Dragon Tattoo", "Mystic River",
+      "The Talented Mr. Ripley", "Misery", "Cape Fear"
+    ]
+  }
+}

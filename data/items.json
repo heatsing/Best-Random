@@ -1,0 +1,34 @@
+{
+  "items": {
+    "household": [
+      "Toothbrush", "Mirror", "Pillow", "Blanket", "Lamp", "Clock", "Towel", "Soap",
+      "Shampoo", "Scissors", "Comb", "Candle", "Vase", "Curtain", "Rug", "Broom",
+      "Bucket", "Sponge", "Hanger", "Key"
+    ],
+    "kitchen": [
+      "Fork", "Knife", "Spoon", "Plate", "Bowl", "Cup", "Mug", "Pan",
+      "Pot", "Oven", "Toaster", "Blender", "Kettle", "Spatula", "Whisk", "Colander",
+      "Cutting Board", "Can Opener", "Rolling Pin", "Ladle"
+    ],
+    "office": [
+      "Pen", "Pencil", "Notebook", "Stapler", "Paper Clip", "Ruler", "Eraser", "Calculator",
+      "Tape", "Glue", "Folder", "Binder", "Highlighter", "Marker", "Stamp", "Envelope",
+      "Calendar", "Whiteboard", "Mouse Pad", "Desk Lamp"
+    ],
+    "outdoor": [
+      "Umbrella", "Backpack", "Tent", "Flashlight", "Compass", "Binoculars", "Sunglasses",
+      "Water Bottle", "Hammock", "Cooler", "Fishing Rod", "Sleeping Bag", "Map", "Rope",
+      "Lantern", "Thermos", "Hiking Boots", "Canteen", "Pocket Knife", "First Aid Kit"
+    ],
+    "tech": [
+      "Phone", "Laptop", "Headphones", "Charger", "USB Cable", "Mouse", "Keyboard",
+      "Monitor", "Webcam", "Microphone", "Speaker", "Hard Drive", "Flash Drive",
+      "Power Bank", "Tablet", "Smartwatch", "Router", "Printer", "Controller", "VR Headset"
+    ],
+    "clothing": [
+      "T-Shirt", "Jeans", "Jacket", "Hat", "Scarf", "Gloves", "Socks", "Belt",
+      "Sneakers", "Boots", "Dress", "Sweater", "Hoodie", "Shorts", "Tie",
+      "Raincoat", "Sandals", "Vest", "Swimsuit", "Pajamas"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "adjectives": [
+    "Cool", "Fast", "Dark", "Wild", "Epic", "Happy", "Lazy", "Swift", "Brave", "Calm",
+    "Clever", "Crazy", "Fresh", "Grand", "Lucky", "Mega", "Noble", "Prime", "Royal", "Sharp",
+    "Silent", "Storm", "Super", "Ultra", "Vivid", "Zen", "Alpha", "Atomic", "Blazing", "Cosmic",
+    "Digital", "Electric", "Fierce", "Golden", "Hyper", "Iron", "Jade", "Keen", "Lunar", "Mystic",
+    "Neon", "Omega", "Pixel", "Quantum", "Rapid", "Shadow", "Turbo", "Vapor", "Wicked", "Xtreme"
+  ],
+  "nouns": [
+    "Wolf", "Fox", "Tiger", "Eagle", "Lion", "Bear", "Hawk", "Dragon", "Phoenix", "Falcon",
+    "Ninja", "Knight", "Wizard", "Pirate", "Rider", "Hunter", "Runner", "Gamer", "Coder", "Hacker",
+    "Star", "Moon", "Sun", "Fire", "Ice", "Storm", "Thunder", "Blade", "Arrow", "Shield",
+    "Spark", "Flash", "Byte", "Pixel", "Node", "Core", "Wave", "Pulse", "Volt", "Ray",
+    "Ghost", "Shadow", "Raven", "Viper", "Cobra", "Panther", "Raptor", "Titan", "Legend", "Hero"
+  ],
+  "suffixes": [
+    "X", "Z", "Pro", "Max", "HD", "XL", "Jr", "Sr", "One", "Go",
+    "99", "42", "007", "101", "360", "404", "777", "000", "321", "247"
+  ]
+}

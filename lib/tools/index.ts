@@ -8,6 +8,7 @@ import { designTools } from "./design"
 import { securityTools } from "./security"
 import { utilitiesTools } from "./utilities"
 import { funTools } from "./fun"
+import { entertainmentTools } from "./entertainment"
 
 // Games tools are currently in numbers.ts (dice, coin flip)
 // Extract them later if needed
@@ -21,5 +22,6 @@ export const allTools = [
   ...securityTools,
   ...utilitiesTools,
   ...funTools,
+  ...entertainmentTools,
   ...gamesTools,
 ]
