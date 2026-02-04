@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { tools, getPopularTools } from "@/lib/registry"
 
 export function Footer() {
@@ -11,7 +12,10 @@ export function Footer() {
       <div className="container max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b-2 border-border pb-12">
           <div>
-            <h3 className="font-bold text-lg mb-4 tracking-tight">BestRandom</h3>
+            <div className="flex items-center gap-2 mb-4">
+              <Image src="/logo-v2.svg" alt="BestRandom" width={28} height={28} />
+              <h3 className="font-bold text-lg tracking-tight">BestRandom</h3>
+            </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Fast random generation that FEELS random, with deterministic repeatability via seed, shareable URLs, and polished micro-interactions.
             </p>

@@ -1,0 +1,43 @@
+{
+  "streets": [
+    "Main St", "Oak Ave", "Maple Dr", "Cedar Ln", "Elm St", "Pine Rd", "Walnut Blvd",
+    "Washington Ave", "Lincoln Rd", "Park Pl", "Lake Dr", "River Rd", "Spring St",
+    "Hill Rd", "Sunset Blvd", "Highland Ave", "Valley Rd", "Forest Dr", "Church St",
+    "School Ln", "Mill Rd", "Bridge St", "Market St", "Center Ave", "Meadow Ln",
+    "Ridge Rd", "Prospect St", "Academy Blvd", "Columbia Ave", "Liberty St",
+    "Franklin St", "Jefferson Ave", "Adams Dr", "Madison Ln", "Monroe Blvd",
+    "Jackson Rd", "Harrison St", "Grant Ave", "Sherman Dr", "Willow Way"
+  ],
+  "cities": [
+    {"name": "New York", "state": "NY", "zip": "10001"},
+    {"name": "Los Angeles", "state": "CA", "zip": "90001"},
+    {"name": "Chicago", "state": "IL", "zip": "60601"},
+    {"name": "Houston", "state": "TX", "zip": "77001"},
+    {"name": "Phoenix", "state": "AZ", "zip": "85001"},
+    {"name": "Philadelphia", "state": "PA", "zip": "19101"},
+    {"name": "San Antonio", "state": "TX", "zip": "78201"},
+    {"name": "San Diego", "state": "CA", "zip": "92101"},
+    {"name": "Dallas", "state": "TX", "zip": "75201"},
+    {"name": "San Jose", "state": "CA", "zip": "95101"},
+    {"name": "Austin", "state": "TX", "zip": "73301"},
+    {"name": "Jacksonville", "state": "FL", "zip": "32201"},
+    {"name": "Fort Worth", "state": "TX", "zip": "76101"},
+    {"name": "Columbus", "state": "OH", "zip": "43201"},
+    {"name": "Charlotte", "state": "NC", "zip": "28201"},
+    {"name": "Indianapolis", "state": "IN", "zip": "46201"},
+    {"name": "San Francisco", "state": "CA", "zip": "94101"},
+    {"name": "Seattle", "state": "WA", "zip": "98101"},
+    {"name": "Denver", "state": "CO", "zip": "80201"},
+    {"name": "Nashville", "state": "TN", "zip": "37201"},
+    {"name": "Portland", "state": "OR", "zip": "97201"},
+    {"name": "Las Vegas", "state": "NV", "zip": "89101"},
+    {"name": "Atlanta", "state": "GA", "zip": "30301"},
+    {"name": "Miami", "state": "FL", "zip": "33101"},
+    {"name": "Boston", "state": "MA", "zip": "02101"},
+    {"name": "Minneapolis", "state": "MN", "zip": "55401"},
+    {"name": "Tampa", "state": "FL", "zip": "33601"},
+    {"name": "Orlando", "state": "FL", "zip": "32801"},
+    {"name": "Pittsburgh", "state": "PA", "zip": "15201"},
+    {"name": "Cleveland", "state": "OH", "zip": "44101"}
+  ]
+}

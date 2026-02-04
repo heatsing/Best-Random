@@ -102,8 +102,8 @@ export const randomNumberTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Number Generator – Fast, Seeded & Shareable | BestRandom",
-    description: "Generate truly random numbers instantly. Control range, count, uniqueness, decimals, and seed.",
+    title: "Random Number Generator: Pick a Number Instantly | BestRandom",
+    description: "Generate truly random numbers in any range. Control min/max, count, uniqueness, and decimals — share or repeat results with a seed.",
     h1: "Random Number Generator",
     faq: [
       { question: "Is this random number generator truly random?", answer: "It uses a high-quality pseudo-random algorithm with optional seed control." },
@@ -203,8 +203,8 @@ export const diceRollerTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Dice Roller – Roll d4, d6, d8, d10, d12, d20 | BestRandom",
-    description: "Roll dice of various types. See each roll and the sum. Supports custom dice.",
+    title: "Dice Roller: Roll Any Dice Online (d4–d20 & Custom) | BestRandom",
+    description: "Roll virtual dice online — d4, d6, d8, d10, d12, d20, or custom. See every roll and the total. Perfect for D&D, board games, and more.",
     h1: "Dice Roller",
     faq: [
       { question: "What dice types are supported?", answer: "d4, d6, d8, d10, d12, d20, and custom dice with any number of sides." },
@@ -270,8 +270,8 @@ export const coinFlipTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Coin Flip – Flip a Coin Online | BestRandom",
-    description: "Flip a coin one or multiple times. See results and statistics.",
+    title: "Coin Flip: Heads or Tails? Flip a Coin Online | BestRandom",
+    description: "Flip a coin one or many times and see live heads/tails statistics. Fair, instant, and shareable results.",
     h1: "Coin Flip",
     faq: [
       { question: "Can I flip multiple coins?", answer: "Yes. Set the number of flips to flip multiple times." },
@@ -390,8 +390,8 @@ export const randomDateTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Date Generator – Generate Dates in Range | BestRandom",
-    description: "Generate random dates within a range. Perfect for random birthdays, event dates, or scheduling.",
+    title: "Random Date Generator: Pick a Random Day in Any Range | BestRandom",
+    description: "Generate random dates between any two dates. Great for birthdays, deadlines, event planning, or just picking a random day.",
     h1: "Random Date Generator",
     faq: [
       { question: "How does the date generator work?", answer: "It generates random dates between your specified start and end dates." },
@@ -483,8 +483,8 @@ export const randomTimeTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Time Generator – Clock Time Generator | BestRandom",
-    description: "Generate a random time of day, down to the minute. Use this clock time generator to pick a random hour or schedule a truly random event.",
+    title: "Random Time Generator: What Time Should I…? | BestRandom",
+    description: "Pick a random time of day down to the minute. 12-hour or 24-hour format — ideal for scheduling, games, or creative prompts.",
     h1: "Random Time Generator",
     faq: [
       { question: "How does the time generator work?", answer: "It generates random times throughout a 24-hour period, down to the minute." },

@@ -12,34 +12,43 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "BestRandom – Fast, Seeded & Shareable Random Generators",
+    default: "BestRandom: 40+ Free Random Generators for Numbers, Names, Passwords & More",
     template: "%s | BestRandom",
   },
-  description: "Generate truly random numbers, names, words, colors, passwords, and more. All tools support seeds for repeatability and shareable links.",
-  keywords: ["random generator", "random number", "random name", "random password", "random color", "random tool"],
+  description: "The best free collection of 40+ random generators. Generate numbers, names, passwords, colors, teams, movies, and more. Seeded for repeatability, shareable with one link, and instant results.",
+  keywords: ["random generator", "random number generator", "random name generator", "random password generator", "random color generator", "random picker", "random team generator", "online random tools"],
   authors: [{ name: "BestRandom" }],
   creator: "BestRandom",
+  icons: {
+    icon: [
+      { url: "/favicon-v2.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon-v2.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest-v2.json",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://bestrandom.net",
     siteName: "BestRandom",
-    title: "BestRandom – Fast, Seeded & Shareable Random Generators",
-    description: "Generate truly random numbers, names, words, colors, passwords, and more. All tools support seeds for repeatability and shareable links.",
+    title: "BestRandom: 40+ Free Random Generators for Numbers, Names, Passwords & More",
+    description: "The best free collection of 40+ random generators. Generate numbers, names, passwords, colors, teams, movies, and more. Seeded for repeatability, shareable with one link, and instant results.",
     images: [
       {
-        url: "https://bestrandom.net/og-image.png",
+        url: "https://bestrandom.net/og-image-v2.png",
         width: 1200,
         height: 630,
-        alt: "BestRandom – Fast, Seeded & Shareable Random Generators",
+        alt: "BestRandom: 40+ Free Random Generators",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BestRandom – Fast, Seeded & Shareable Random Generators",
-    description: "Generate truly random numbers, names, words, colors, passwords, and more. All tools support seeds for repeatability and shareable links.",
-    images: ["https://bestrandom.net/og-image.png"],
+    title: "BestRandom: 40+ Free Random Generators for Numbers, Names, Passwords & More",
+    description: "The best free collection of 40+ random generators. Generate numbers, names, passwords, colors, teams, movies, and more. Seeded for repeatability, shareable with one link, and instant results.",
+    images: ["https://bestrandom.net/og-image-v2.png"],
   },
   robots: {
     index: true,

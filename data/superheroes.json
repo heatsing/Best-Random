@@ -1,0 +1,24 @@
+{
+  "superheroes": {
+    "marvel": [
+      "Spider-Man", "Iron Man", "Captain America", "Thor", "Hulk",
+      "Black Widow", "Wolverine", "Deadpool", "Doctor Strange", "Black Panther",
+      "Scarlet Witch", "Hawkeye", "Ant-Man", "Captain Marvel", "Vision",
+      "Falcon", "War Machine", "Star-Lord", "Gamora", "Groot",
+      "Rocket Raccoon", "Drax", "Loki", "Daredevil", "Punisher",
+      "Luke Cage", "Jessica Jones", "Moon Knight", "She-Hulk", "Storm",
+      "Cyclops", "Jean Grey", "Beast", "Rogue", "Nightcrawler",
+      "Colossus", "Iceman", "Silver Surfer", "Blade", "Ghost Rider"
+    ],
+    "dc": [
+      "Superman", "Batman", "Wonder Woman", "The Flash", "Aquaman",
+      "Green Lantern", "Cyborg", "Shazam", "Batgirl", "Nightwing",
+      "Robin", "Supergirl", "Martian Manhunter", "Hawkgirl", "Green Arrow",
+      "Black Canary", "Zatanna", "Constantine", "Swamp Thing", "Blue Beetle",
+      "Starfire", "Raven", "Beast Boy", "Static Shock", "Firestorm",
+      "Booster Gold", "Plastic Man", "Doctor Fate", "Power Girl", "Red Hood",
+      "Batwoman", "Huntress", "Black Lightning", "Atom", "Hawkman",
+      "Vixen", "Elongated Man", "Mr. Terrific", "Wildcat", "Stargirl"
+    ]
+  }
+}
