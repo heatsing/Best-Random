@@ -92,28 +92,21 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
   // Get full tool config including run function on client side
   const tool = getToolBySlug(toolData.slug)
 
-  // Generate random seed if not provided
-  const getOrCreateSeed = useCallback(() => {
-    if (seed) return seed
-    const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
-    setSeed(newSeed)
-    return newSeed
-  }, [seed])
-
-  // Generate results
+  // Generate results - always creates a fresh seed for new results
   const generate = useCallback(() => {
     if (!tool) return
-    
+
     // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
     }
-    
+
     setIsGenerating(true)
-    
+
     timeoutRef.current = setTimeout(() => {
       try {
-        const currentSeed = getOrCreateSeed()
+        const currentSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
+        setSeed(currentSeed)
         const combinedSeed = createCombinedSeed(currentSeed, options)
         const prng = createPRNG(combinedSeed)
         
@@ -160,7 +153,7 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
         timeoutRef.current = null
       }
     }, 100)
-  }, [options, tool, getOrCreateSeed, router, toolData.category, toolData.slug])
+  }, [options, tool, router, toolData.category, toolData.slug])
 
   const handleRandomSeed = () => {
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
@@ -204,7 +197,7 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
             h1: toolData.seo.h1
           }
         }}
-        seed={seed || getOrCreateSeed()}
+        seed={seed}
         options={options}
         result={result}
         isGenerating={isGenerating}

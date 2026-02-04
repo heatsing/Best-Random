@@ -35,11 +35,10 @@ export function RandomNumberGeneratorClient() {
 
   // Generate seed if not provided
   const getOrCreateSeed = useCallback(() => {
-    if (seed) return seed
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
     setSeed(newSeed)
     return newSeed
-  }, [seed])
+  }, [])
 
   // Update URL
   const updateURL = useCallback((currentSeed: string, params: NumberGeneratorParams) => {

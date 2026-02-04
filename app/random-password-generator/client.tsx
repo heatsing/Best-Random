@@ -36,11 +36,10 @@ export function RandomPasswordGeneratorClient() {
   const [isGenerating, setIsGenerating] = useState(false)
 
   const getOrCreateSeed = useCallback(() => {
-    if (seed) return seed
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
     setSeed(newSeed)
     return newSeed
-  }, [seed])
+  }, [])
 
   const updateURL = useCallback((currentSeed: string, params: PasswordGeneratorParams) => {
     const url = new URL(window.location.href)

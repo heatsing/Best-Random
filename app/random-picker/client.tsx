@@ -43,11 +43,10 @@ export function RandomPickerClient() {
     })
 
   const getOrCreateSeed = useCallback(() => {
-    if (seed) return seed
     const newSeed = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
     setSeed(newSeed)
     return newSeed
-  }, [seed])
+  }, [])
 
   const updateURL = useCallback((currentSeed: string) => {
     const url = new URL(window.location.href)
