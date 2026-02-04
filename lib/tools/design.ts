@@ -100,8 +100,8 @@ export const randomColorTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Color Generator – HEX, RGB & HSL | BestRandom",
-    description: "Generate random colors instantly. Create color palettes, lock colors, and export HEX, RGB, or HSL values.",
+    title: "Random Color Generator: Get HEX, RGB & HSL Colors Instantly | BestRandom",
+    description: "Generate random color palettes for design projects. Export HEX, RGB, or HSL values, lock favorite colors, and share palettes with a link.",
     h1: "Random Color Generator",
     faq: [
       { question: "What color formats are supported?", answer: "HEX, RGB, and HSL formats are supported." },
@@ -200,8 +200,8 @@ export const gradientGeneratorTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Gradient Generator – CSS Gradients | BestRandom",
-    description: "Generate beautiful CSS gradients instantly. Create linear, radial, or conic gradients with customizable colors and export CSS code.",
+    title: "CSS Gradient Generator: Create Beautiful Gradients Online | BestRandom",
+    description: "Generate stunning linear, radial, or conic CSS gradients with up to 10 colors. Copy the CSS code and use it directly in your web projects.",
     h1: "Gradient Generator",
     faq: [
       { question: "What gradient types are supported?", answer: "Linear, radial, and conic (angular) gradients are supported." },

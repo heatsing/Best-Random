@@ -79,8 +79,8 @@ export const randomMovieTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Movie Generator – Discover Films by Genre | BestRandom",
-    description: "Get random movie recommendations from top-rated films. Filter by action, comedy, drama, horror, sci-fi, and more.",
+    title: "Random Movie Generator: What Should I Watch Tonight? | BestRandom",
+    description: "Get random movie picks from 160+ top-rated films across 8 genres. End the endless scrolling and let us pick your next movie night film.",
     h1: "Random Movie Generator",
     faq: [
       { question: "What genres are available?", answer: "Action, comedy, drama, horror, sci-fi, animation, romance, and thriller." },
@@ -170,8 +170,8 @@ export const randomBookTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Book Generator – Discover Your Next Read | BestRandom",
-    description: "Get random book recommendations from top-rated books. Filter by fiction, fantasy, sci-fi, mystery, and more.",
+    title: "Random Book Generator: What Book Should I Read Next? | BestRandom",
+    description: "Discover your next read from 60+ highly-rated books across fiction, fantasy, sci-fi, mystery, and more. Each result includes the title and author.",
     h1: "Random Book Generator",
     faq: [
       { question: "What genres are available?", answer: "Fiction, fantasy, sci-fi, horror, mystery, non-fiction, and romance." },
@@ -237,8 +237,8 @@ export const randomQuoteTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Quote Generator – Daily Inspiration | BestRandom",
-    description: "Get random inspirational quotes from famous thinkers, leaders, and artists. Perfect for daily motivation.",
+    title: "Random Quote Generator: Get Inspired by Famous Quotes | BestRandom",
+    description: "Discover inspiring quotes from famous thinkers, scientists, leaders, and artists. Perfect for daily motivation, social media, or presentations.",
     h1: "Random Quote Generator",
     faq: [
       { question: "What kind of quotes are included?", answer: "Inspirational quotes from famous thinkers, leaders, scientists, and artists." },
@@ -322,8 +322,8 @@ export const randomSuperheroTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Superhero Generator – Marvel & DC Heroes | BestRandom",
-    description: "Discover random superheroes from the Marvel and DC universes. Generate 80 heroes from both comics publishers.",
+    title: "Random Superhero Generator: Discover Marvel & DC Heroes | BestRandom",
+    description: "Generate random superheroes from 80 Marvel and DC characters. Perfect for trivia nights, character debates, or discovering new heroes to read about.",
     h1: "Random Superhero Generator",
     faq: [
       { question: "What heroes are included?", answer: "40 popular Marvel heroes and 40 popular DC heroes." },
@@ -384,8 +384,8 @@ export const randomSuperpowerTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Superpower Generator – Discover Your Ability | BestRandom",
-    description: "Get random superpowers from 100 abilities. Perfect for creative writing, RPGs, or party games.",
+    title: "Random Superpower Generator: What Power Would You Have? | BestRandom",
+    description: "Get a random superpower from 100 unique abilities. Ideal for creative writing, RPG character builds, party games, or \"what if\" conversations.",
     h1: "Random Superpower Generator",
     faq: [
       { question: "How many superpowers are available?", answer: "The database includes 100 unique superpowers." },
@@ -455,8 +455,8 @@ export const randomCardTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Playing Card Generator – Draw Cards | BestRandom",
-    description: "Draw random playing cards from a standard 52-card deck. Perfect for card games, magic tricks, or probability.",
+    title: "Random Card Generator: Draw Cards from a 52-Card Deck | BestRandom",
+    description: "Draw random playing cards from a standard 52-card deck with no-duplicate mode. Perfect for card games, magic tricks, or probability exercises.",
     h1: "Random Playing Card Generator",
     faq: [
       { question: "Is this a standard deck?", answer: "Yes. 52 cards with 4 suits (Spades, Hearts, Diamonds, Clubs) and 13 ranks (A through K)." },

@@ -72,8 +72,8 @@ export const randomLetterTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Letter Generator – A-Z Letters & More | BestRandom",
-    description: "Easily generate a list of randomized letters (A-Z) or add more characters like numbers or symbols.",
+    title: "Random Letter Generator: Pick Letters from A to Z | BestRandom",
+    description: "Generate random letters (A-Z) with optional numbers and symbols. Perfect for games, learning activities, password characters, or creative exercises.",
     h1: "Random Letter Generator",
     faq: [
       { question: "What characters can be generated?", answer: "Letters A-Z, optionally with numbers 0-9 and symbols." },
@@ -163,8 +163,8 @@ export const randomPhoneNumberTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Phone Number Generator – Fake Phone Numbers | BestRandom",
-    description: "Generate random phone numbers instantly. Perfect for testing, games, or fake contact info.",
+    title: "Random Phone Number Generator: Get Fake Numbers for Testing | BestRandom",
+    description: "Generate random US phone numbers in standard or international format. Ideal for form testing, app development, or placeholder contact data.",
     h1: "Random Phone Number Generator",
     faq: [
       { question: "What formats are available?", answer: "US format (XXX) XXX-XXXX and International format +1 XXX XXX XXXX are available." },
@@ -249,8 +249,8 @@ export const randomUsernameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Username Generator – Creative Usernames | BestRandom",
-    description: "Generate creative random usernames for social media, gaming, or any online account.",
+    title: "Random Username Generator: What Should My Username Be? | BestRandom",
+    description: "Generate creative usernames for social media, gaming, or any online account. Choose from AdjectiveNoun, AdjectiveNounSuffix, or NounSuffix styles.",
     h1: "Random Username Generator",
     faq: [
       { question: "What styles are available?", answer: "AdjectiveNoun (e.g., CoolWolf), AdjectiveNounSuffix (e.g., CoolWolf99), and NounSuffix (e.g., Wolf99)." },
@@ -316,8 +316,8 @@ export const randomAddressTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Address Generator – Fake US Addresses | BestRandom",
-    description: "Generate random US street addresses with city, state, and ZIP code. Perfect for testing and development.",
+    title: "Random Address Generator: Create Fake US Addresses | BestRandom",
+    description: "Generate realistic fictional US street addresses with city, state, and ZIP code. Perfect for form testing, app development, or mock data generation.",
     h1: "Random Address Generator",
     faq: [
       { question: "Are these real addresses?", answer: "No. All addresses are randomly generated and fictional." },
@@ -400,8 +400,8 @@ export const randomItemTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Item Generator – Everyday Objects | BestRandom",
-    description: "Generate random everyday items from 6 categories. Over 120 items for scavenger hunts, creative writing, or games.",
+    title: "Random Item Generator: Pick a Random Everyday Object | BestRandom",
+    description: "Generate random everyday items from household, kitchen, office, outdoor, tech, and clothing categories. Over 120 objects for scavenger hunts or games.",
     h1: "Random Item Generator",
     faq: [
       { question: "What categories are available?", answer: "Household, kitchen, office, outdoor, tech, and clothing." },
@@ -484,8 +484,8 @@ export const randomEmojiTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Emoji Generator – Fun Emojis | BestRandom",
-    description: "Generate random emojis from 6 categories. Over 180 emojis for messaging, social media, or fun.",
+    title: "Random Emoji Generator: Get Random Emojis to Copy & Paste | BestRandom",
+    description: "Generate random emojis from smileys, animals, food, activities, travel, and objects. Over 180 emojis to copy and paste for messaging or social media.",
     h1: "Random Emoji Generator",
     faq: [
       { question: "What categories are available?", answer: "Smileys, animals, food, activities, travel, and objects." },

@@ -106,8 +106,8 @@ export const randomPasswordTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Password Generator – Secure & Customizable | BestRandom",
-    description: "Create strong random passwords instantly. Control length, characters, and generate multiple secure passwords at once.",
+    title: "Random Password Generator: Create Strong Passwords Instantly | BestRandom",
+    description: "Generate secure random passwords with custom length, uppercase, lowercase, numbers, and symbols. All passwords are generated locally and never stored.",
     h1: "Random Password Generator",
     faq: [
       { question: "Are the generated passwords secure?", answer: "Yes. They use randomized character selection." },
@@ -198,8 +198,8 @@ export const uuidGeneratorTool: ToolConfig = {
     }
   },
   seo: {
-    title: "UUID Generator – Generate Unique Identifiers | BestRandom",
-    description: "Generate UUIDs (Universally Unique Identifiers) instantly. Create multiple UUIDs in standard or compact format.",
+    title: "UUID Generator: Create Unique IDs (v4) Online | BestRandom",
+    description: "Generate UUID v4 identifiers instantly in standard or compact format. Perfect for databases, APIs, and unique key generation in your applications.",
     h1: "UUID Generator",
     faq: [
       { question: "What is a UUID?", answer: "UUID stands for Universally Unique Identifier. It's a 128-bit identifier that is unique across time and space." },
@@ -322,8 +322,8 @@ export const hashGeneratorTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Hash Generator – SHA-256, SHA-512, MD5 | BestRandom",
-    description: "Generate cryptographic hashes from text. Supports SHA-256, SHA-512, and MD5 algorithms.",
+    title: "Hash Generator: Convert Text to SHA-256, SHA-512 & MD5 | BestRandom",
+    description: "Generate cryptographic hashes from any text input. Supports SHA-256, SHA-512, and MD5 for data integrity checks and security verification.",
     h1: "Hash Generator",
     faq: [
       { question: "What hash algorithms are supported?", answer: "SHA-256, SHA-512, and MD5 are supported." },
