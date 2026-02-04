@@ -10,65 +10,113 @@ export const randomNameTool: ToolConfig = {
   slug: "random-name-generator",
   category: "text",
   name: "Random Name Generator",
-  shortDescription: "Generate random names instantly",
-  longDescription: "Generate random names instantly. Choose between full names, first names only, or last names only.",
+  shortDescription: "Generate random names — boy, girl, baby, pet, Japanese & more",
+  longDescription: "Generate random names from 20+ categories. Choose boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, nicknames (cute/cool/funny), band names, Japanese names, or full random identities.",
   generatorType: "list",
   defaultOptions: {
     count: 10,
-    style: "mixed",
-    unique: false
+    nameType: "full",
+    unique: true
   },
   optionSchema: {
     fields: [
       { key: "count", label: "Count", type: "number", default: 10, min: 1, max: 100 },
       {
-        key: "style",
-        label: "Name Style",
+        key: "nameType",
+        label: "Name Type",
         type: "select",
-        default: "mixed",
+        default: "full",
         options: [
-          { value: "modern", label: "Modern" },
-          { value: "classic", label: "Classic" },
-          { value: "mixed", label: "Mixed" }
+          { value: "full", label: "Random Full Names" },
+          { value: "boy", label: "Boy Names" },
+          { value: "girl", label: "Girl Names" },
+          { value: "baby", label: "Baby Names" },
+          { value: "last", label: "Last Names" },
+          { value: "company", label: "Company Names" },
+          { value: "team", label: "Team Names" },
+          { value: "pet", label: "Pet Names" },
+          { value: "dog", label: "Dog Names" },
+          { value: "cat", label: "Cat Names" },
+          { value: "gamertag", label: "Gamertags" },
+          { value: "nickname_cute", label: "Cute Nicknames" },
+          { value: "nickname_cool", label: "Cool Nicknames" },
+          { value: "nickname_funny", label: "Funny Nicknames" },
+          { value: "band", label: "Band Names" },
+          { value: "japanese", label: "Japanese Names" },
+          { value: "identity", label: "Random Identity" }
         ]
       },
-      { key: "unique", label: "Unique names", type: "checkbox", default: false }
+      { key: "unique", label: "Unique names", type: "checkbox", default: true }
     ]
   },
   run: (ctx) => {
-    const { count, style, unique } = ctx.options
+    const { count, nameType, unique } = ctx.options
     const rng = ctx.rng
     const results: any[] = []
     const seen = new Set<string>()
 
-    const firstNames = style === 'modern' 
-      ? namesData.firstNames.modern 
-      : style === 'classic'
-      ? namesData.firstNames.classic
-      : [...namesData.firstNames.modern, ...namesData.firstNames.classic]
-
-    const lastNames = namesData.lastNames
+    const pick = (arr: string[]) => arr[Math.floor(rng() * arr.length)]
 
     for (let i = 0; i < count; i++) {
-      let firstName: string
-      let lastName: string
-      let fullName: string
+      let value: string
       let attempts = 0
 
       do {
-        firstName = firstNames[Math.floor(rng() * firstNames.length)]
-        lastName = lastNames[Math.floor(rng() * lastNames.length)]
-        fullName = `${firstName} ${lastName}`
+        if (nameType === 'full') {
+          const allFirst = [...namesData.firstNames.modern, ...namesData.firstNames.classic]
+          value = `${pick(allFirst)} ${pick(namesData.lastNames)}`
+        } else if (nameType === 'boy') {
+          value = pick(namesData.boyNames)
+        } else if (nameType === 'girl') {
+          value = pick(namesData.girlNames)
+        } else if (nameType === 'baby') {
+          value = pick(namesData.babyNames)
+        } else if (nameType === 'last') {
+          value = pick(namesData.lastNames)
+        } else if (nameType === 'company') {
+          value = pick(namesData.companyNames)
+        } else if (nameType === 'team') {
+          value = pick(namesData.teamNames)
+        } else if (nameType === 'pet') {
+          value = pick(namesData.petNames)
+        } else if (nameType === 'dog') {
+          value = pick(namesData.dogNames)
+        } else if (nameType === 'cat') {
+          value = pick(namesData.catNames)
+        } else if (nameType === 'gamertag') {
+          value = pick(namesData.gamertags)
+        } else if (nameType === 'nickname_cute') {
+          value = pick(namesData.nicknames.cute)
+        } else if (nameType === 'nickname_cool') {
+          value = pick(namesData.nicknames.cool)
+        } else if (nameType === 'nickname_funny') {
+          value = pick(namesData.nicknames.funny)
+        } else if (nameType === 'band') {
+          value = pick(namesData.bandNames)
+        } else if (nameType === 'japanese') {
+          const gender = rng() < 0.5 ? 'male' : 'female'
+          const first = pick(namesData.japaneseNames[gender])
+          const last = pick(namesData.japaneseNames.lastNames)
+          value = `${last} ${first}`
+        } else if (nameType === 'identity') {
+          const allFirst = [...namesData.firstNames.modern, ...namesData.firstNames.classic]
+          const name = `${pick(allFirst)} ${pick(namesData.lastNames)}`
+          const age = 18 + Math.floor(rng() * 50)
+          const occ = pick(namesData.identities.occupations)
+          const city = pick(namesData.identities.cities)
+          value = `${name}, ${age}, ${occ}, ${city}`
+        } else {
+          const allFirst = [...namesData.firstNames.modern, ...namesData.firstNames.classic]
+          value = `${pick(allFirst)} ${pick(namesData.lastNames)}`
+        }
         attempts++
-      } while (unique && seen.has(fullName) && attempts < 1000)
+      } while (unique && seen.has(value) && attempts < 1000)
 
-      seen.add(fullName)
+      seen.add(value)
       results.push({
         id: `name-${i}`,
-        value: fullName,
-        formatted: fullName,
-        firstName,
-        lastName
+        value,
+        formatted: value
       })
     }
 
@@ -83,16 +131,16 @@ export const randomNameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Name Generator: Create Realistic Names Instantly | BestRandom",
-    description: "Generate random first and last names for characters, testing, or creative projects. Choose modern or classic styles, ensure uniqueness, and share results with a seed.",
+    title: "Random Name Generator: Boy, Girl, Baby, Pet & Japanese Names | BestRandom",
+    description: "Generate random names from 20+ categories: boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, nicknames, band names, Japanese names, and full identities.",
     h1: "Random Name Generator",
     faq: [
-      { question: "What types of names can I generate?", answer: "You can generate full names, first names, or last names." },
-      { question: "Are the names random every time?", answer: "Yes, unless you reuse the same seed to repeat results." },
-      { question: "Can I generate multiple names at once?", answer: "Yes. Choose how many names you want to generate." },
-      { question: "Can I avoid duplicate names?", answer: "Yes. Enable the unique option to remove duplicates." },
-      { question: "Can I share the generated names?", answer: "Yes. Shared links keep the same seed and settings." },
-      { question: "Are these names real?", answer: "They are generated from common English name datasets." }
+      { question: "What types of names can I generate?", answer: "Over 20 types: full names, boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, cute/cool/funny nicknames, band names, Japanese names, and random identities." },
+      { question: "Can I generate boy or girl names?", answer: "Yes. Select 'Boy Names' or 'Girl Names' from the Name Type dropdown." },
+      { question: "Can I generate pet or dog names?", answer: "Yes. Choose 'Pet Names', 'Dog Names', or 'Cat Names' from the dropdown." },
+      { question: "What is Random Identity?", answer: "It generates a full fictional identity with name, age, occupation, and city." },
+      { question: "Can I generate Japanese names?", answer: "Yes. Select 'Japanese Names' to get authentic Japanese first and last names." },
+      { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
     ]
   },
   icon: User,

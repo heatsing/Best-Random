@@ -22,5 +22,129 @@
     "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams",
     "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez", "Phillips",
     "Evans", "Turner", "Diaz", "Parker", "Cruz", "Edwards", "Collins", "Reyes", "Stewart", "Morris"
-  ]
+  ],
+  "boyNames": [
+    "Liam", "Noah", "Oliver", "James", "Elijah", "William", "Henry", "Lucas", "Benjamin", "Theodore",
+    "Jack", "Levi", "Alexander", "Mason", "Ethan", "Daniel", "Jacob", "Logan", "Jackson", "Sebastian",
+    "Aiden", "Owen", "Samuel", "Ryan", "Nathan", "Caleb", "Dylan", "Luke", "Andrew", "Isaac",
+    "Gabriel", "Anthony", "Thomas", "Joshua", "Christopher", "David", "Matthew", "Leo", "Hudson", "Miles",
+    "Ezra", "Lincoln", "Asher", "Maverick", "Wyatt", "Brooks", "Kai", "Atlas", "Jasper", "Silas"
+  ],
+  "girlNames": [
+    "Olivia", "Emma", "Charlotte", "Amelia", "Sophia", "Mia", "Isabella", "Ava", "Evelyn", "Luna",
+    "Harper", "Sofia", "Camila", "Eleanor", "Elizabeth", "Violet", "Scarlett", "Emily", "Aria", "Penelope",
+    "Chloe", "Layla", "Mila", "Nora", "Hazel", "Madison", "Ellie", "Lily", "Nova", "Isla",
+    "Grace", "Aurora", "Riley", "Zoey", "Willow", "Emilia", "Stella", "Zoe", "Victoria", "Hannah",
+    "Addison", "Leah", "Lucy", "Eliana", "Ivy", "Everly", "Paisley", "Naomi", "Savannah", "Maya"
+  ],
+  "babyNames": [
+    "Liam", "Olivia", "Noah", "Emma", "Oliver", "Charlotte", "James", "Amelia", "Elijah", "Sophia",
+    "Mateo", "Mia", "Theodore", "Isabella", "Henry", "Ava", "Lucas", "Evelyn", "William", "Luna",
+    "Leo", "Harper", "Jack", "Sofia", "Ezra", "Camila", "Levi", "Eleanor", "Benjamin", "Elizabeth",
+    "Asher", "Violet", "Kai", "Scarlett", "Miles", "Emily", "Atlas", "Aria", "Silas", "Penelope",
+    "River", "Chloe", "Finn", "Layla", "Felix", "Mila", "Jasper", "Nora", "Axel", "Hazel"
+  ],
+  "companyNames": [
+    "Apex Dynamics", "Blue Horizon Labs", "CloudVista Solutions", "DataForge Inc", "EchoWave Technologies",
+    "Fusion Core Systems", "GreenLeaf Ventures", "Hyperion Analytics", "Infinity Nexus", "JetStream Digital",
+    "Kinetic Spark", "Lumos Innovations", "MetaPulse Group", "NovaBridge Corp", "OmniSync Networks",
+    "PrimeEdge Labs", "Quantum Shift", "RedStone Capital", "SilverPeak Holdings", "TerraFlux Industries",
+    "UrbanGrid Tech", "Vertex Foundry", "WhiteRock Partners", "Xenith Labs", "ZenithPath Global",
+    "AlphaWave AI", "BrightNode Inc", "CrestLine Ventures", "DawnForge Studios", "EliteArc Systems"
+  ],
+  "teamNames": [
+    "The Thunderbolts", "Shadow Wolves", "Phoenix Rising", "Ice Breakers", "Storm Chasers",
+    "Iron Eagles", "Night Hawks", "Blaze Squad", "Alpha Pack", "Cosmic Rays",
+    "The Mavericks", "Golden Lions", "Silver Arrows", "Crimson Tide", "The Outlaws",
+    "Wild Cards", "Steel Titans", "Thunder Bears", "Fire Dragons", "Ocean Wolves",
+    "Dark Knights", "Star Strikers", "The Legends", "Neon Vipers", "Frost Giants",
+    "Rapid Raptors", "The Spartans", "Emerald Aces", "Blue Bombers", "Red Rockets"
+  ],
+  "petNames": [
+    "Buddy", "Max", "Bella", "Charlie", "Luna", "Cooper", "Daisy", "Milo", "Sadie", "Rocky",
+    "Bear", "Duke", "Stella", "Tucker", "Molly", "Leo", "Rosie", "Coco", "Ginger", "Zeus",
+    "Lola", "Jack", "Ruby", "Bentley", "Penny", "Teddy", "Willow", "Shadow", "Nala", "Ollie"
+  ],
+  "dogNames": [
+    "Buddy", "Max", "Cooper", "Rocky", "Bear", "Duke", "Tucker", "Milo", "Jack", "Charlie",
+    "Bentley", "Zeus", "Teddy", "Leo", "Finn", "Shadow", "Ollie", "Bruno", "Beau", "Rex",
+    "Bella", "Luna", "Daisy", "Sadie", "Molly", "Rosie", "Lola", "Stella", "Penny", "Nala",
+    "Ruby", "Coco", "Willow", "Zoey", "Maggie", "Ginger", "Dixie", "Piper", "Chloe", "Roxy"
+  ],
+  "catNames": [
+    "Luna", "Milo", "Oliver", "Bella", "Leo", "Charlie", "Chloe", "Simba", "Nala", "Max",
+    "Lily", "Felix", "Willow", "Shadow", "Salem", "Cleo", "Ginger", "Oreo", "Pepper", "Smoky",
+    "Mittens", "Whiskers", "Tiger", "Patches", "Socks", "Jasper", "Ziggy", "Biscuit", "Mochi", "Loki",
+    "Misty", "Pumpkin", "Dusty", "Cinnamon", "Maple", "Olive", "Hazel", "Pearl", "Nutmeg", "Clover"
+  ],
+  "gamertags": [
+    "xShadowStrike", "NeonBlade99", "PixelWarlord", "CyberPhantom", "GhostNinja_X",
+    "TurboFrost", "IronVortex", "DarkMatter420", "QuantumSnipe", "SilentStorm77",
+    "BlazeFury", "ArcticWolf_X", "NovaCrush", "VenomByte", "ThunderHawk99",
+    "ZeroGravity", "SteelReaper", "CrimsonGlitch", "MidnightFox", "CosmicRage",
+    "ByteHunter", "NeonSpartan", "ShadowViper", "ElectricAce", "FrostBite_X",
+    "ToxicBlaze", "RogueSniper", "AlphaStrike", "HyperDrift", "OmegaFlash"
+  ],
+  "nicknames": {
+    "cute": [
+      "Pumpkin", "Cupcake", "Sunshine", "Honeybee", "Buttercup", "Sweetpea", "Muffin", "Angel",
+      "Peaches", "Blossom", "Doodle", "Bunny", "Cookie", "Snuggles", "Pudding",
+      "Sprinkles", "Starlight", "Marshmallow", "Peanut", "Giggles",
+      "Twinkle", "Bubbles", "Lovebug", "Jellybean", "Rosebud"
+    ],
+    "cool": [
+      "Ace", "Blaze", "Maverick", "Phoenix", "Storm", "Raven", "Shadow", "Hawk", "Viper", "Wolf",
+      "Titan", "Ghost", "Jet", "Rebel", "Fury", "Onyx", "Blade", "Fang", "Striker", "Rex",
+      "Steele", "Rogue", "Nitro", "Diesel", "Cobra"
+    ],
+    "funny": [
+      "Snickerdoodle", "Waffles", "Pickle", "Noodles", "Sir Laughs-a-Lot", "Gigglepants",
+      "Captain Obvious", "Dr. Chaos", "Lord of the Couch", "The Procrastinator",
+      "Nacho Average Joe", "The Human WiFi", "Ctrl+Alt+Defeat", "Error 404",
+      "Spaghetti Monster", "Walking Meme", "Chief Napster", "Agent Chaos",
+      "Sir Eats-a-Lot", "Professor Oops", "Banana Hammock", "Turbo Snail",
+      "Disco Potato", "WiFi Warrior", "Sofa King Cool"
+    ]
+  },
+  "bandNames": [
+    "Electric Velvet", "Crimson Echoes", "The Midnight Signals", "Neon Drifters", "Lunar Tides",
+    "Ghost Frequency", "Solar Flare Collective", "Iron Petals", "The Analog Hearts", "Void Travelers",
+    "Crystal Feedback", "Burning Satellites", "The Glass Orchids", "Static Bloom", "Wild Circuit",
+    "Rust & Roses", "The Paper Moons", "Violet Voltage", "Shadow Symphony", "The Broken Compass",
+    "Atomic Honey", "Desert Mirage", "The Silver Tongues", "Fever Dream", "Twilight Engine",
+    "The Velvet Ruin", "Echo Chamber", "Phantom Radio", "The Lost Frequencies", "Neptune's Child"
+  ],
+  "japaneseNames": {
+    "male": [
+      "Haruto", "Yuto", "Sota", "Riku", "Hinata", "Minato", "Kaito", "Aoto", "Ren", "Takumi",
+      "Yuki", "Hayato", "Asahi", "Daiki", "Kento", "Shota", "Ryota", "Akira", "Kenji", "Taro",
+      "Naoki", "Satoshi", "Hiroshi", "Kazuki", "Masato"
+    ],
+    "female": [
+      "Himari", "Hina", "Yui", "Mio", "Ichika", "Koharu", "Akari", "Mei", "Sakura", "Yuna",
+      "Aoi", "Rin", "Hinata", "Saki", "Honoka", "Yuki", "Hana", "Misaki", "Nana", "Riko",
+      "Haruka", "Ayaka", "Kaede", "Momoka", "Shiori"
+    ],
+    "lastNames": [
+      "Sato", "Suzuki", "Takahashi", "Tanaka", "Watanabe", "Ito", "Yamamoto", "Nakamura", "Kobayashi", "Kato",
+      "Yoshida", "Yamada", "Sasaki", "Yamaguchi", "Matsumoto", "Inoue", "Kimura", "Shimizu", "Hayashi", "Saito"
+    ]
+  },
+  "identities": {
+    "occupations": [
+      "Software Engineer", "Teacher", "Doctor", "Chef", "Designer", "Writer", "Photographer",
+      "Nurse", "Lawyer", "Architect", "Pilot", "Musician", "Scientist", "Mechanic", "Electrician",
+      "Firefighter", "Police Officer", "Pharmacist", "Librarian", "Dentist"
+    ],
+    "cities": [
+      "New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio",
+      "San Diego", "Dallas", "San Jose", "Austin", "Seattle", "Denver", "Boston", "Portland",
+      "Nashville", "Atlanta", "Miami", "Minneapolis", "Charlotte"
+    ],
+    "hobbies": [
+      "Reading", "Hiking", "Cooking", "Photography", "Gaming", "Painting", "Cycling", "Yoga",
+      "Gardening", "Running", "Swimming", "Traveling", "Fishing", "Camping", "Music",
+      "Woodworking", "Knitting", "Dancing", "Surfing", "Baking"
+    ]
+  }
 }

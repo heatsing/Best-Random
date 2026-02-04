@@ -41,7 +41,9 @@
       "Finding Nemo", "Coco", "WALL-E", "Ratatouille", "Frozen",
       "Shrek", "How to Train Your Dragon", "The Incredibles", "Monsters, Inc.",
       "Spider-Man: Into the Spider-Verse", "Zootopia", "Moana", "Brave",
-      "Soul", "Encanto"
+      "Soul", "Encanto", "Princess Mononoke", "My Neighbor Totoro",
+      "The Nightmare Before Christmas", "Kung Fu Panda", "Megamind",
+      "Big Hero 6", "Tangled", "Wreck-It Ralph", "The Iron Giant", "Akira"
     ],
     "romance": [
       "The Notebook", "Pride and Prejudice", "Titanic", "La La Land",
@@ -58,6 +60,82 @@
       "Heat", "Nightcrawler", "Sicario", "Wind River", "Black Swan",
       "Oldboy", "The Girl with the Dragon Tattoo", "Mystic River",
       "The Talented Mr. Ripley", "Misery", "Cape Fear"
+    ],
+    "disney": [
+      "The Lion King", "Frozen", "Moana", "Encanto", "Tangled",
+      "Aladdin", "Beauty and the Beast", "The Little Mermaid", "Mulan",
+      "Bambi", "Cinderella", "Sleeping Beauty", "Snow White and the Seven Dwarfs",
+      "The Jungle Book", "Pinocchio", "Dumbo", "Fantasia",
+      "Lilo & Stitch", "Pocahontas", "The Princess and the Frog",
+      "Wreck-It Ralph", "Big Hero 6", "Zootopia", "Brave", "Raya and the Last Dragon"
+    ],
+    "marvel": [
+      "Iron Man", "The Avengers", "Black Panther", "Avengers: Endgame",
+      "Spider-Man: No Way Home", "Guardians of the Galaxy", "Captain America: The Winter Soldier",
+      "Thor: Ragnarok", "Avengers: Infinity War", "Doctor Strange",
+      "Spider-Man: Homecoming", "Captain America: Civil War", "Ant-Man",
+      "Black Widow", "Shang-Chi and the Legend of the Ten Rings",
+      "Spider-Man: Into the Spider-Verse", "Logan", "Deadpool",
+      "X-Men: Days of Future Past", "Spider-Man 2",
+      "Captain Marvel", "Guardians of the Galaxy Vol. 3", "Eternals",
+      "Iron Man 3", "The Incredible Hulk"
+    ],
+    "netflix": [
+      "Don't Look Up", "Glass Onion: A Knives Out Mystery", "The Power of the Dog",
+      "All Quiet on the Western Front", "The Adam Project", "Enola Holmes",
+      "The Irishman", "Marriage Story", "Roma", "Extraction",
+      "Red Notice", "The Gray Man", "Bird Box", "6 Underground",
+      "The Old Guard", "Army of the Dead", "Triple Frontier", "Mank",
+      "The Two Popes", "I Care a Lot", "Tick, Tick... Boom!",
+      "The Unforgivable", "Hillbilly Elegy", "The Trial of the Chicago 7",
+      "Blonde"
+    ],
+    "pixar": [
+      "Toy Story", "Finding Nemo", "The Incredibles", "Up", "Inside Out",
+      "WALL-E", "Ratatouille", "Coco", "Soul", "Monsters, Inc.",
+      "Toy Story 2", "Toy Story 3", "Finding Dory", "Cars",
+      "A Bug's Life", "The Incredibles 2", "Brave", "Turning Red",
+      "Luca", "Onward", "Lightyear", "Elemental", "Toy Story 4",
+      "Inside Out 2", "Monsters University"
+    ],
+    "jamesbond": [
+      "Casino Royale", "Skyfall", "GoldenEye", "No Time to Die",
+      "Spectre", "Goldfinger", "Dr. No", "From Russia with Love",
+      "The Spy Who Loved Me", "On Her Majesty's Secret Service",
+      "Licence to Kill", "Tomorrow Never Dies", "The World Is Not Enough",
+      "Die Another Day", "Quantum of Solace", "The Living Daylights",
+      "Thunderball", "You Only Live Twice", "Live and Let Die",
+      "The Man with the Golden Gun", "Moonraker", "For Your Eyes Only",
+      "Octopussy", "A View to a Kill"
+    ],
+    "history": [
+      "Schindler's List", "Braveheart", "Gladiator", "The Pianist",
+      "12 Years a Slave", "Lincoln", "Dunkirk", "Saving Private Ryan",
+      "The Imitation Game", "Oppenheimer", "Hacksaw Ridge", "Spotlight",
+      "Bohemian Rhapsody", "The King's Speech", "A Beautiful Mind",
+      "Selma", "The Theory of Everything", "Hidden Figures",
+      "Gandhi", "Amadeus", "Bridge of Spies", "The Last Emperor",
+      "Darkest Hour", "Ford v Ferrari", "Elvis"
+    ],
+    "documentary": [
+      "March of the Penguins", "Blackfish", "Won't You Be My Neighbor?",
+      "Free Solo", "My Octopus Teacher", "13th", "The Social Dilemma",
+      "Making a Murderer", "Planet Earth", "Tiger King",
+      "Icarus", "RBG", "Jiro Dreams of Sushi", "Man on Wire",
+      "Amy", "Citizenfour", "The Act of Killing", "An Inconvenient Truth",
+      "Fahrenheit 9/11", "Bowling for Columbine", "Super Size Me",
+      "Inside Job", "The Cove", "Searching for Sugar Man", "Exit Through the Gift Shop"
+    ],
+    "scifi_fantasy": [
+      "Star Wars: A New Hope", "The Lord of the Rings: The Fellowship of the Ring",
+      "The Lord of the Rings: The Return of the King", "Harry Potter and the Sorcerer's Stone",
+      "Dune", "Interstellar", "Avatar", "The Matrix", "Blade Runner 2049",
+      "E.T. the Extra-Terrestrial", "Back to the Future", "Jurassic Park",
+      "The Hobbit: An Unexpected Journey", "Pan's Labyrinth", "Arrival",
+      "Harry Potter and the Prisoner of Azkaban", "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      "Spirited Away", "The Princess Bride", "Stardust",
+      "The NeverEnding Story", "Willow", "The Dark Crystal",
+      "Coraline", "Fantastic Beasts and Where to Find Them"
     ]
   }
 }

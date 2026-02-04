@@ -12,8 +12,8 @@ export const randomMovieTool: ToolConfig = {
   slug: "random-movie-generator",
   category: "fun",
   name: "Random Movie Generator",
-  shortDescription: "Discover random movies by genre",
-  longDescription: "Get random movie recommendations from top-rated films across genres. Choose from action, comedy, drama, horror, sci-fi, animation, romance, or thriller. Perfect for movie night decisions.",
+  shortDescription: "Discover random movies by genre — Disney, Marvel, Netflix & more",
+  longDescription: "Get random movie recommendations from 350+ top-rated films across 14 genres. Choose from Disney, Marvel, Netflix, Pixar, James Bond, Action, Comedy, Drama, Horror, Thriller, Animation, Sci-Fi/Fantasy, History/Biography, or Documentaries. Perfect for movie night decisions.",
   generatorType: "list",
   defaultOptions: {
     count: 5,
@@ -30,14 +30,22 @@ export const randomMovieTool: ToolConfig = {
         default: "all",
         options: [
           { value: "all", label: "All Genres" },
+          { value: "disney", label: "Disney" },
+          { value: "marvel", label: "Marvel" },
+          { value: "netflix", label: "Netflix" },
+          { value: "pixar", label: "Pixar" },
+          { value: "jamesbond", label: "James Bond" },
           { value: "action", label: "Action" },
           { value: "comedy", label: "Comedy" },
           { value: "drama", label: "Drama" },
           { value: "horror", label: "Horror" },
-          { value: "scifi", label: "Sci-Fi" },
+          { value: "thriller", label: "Thriller" },
           { value: "animation", label: "Animation" },
+          { value: "scifi_fantasy", label: "Sci-Fi / Fantasy" },
+          { value: "scifi", label: "Sci-Fi (Classic)" },
           { value: "romance", label: "Romance" },
-          { value: "thriller", label: "Thriller" }
+          { value: "history", label: "History / Biography" },
+          { value: "documentary", label: "Documentary" }
         ]
       },
       { key: "unique", label: "Unique movies", type: "checkbox", default: true }
@@ -80,13 +88,13 @@ export const randomMovieTool: ToolConfig = {
   },
   seo: {
     title: "Random Movie Generator: What Should I Watch Tonight? | BestRandom",
-    description: "Get random movie picks from 160+ top-rated films across 8 genres. End the endless scrolling and let us pick your next movie night film.",
+    description: "Get random movie picks from 350+ top-rated films across 14 genres including Disney, Marvel, Netflix, Pixar, James Bond, and more. End the scrolling and pick your next movie.",
     h1: "Random Movie Generator",
     faq: [
-      { question: "What genres are available?", answer: "Action, comedy, drama, horror, sci-fi, animation, romance, and thriller." },
-      { question: "How many movies are in the database?", answer: "The database includes 160+ top-rated films across 8 genres." },
+      { question: "What genres are available?", answer: "Disney, Marvel, Netflix, Pixar, James Bond, Action, Comedy, Drama, Horror, Thriller, Animation, Sci-Fi/Fantasy, History/Biography, and Documentary — 14 genres in total." },
+      { question: "How many movies are in the database?", answer: "The database includes 350+ top-rated films across 14 genres." },
       { question: "Can I get unique results?", answer: "Yes. Enable 'Unique movies' to avoid duplicates." },
-      { question: "Can I repeat the same result?", answer: "Yes. Use the same seed to reproduce results." },
+      { question: "Can I filter by studio like Disney or Marvel?", answer: "Yes. Select Disney, Marvel, Netflix, or Pixar from the genre dropdown." },
       { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
     ]
   },
