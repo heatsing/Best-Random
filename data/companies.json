@@ -9,6 +9,24 @@
     "Ford", "General Motors", "BMW", "Mercedes-Benz", "Volkswagen", "Toyota",
     "Honda", "Nissan", "Hyundai", "Boeing", "Airbus", "FedEx", "UPS", "DHL",
     "AT&T", "Verizon", "T-Mobile", "Comcast", "Time Warner", "Viacom",
-    "Universal", "Warner Bros", "Paramount", "20th Century", "Lionsgate"
+    "Universal", "Warner Bros", "Paramount", "20th Century", "Lionsgate",
+    "Snapchat", "TikTok", "Pinterest", "Reddit", "Stripe", "Square", "Shopify",
+    "Zoom", "Slack", "Dropbox", "GitHub", "Atlassian", "ServiceNow", "Twilio",
+    "Palantir", "Snowflake", "Databricks", "Cloudflare", "CrowdStrike", "Okta",
+    "Morgan Stanley", "Citigroup", "Wells Fargo", "BlackRock", "Charles Schwab",
+    "Fidelity", "Berkshire Hathaway", "American Express",
+    "Procter & Gamble", "Unilever", "L'Oreal", "Johnson & Johnson",
+    "Colgate-Palmolive", "Kellogg's", "General Mills", "Nestle", "Kraft Heinz",
+    "PepsiCo", "Mondelez",
+    "Zara", "H&M", "Uniqlo", "Gap", "TJX", "Ross", "Dollar General", "Aldi",
+    "Trader Joe's", "Whole Foods", "Wegmans",
+    "Porsche", "Ferrari", "Lamborghini", "Aston Martin", "Rolls-Royce",
+    "Bentley", "Maserati", "Subaru", "Mazda", "Kia", "Rivian", "Lucid",
+    "Pfizer", "Moderna", "AstraZeneca", "Novartis", "Roche", "Merck", "AbbVie",
+    "Eli Lilly", "Bristol-Myers Squibb", "Amgen",
+    "ExxonMobil", "Chevron", "Shell", "BP", "TotalEnergies", "ConocoPhillips",
+    "NextEra Energy", "Enphase", "SunPower",
+    "EA", "Activision Blizzard", "Ubisoft", "Epic Games", "Valve", "Nintendo",
+    "Sega", "Bandai Namco", "Capcom", "Square Enix"
   ]
 }

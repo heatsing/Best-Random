@@ -131,8 +131,8 @@ export const randomNameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Name Generator: Boy, Girl, Baby, Pet & Japanese Names | BestRandom",
-    description: "Generate random names from 20+ categories: boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, nicknames, band names, Japanese names, and full identities.",
+    title: "Random Name Generator - 500+ Names | Boy, Girl, Baby, Pet & Japanese",
+    description: "Generate random names from 20+ categories: boy, girl, baby, last, company, team, pet, dog, cat, gamertag, nickname, band, Japanese & identities. Free!",
     h1: "Random Name Generator",
     faq: [
       { question: "What types of names can I generate?", answer: "Over 20 types: full names, boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, cute/cool/funny nicknames, band names, Japanese names, and random identities." },
@@ -215,8 +215,8 @@ export const randomWordTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Word Generator: Get Random English Words in Seconds | BestRandom",
-    description: "Generate random English words with adjustable length. Perfect for word games, brainstorming, vocabulary practice, or creative writing prompts.",
+    title: "Random Word Generator - 500+ English Words | Adjustable Length",
+    description: "Generate random English words with adjustable length (3-20 letters). Perfect for Scrabble, word games, vocabulary practice, or writing prompts. Free!",
     h1: "Random Word Generator",
     faq: [
       { question: "How are the random words generated?", answer: "Words are selected from a built-in English word list." },
@@ -284,8 +284,8 @@ export const lastNameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Last Name Generator: Find Random Surnames & Family Names | BestRandom",
-    description: "Generate random last names from a dataset of real English surnames. Great for fiction writing, game characters, form testing, or genealogy research.",
+    title: "Last Name Generator - 100+ Real Surnames & Family Names | Free",
+    description: "Generate random last names from real English surnames. Great for fiction writing, character creation, form testing, or genealogy research. Free online!",
     h1: "Last Name Generator",
     faq: [
       { question: "What random last names are available?", answer: "Random last names are selected from a built-in dataset of common English surnames and family names." },
@@ -381,8 +381,8 @@ export const randomTextTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Text Generator: Create Placeholder Text Instantly | BestRandom",
-    description: "Generate random placeholder text for UI mockups, design testing, or layout prototyping. Choose short, medium, or long output with repeatable seeds.",
+    title: "Random Text Generator - Lorem Ipsum Alternative | Free Online",
+    description: "Generate random placeholder text for UI mockups, design testing, or layouts. Short, medium, or long output with repeatable seeds. Free alternative to Lorem Ipsum!",
     h1: "Random Text Generator",
     faq: [
       { question: "What kind of text is generated?", answer: "Short random sentences and placeholder-style text." },
@@ -513,8 +513,8 @@ export const randomEmailTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Email Generator: Create Test Email Addresses Fast | BestRandom",
-    description: "Generate realistic random email addresses for software testing, form validation, or placeholder data. Choose name-based, username, or random formats with custom domains.",
+    title: "Random Email Generator - Fake Test Emails | Custom Domains",
+    description: "Generate realistic fake email addresses for testing. Name-based, username, or random formats with custom domains. Perfect for QA testing. Free & instant!",
     h1: "Random Email Generator",
     faq: [
       { question: "What email formats are supported?", answer: "You can choose name-based (firstname.lastname123), username-based, or completely random formats." },
@@ -641,8 +641,8 @@ export const randomWebsiteTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Website Generator: Create Fake URLs for Testing | BestRandom",
-    description: "Generate random website URLs with custom TLDs, subdomains, and paths. Ideal for development testing, UI mockups, and placeholder data.",
+    title: "Random Website Generator - Fake URLs for Testing | Custom TLDs",
+    description: "Generate random website URLs with custom TLDs, subdomains, and paths. Perfect for dev testing, UI mockups, and placeholder data. Free URL generator!",
     h1: "Random Website Generator",
     faq: [
       { question: "What URL formats are supported?", answer: "You can choose simple domains (example.com), subdomains (blog.example.com), or paths (example.com/path/to/page)." },

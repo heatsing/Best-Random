@@ -102,8 +102,8 @@ export const randomNumberTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Number Generator: Pick a Number Instantly | BestRandom",
-    description: "Generate truly random numbers in any range. Control min/max, count, uniqueness, and decimals — share or repeat results with a seed.",
+    title: "Random Number Generator - Any Range, Instant Results | Free Online",
+    description: "Generate random numbers in any range instantly. Control min/max, count, uniqueness, and decimals. Shareable results with seeds. 100% free, no signup!",
     h1: "Random Number Generator",
     faq: [
       { question: "Is this random number generator truly random?", answer: "It uses a high-quality pseudo-random algorithm with optional seed control." },
@@ -203,8 +203,8 @@ export const diceRollerTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Dice Roller: Roll Any Dice Online (d4–d20 & Custom) | BestRandom",
-    description: "Roll virtual dice online — d4, d6, d8, d10, d12, d20, or custom. See every roll and the total. Perfect for D&D, board games, and more.",
+    title: "Dice Roller Online - d4, d6, d8, d10, d12, d20 & Custom | Free",
+    description: "Roll virtual dice online — d4 to d20 or custom dice. See every roll and total sum. Perfect for D&D, Pathfinder, board games & tabletop RPGs. Free!",
     h1: "Dice Roller",
     faq: [
       { question: "What dice types are supported?", answer: "d4, d6, d8, d10, d12, d20, and custom dice with any number of sides." },
@@ -270,8 +270,8 @@ export const coinFlipTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Coin Flip: Heads or Tails? Flip a Coin Online | BestRandom",
-    description: "Flip a coin one or many times and see live heads/tails statistics. Fair, instant, and shareable results.",
+    title: "Coin Flip Online - Heads or Tails? Flip Now | Free & Fair",
+    description: "Flip a coin online — heads or tails? See live statistics for multiple flips. Fair, instant, and shareable results. Perfect for decisions. 100% free!",
     h1: "Coin Flip",
     faq: [
       { question: "Can I flip multiple coins?", answer: "Yes. Set the number of flips to flip multiple times." },
@@ -390,8 +390,8 @@ export const randomDateTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Date Generator: Pick a Random Day in Any Range | BestRandom",
-    description: "Generate random dates between any two dates. Great for birthdays, deadlines, event planning, or just picking a random day.",
+    title: "Random Date Generator - Pick Dates in Any Range | Free Online",
+    description: "Generate random dates between any two dates. Multiple formats available. Great for birthdays, deadlines, event planning, or testing. Instant & free!",
     h1: "Random Date Generator",
     faq: [
       { question: "How does the date generator work?", answer: "It generates random dates between your specified start and end dates." },
@@ -483,8 +483,8 @@ export const randomTimeTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Time Generator: What Time Should I…? | BestRandom",
-    description: "Pick a random time of day down to the minute. 12-hour or 24-hour format — ideal for scheduling, games, or creative prompts.",
+    title: "Random Time Generator - Pick a Time of Day | 12h or 24h Format",
+    description: "Generate random times of day down to the minute. 12-hour or 24-hour format. Ideal for scheduling, games, creative prompts, or testing. Free online!",
     h1: "Random Time Generator",
     faq: [
       { question: "How does the time generator work?", answer: "It generates random times throughout a 24-hour period, down to the minute." },

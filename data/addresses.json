@@ -6,7 +6,15 @@
     "School Ln", "Mill Rd", "Bridge St", "Market St", "Center Ave", "Meadow Ln",
     "Ridge Rd", "Prospect St", "Academy Blvd", "Columbia Ave", "Liberty St",
     "Franklin St", "Jefferson Ave", "Adams Dr", "Madison Ln", "Monroe Blvd",
-    "Jackson Rd", "Harrison St", "Grant Ave", "Sherman Dr", "Willow Way"
+    "Jackson Rd", "Harrison St", "Grant Ave", "Sherman Dr", "Willow Way",
+    "Broadway", "Cherry Ln", "Magnolia Dr", "Birch St", "Cypress Ave",
+    "Poplar Rd", "Dogwood Blvd", "Sycamore Dr", "Ash St", "Willow Ln",
+    "Hickory Rd", "Beech Ave", "Laurel Dr", "Chestnut St", "Spruce Blvd",
+    "Juniper Way", "Hazel Ln", "Ivy Rd", "Rose Dr", "Violet Ave",
+    "Daisy Ln", "Tulip Rd", "Lily Way", "Jasmine Blvd", "Orchid Dr",
+    "Primrose St", "Clover Ln", "Fern Rd", "Moss Dr", "Holly Ave",
+    "Country Rd", "Vista Dr", "Canyon Blvd", "Summit Ave", "Crest Rd",
+    "Horizon Dr", "Prairie Ln", "Sage Way", "Eagle Dr", "Falcon Ave"
   ],
   "cities": [
     {"name": "New York", "state": "NY", "zip": "10001"},
@@ -38,6 +46,26 @@
     {"name": "Tampa", "state": "FL", "zip": "33601"},
     {"name": "Orlando", "state": "FL", "zip": "32801"},
     {"name": "Pittsburgh", "state": "PA", "zip": "15201"},
-    {"name": "Cleveland", "state": "OH", "zip": "44101"}
+    {"name": "Cleveland", "state": "OH", "zip": "44101"},
+    {"name": "Detroit", "state": "MI", "zip": "48201"},
+    {"name": "St. Louis", "state": "MO", "zip": "63101"},
+    {"name": "Milwaukee", "state": "WI", "zip": "53201"},
+    {"name": "Kansas City", "state": "MO", "zip": "64101"},
+    {"name": "Sacramento", "state": "CA", "zip": "95801"},
+    {"name": "Raleigh", "state": "NC", "zip": "27601"},
+    {"name": "Memphis", "state": "TN", "zip": "38101"},
+    {"name": "Omaha", "state": "NE", "zip": "68101"},
+    {"name": "Louisville", "state": "KY", "zip": "40201"},
+    {"name": "Richmond", "state": "VA", "zip": "23219"},
+    {"name": "New Orleans", "state": "LA", "zip": "70112"},
+    {"name": "Salt Lake City", "state": "UT", "zip": "84101"},
+    {"name": "Hartford", "state": "CT", "zip": "06101"},
+    {"name": "Honolulu", "state": "HI", "zip": "96801"},
+    {"name": "Anchorage", "state": "AK", "zip": "99501"},
+    {"name": "Birmingham", "state": "AL", "zip": "35201"},
+    {"name": "Buffalo", "state": "NY", "zip": "14201"},
+    {"name": "Rochester", "state": "NY", "zip": "14601"},
+    {"name": "Tucson", "state": "AZ", "zip": "85701"},
+    {"name": "Albuquerque", "state": "NM", "zip": "87101"}
   ]
 }

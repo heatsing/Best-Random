@@ -7,6 +7,22 @@
     "Weightlifting", "CrossFit", "Dancing", "Gymnastics", "Archery", "Fencing",
     "Wrestling", "Judo", "Karate", "Taekwondo", "Rowing", "Sailing", "Diving",
     "Water Polo", "Lacrosse", "Handball", "Squash", "Racquetball", "Bowling",
-    "Darts", "Billiards", "Chess", "Poker", "Bridge", "E-Sports"
+    "Darts", "Billiards", "Chess", "Poker", "Bridge", "E-Sports",
+    "Pickleball", "Padel", "Disc Golf", "Ultimate Frisbee", "Flag Football",
+    "Beach Volleyball", "Kickball", "Dodgeball", "Tug of War", "Arm Wrestling",
+    "Curling", "Bobsled", "Luge", "Skeleton", "Speed Skating", "Figure Skating",
+    "Ice Hockey", "Field Hockey", "Polo", "Horse Racing", "Show Jumping",
+    "Dressage", "Rodeo", "Bull Riding", "Motocross", "NASCAR", "Formula 1",
+    "Rally Racing", "Drag Racing", "Monster Trucks", "BMX", "Mountain Biking",
+    "Trail Running", "Ultramarathon", "Triathlon", "Decathlon", "Pentathlon",
+    "Heptathlon", "Long Jump", "High Jump", "Pole Vault", "Shot Put", "Discus",
+    "Javelin", "Hammer Throw", "Hurdles", "Steeplechase", "Race Walking",
+    "Marathon", "Powerlifting", "Olympic Weightlifting", "Strongman",
+    "Bodybuilding", "Calisthenics", "Parkour", "Free Running", "Rock Climbing",
+    "Bouldering", "Ice Climbing", "Mountaineering", "Rappelling", "Zip Lining",
+    "Bungee Jumping", "Skydiving", "Base Jumping", "Hang Gliding", "Paragliding",
+    "Kitesurfing", "Windsurfing", "Paddleboarding", "Kayaking", "Canoeing",
+    "Rafting", "Jet Skiing", "Wakeboarding", "Water Skiing", "Scuba Diving",
+    "Snorkeling", "Freediving", "Spearfishing", "Fly Fishing", "Deep Sea Fishing"
   ]
 }

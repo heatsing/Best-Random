@@ -4,22 +4,45 @@
       "Max", "Bella", "Charlie", "Lucy", "Cooper", "Daisy", "Milo", "Luna",
       "Buddy", "Sadie", "Rocky", "Molly", "Bear", "Lola", "Duke", "Sophie",
       "Jack", "Stella", "Tucker", "Penny", "Oliver", "Zoe", "Bentley", "Chloe",
-      "Zeus", "Lily", "Riley", "Mia", "Murphy", "Coco", "Gus", "Ruby"
+      "Zeus", "Lily", "Riley", "Mia", "Murphy", "Coco", "Gus", "Ruby",
+      "Rex", "Ace", "Thor", "Scout", "Atlas", "Diesel", "Maverick", "Tank",
+      "Harley", "Ranger", "Bruno", "Archie", "Winston", "Teddy", "Toby", "Oscar",
+      "Leo", "Louie", "Finn", "Hank", "Jake", "Sam", "Buster", "Bailey",
+      "Bandit", "Cash", "Chase", "Dexter", "Echo", "Felix", "Gage", "Hunter",
+      "Jasper", "King", "Loki", "Nash", "Odin", "Prince", "Rusty", "Shadow",
+      "Simba", "Titan", "Vader", "Wally", "Ziggy", "Gunner", "Jax", "Koda",
+      "Axel", "Blaze", "Boomer", "Chief", "Rocco", "Frankie", "Beau", "Otis",
+      "Maggie", "Rosie", "Dane"
     ],
     "cats": [
-      "Whiskers", "Fluffy", "Shadow", "Smokey", "Tiger", "Mittens", "Patches",
-      "Oreo", "Ginger", "Simba", "Luna", "Bella", "Chloe", "Lucy", "Lily",
-      "Sophie", "Mia", "Zoe", "Stella", "Penny", "Coco", "Ruby", "Max", "Charlie",
-      "Oliver", "Jack", "Tiger", "Shadow", "Smokey", "Patches", "Oreo", "Ginger"
+      "Whiskers", "Smokey", "Tiger", "Mittens", "Patches", "Oreo", "Ginger",
+      "Fluffy", "Nala", "Binx", "Salem", "Biscuit", "Boots", "Callie",
+      "Cleopatra", "Duchess", "Fig", "Garfield", "Hazel", "Ivy", "Jinx",
+      "Karma", "Latte", "Marble", "Nebula", "Olive", "Pebble", "Pudding",
+      "Rascal", "Sable", "Toffee", "Velvet", "Willow", "Ash", "Casper",
+      "Cloud", "Domino", "Ember", "Frost", "Midnight", "Mocha", "Nyx",
+      "Pearl", "Pixie", "Sage", "Storm", "Tuxedo", "Tabitha", "Misty",
+      "Snowflake", "Angel", "Princess", "Socks", "Butterscotch", "Whisper",
+      "Tinker", "Poppy", "Cupcake", "Wanda", "Athena", "Freya", "Nutmeg",
+      "Saffron", "Cricket", "Onyx", "Mowgli", "Sylvester", "Tom"
     ],
     "birds": [
-      "Polly", "Charlie", "Kiwi", "Sunny", "Rio", "Coco", "Pepper", "Mango",
-      "Blue", "Jade", "Sky", "Rainbow", "Aurora", "Phoenix", "Ziggy", "Pippin"
+      "Polly", "Kiwi", "Sunny", "Rio", "Pepper", "Mango", "Blue", "Jade",
+      "Sky", "Rainbow", "Aurora", "Phoenix", "Pippin", "Tweet", "Breezy",
+      "Feather", "Flicker", "Fluff", "Flutter", "Goldie", "Harmony", "Iris",
+      "Jay", "Melody", "Nimbus", "Quill", "Ringo", "Skye", "Tweety",
+      "Whistle", "Zephyr", "Birdie", "Chirp", "Fern", "Glory", "Haven",
+      "Nova", "Piper", "Wren", "Sparrow", "Robin", "Songbird", "Toucan",
+      "Peaches", "Daffodil"
     ],
     "other": [
-      "Nibbles", "Fluffy", "Snowball", "Cocoa", "Peanut", "Honey", "Cookie",
-      "Muffin", "Pumpkin", "Cinnamon", "Ginger", "Pepper", "Oreo", "Chip",
-      "Buddy", "Lucky", "Happy", "Sunny", "Cheerful", "Joy"
+      "Nibbles", "Snowball", "Cocoa", "Peanut", "Honey", "Cookie", "Muffin",
+      "Pumpkin", "Cinnamon", "Chip", "Lucky", "Happy", "Cheerful", "Joy",
+      "Wilbur", "Noodle", "Waffles", "Nugget", "Sprout", "Clover", "Pickle",
+      "Fudge", "Brownie", "Caramel", "Maple", "Acorn", "Basil", "Rosemary",
+      "Thyme", "Clove", "Espresso", "Boba", "Toast", "Crumpet", "Mochi",
+      "Dumpling", "Tofu", "Wasabi", "Tempura", "Sushi", "Nacho", "Churro",
+      "Truffle", "Buttercup", "Jellybean", "Snickers", "Twix"
     ]
   }
 }

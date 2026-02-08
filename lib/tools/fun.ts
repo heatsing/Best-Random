@@ -76,8 +76,8 @@ export const randomAnimalTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Animal Generator: What Animal Are You? Discover Now | BestRandom",
-    description: "Generate random animals from mammals, birds, reptiles, and more. Great for trivia games, educational activities, or just for fun.",
+    title: "Random Animal Generator - 200+ Animals for Trivia & Games",
+    description: "Generate random animals from mammals, birds, reptiles, fish & amphibians. Perfect for trivia, classroom games, creative writing, or fun. Free & instant!",
     h1: "Random Animal Generator",
     faq: [
       { question: "What animals can be generated?", answer: "Animals are selected from a built-in dataset." },
@@ -156,8 +156,8 @@ export const randomCountryTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Country Generator: Where Should You Travel Next? | BestRandom",
-    description: "Pick a random country with flag and continent info. Perfect for travel bucket lists, geography quizzes, or classroom activities.",
+    title: "Random Country Generator - 195 Countries with Flags & Facts",
+    description: "Pick a random country with flag emoji and continent info. Perfect for travel planning, geography quizzes, classroom games, or world trivia. 100% free!",
     h1: "Random Country Generator",
     faq: [
       { question: "What countries are included?", answer: "The generator includes countries from all continents with their flags and continent information." },
@@ -247,8 +247,8 @@ export const randomJobTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Job Generator: What Career Should You Try? | BestRandom",
-    description: "Discover random job titles from tech, healthcare, creative, business, education, and service industries. Great for career exploration or character backstories.",
+    title: "Random Job Generator - 150+ Careers by Industry | Free Online",
+    description: "Discover random job titles from tech, healthcare, creative, business & education. Great for career exploration, resume testing, or fiction writing. Try free!",
     h1: "Random Job Title Generator",
     faq: [
       { question: "What industries are available?", answer: "Tech, health, creative, business, education, and service industries are included." },
@@ -316,8 +316,8 @@ export const randomSportTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Sport Generator: What Sport Should You Try? | BestRandom",
-    description: "Discover a random sport from a huge list of activities. Find your next hobby, settle a debate, or just discover sports you never knew existed.",
+    title: "Random Sport Generator - 100+ Sports & Activities | Free",
+    description: "Generate random sports from a list of 100+ activities worldwide. Find a new hobby, settle debates, or discover sports you never knew existed. Instant & free!",
     h1: "Random Sport Generator",
     faq: [
       { question: "What sports are included?", answer: "The generator includes a wide variety of sports from soccer to curling." },
@@ -384,8 +384,8 @@ export const randomFoodTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Food Generator: What Should I Eat Today? | BestRandom",
-    description: "Can't decide what to eat? Let the random food generator pick for you. Discover dishes from cuisines around the world with one click.",
+    title: "Random Food Generator - What Should I Eat? Decide Now!",
+    description: "Can't decide what to eat? Generate random food ideas from 200+ dishes worldwide. End meal indecision with one click. Free & instant meal inspiration!",
     h1: "Random Food Generator",
     faq: [
       { question: "What foods are included?", answer: "The generator includes a wide variety of foods from different cuisines." },
@@ -452,8 +452,8 @@ export const randomCompanyTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Company Generator: Discover Famous Brands & Businesses | BestRandom",
-    description: "Generate random well-known companies and brands from various industries. Fun for trivia, business discussions, or mock scenarios.",
+    title: "Random Company Generator - 150+ Famous Brands & Businesses",
+    description: "Generate random companies from Fortune 500, tech giants, and global brands. Perfect for trivia games, business case studies, or mock interviews. Free!",
     h1: "Random Company Generator",
     faq: [
       { question: "What companies are included?", answer: "The generator includes well-known companies and brands from various industries." },
@@ -528,8 +528,8 @@ export const randomStateTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random US State Generator: Pick a State at Random | BestRandom",
-    description: "Randomly pick from all 50 US states with abbreviations. Ideal for geography games, travel planning, or settling bets about where to move next.",
+    title: "Random US State Generator - All 50 States with Abbreviations",
+    description: "Pick a random US state from all 50 states with abbreviations. Perfect for geography trivia, road trip planning, or classroom activities. 100% free!",
     h1: "Random US State Generator",
     faq: [
       { question: "Are all 50 states included?", answer: "Yes. All 50 United States are included in the generator." },
@@ -617,8 +617,8 @@ export const randomPetNameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Pet Name Generator: Find the Perfect Name for Your Pet | BestRandom",
-    description: "Generate adorable names for dogs, cats, birds, and other pets. Browse creative pet name ideas and find the one that fits your furry friend.",
+    title: "Random Pet Name Generator - 250+ Names for Dogs, Cats & More",
+    description: "Find the perfect pet name! Generate cute, unique names for dogs, cats, birds, and other pets. 250+ creative ideas for your new furry friend. Free!",
     h1: "Random Pet Name Generator",
     faq: [
       { question: "What pet types are available?", answer: "Dogs, cats, birds, and other pets are included." },
@@ -686,8 +686,8 @@ export const randomWeekdayTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Weekday Generator: Pick a Random Day of the Week | BestRandom",
-    description: "Randomly pick a day of the week from Monday to Sunday. Useful for scheduling, games, classroom activities, or decision-making.",
+    title: "Random Weekday Generator - Pick Monday to Sunday at Random",
+    description: "Randomly select a day of the week from Monday to Sunday. Perfect for scheduling, classroom activities, games, or making random decisions. Free online!",
     h1: "Random Weekday Generator",
     faq: [
       { question: "What days are included?", answer: "All 7 days of the week: Monday through Sunday." },
@@ -754,8 +754,8 @@ export const randomMonthTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Month Generator: Pick a Random Month of the Year | BestRandom",
-    description: "Randomly select a month from January to December. Great for setting random deadlines, vacation planning, or classroom activities.",
+    title: "Random Month Generator - January to December | Free Online",
+    description: "Randomly pick a month from January to December. Perfect for birthday games, deadline picking, event planning, or classroom activities. Instant & free!",
     h1: "Random Month Generator",
     faq: [
       { question: "What months are included?", answer: "All 12 months of the year: January through December." },
@@ -822,8 +822,8 @@ export const randomJokeTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Joke Generator: Need a Laugh? Get Funny Jokes | BestRandom",
-    description: "Get random dad jokes, one-liners, and puns that are safe for kids and co-workers. Perfect for lightening the mood or starting a conversation.",
+    title: "Random Joke Generator - 100+ Dad Jokes & Puns | Family Friendly",
+    description: "Need a laugh? Get random dad jokes, puns, and one-liners safe for kids and work. 100+ family-friendly jokes to brighten your day. Free & instant!",
     h1: "Random Joke Generator",
     faq: [
       { question: "What types of jokes are included?", answer: "The generator includes dad jokes, one-liners, and puns appropriate for all ages." },
@@ -890,8 +890,8 @@ export const randomQuestionTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Question Generator: Break the Ice with Fun Questions | BestRandom",
-    description: "Get random icebreaker and conversation-starter questions for first dates, team meetings, parties, or getting to know new friends.",
+    title: "Random Question Generator - 120+ Icebreakers & Conversation Starters",
+    description: "Break the ice with random questions! 120+ icebreakers perfect for first dates, team meetings, parties, or getting to know new friends. Free online!",
     h1: "Random Question Generator",
     faq: [
       { question: "What types of questions are included?", answer: "The generator includes icebreaker questions perfect for starting conversations." },

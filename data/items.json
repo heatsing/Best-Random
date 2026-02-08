@@ -3,32 +3,76 @@
     "household": [
       "Toothbrush", "Mirror", "Pillow", "Blanket", "Lamp", "Clock", "Towel", "Soap",
       "Shampoo", "Scissors", "Comb", "Candle", "Vase", "Curtain", "Rug", "Broom",
-      "Bucket", "Sponge", "Hanger", "Key"
+      "Bucket", "Sponge", "Hanger", "Key",
+      "Dustpan", "Mop", "Iron", "Ironing Board", "Laundry Basket", "Trash Can",
+      "Vacuum Cleaner", "Air Freshener", "Tissue Box", "Door Mat", "Shelf",
+      "Picture Frame", "Light Bulb", "Extension Cord", "Battery", "Thermometer",
+      "Humidifier", "Fan", "Heater", "Smoke Detector"
     ],
     "kitchen": [
       "Fork", "Knife", "Spoon", "Plate", "Bowl", "Cup", "Mug", "Pan",
       "Pot", "Oven", "Toaster", "Blender", "Kettle", "Spatula", "Whisk", "Colander",
-      "Cutting Board", "Can Opener", "Rolling Pin", "Ladle"
+      "Cutting Board", "Can Opener", "Rolling Pin", "Ladle",
+      "Tongs", "Peeler", "Grater", "Measuring Cup", "Mixing Bowl", "Baking Sheet",
+      "Oven Mitt", "Apron", "Dish Rack", "Sieve", "Mortar and Pestle",
+      "Bread Knife", "Garlic Press", "Ice Cream Scoop", "Corkscrew", "Trivet",
+      "Platter", "Casserole Dish", "Wok"
     ],
     "office": [
       "Pen", "Pencil", "Notebook", "Stapler", "Paper Clip", "Ruler", "Eraser", "Calculator",
       "Tape", "Glue", "Folder", "Binder", "Highlighter", "Marker", "Stamp", "Envelope",
-      "Calendar", "Whiteboard", "Mouse Pad", "Desk Lamp"
+      "Calendar", "Whiteboard", "Mouse Pad", "Desk Lamp",
+      "Sticky Notes", "Push Pin", "Rubber Band", "Scissors", "Paper Shredder",
+      "Label Maker", "Hole Punch", "Clipboard", "Letter Opener", "Ink Cartridge",
+      "File Cabinet", "Desk Organizer", "Bookend", "Cork Board", "Magnifying Glass",
+      "Paper Weight", "Index Cards", "Planner", "Washi Tape"
     ],
     "outdoor": [
       "Umbrella", "Backpack", "Tent", "Flashlight", "Compass", "Binoculars", "Sunglasses",
       "Water Bottle", "Hammock", "Cooler", "Fishing Rod", "Sleeping Bag", "Map", "Rope",
-      "Lantern", "Thermos", "Hiking Boots", "Canteen", "Pocket Knife", "First Aid Kit"
+      "Lantern", "Thermos", "Hiking Boots", "Canteen", "Pocket Knife", "First Aid Kit",
+      "Camping Stove", "Fire Starter", "Tarp", "Carabiner", "Trekking Poles",
+      "Headlamp", "Insect Repellent", "Sunscreen", "Rain Poncho", "Dry Bag",
+      "Camp Chair", "Grill", "Picnic Blanket", "Bird Feeder", "Garden Hose",
+      "Wheelbarrow", "Shovel", "Rake", "Lawn Mower"
     ],
     "tech": [
       "Phone", "Laptop", "Headphones", "Charger", "USB Cable", "Mouse", "Keyboard",
       "Monitor", "Webcam", "Microphone", "Speaker", "Hard Drive", "Flash Drive",
-      "Power Bank", "Tablet", "Smartwatch", "Router", "Printer", "Controller", "VR Headset"
+      "Power Bank", "Tablet", "Smartwatch", "Router", "Printer", "Controller", "VR Headset",
+      "Stylus", "Docking Station", "HDMI Cable", "Ethernet Cable", "SD Card",
+      "Graphics Card", "RAM Stick", "SSD", "Cooling Pad", "Cable Organizer",
+      "Surge Protector", "Wireless Earbuds", "Smart Plug", "Ring Light", "Tripod",
+      "Streaming Stick", "E-Reader", "Portable Projector", "Drone"
     ],
     "clothing": [
       "T-Shirt", "Jeans", "Jacket", "Hat", "Scarf", "Gloves", "Socks", "Belt",
       "Sneakers", "Boots", "Dress", "Sweater", "Hoodie", "Shorts", "Tie",
-      "Raincoat", "Sandals", "Vest", "Swimsuit", "Pajamas"
+      "Raincoat", "Sandals", "Vest", "Swimsuit", "Pajamas",
+      "Cardigan", "Blazer", "Polo Shirt", "Tank Top", "Leggings",
+      "Overalls", "Windbreaker", "Beanie", "Sunhat", "Flip Flops",
+      "Loafers", "Slippers", "Suspenders", "Bow Tie", "Cufflinks",
+      "Bandana", "Kimono", "Parka", "Trench Coat"
+    ],
+    "sports": [
+      "Basketball", "Football", "Soccer Ball", "Tennis Racket", "Golf Clubs",
+      "Yoga Mat", "Jump Rope", "Dumbbells", "Boxing Gloves", "Skateboard",
+      "Surfboard", "Snowboard", "Ice Skates", "Roller Blades", "Baseball Bat",
+      "Hockey Stick", "Lacrosse Stick", "Volleyball", "Badminton Set", "Frisbee",
+      "Bowling Ball", "Punching Bag", "Resistance Bands", "Kettlebell", "Medicine Ball",
+      "Pull-up Bar", "Ab Roller", "Swim Goggles", "Fin", "Snorkel",
+      "Climbing Harness", "Carabiner", "Bike Helmet", "Knee Pads", "Shin Guards",
+      "Tennis Balls", "Cricket Bat", "Rugby Ball", "Ping Pong Paddle", "Archery Bow"
+    ],
+    "toys": [
+      "LEGO", "Rubik's Cube", "Yo-Yo", "Frisbee", "Kite",
+      "Play-Doh", "Crayons", "Board Game", "Puzzle", "Teddy Bear",
+      "Action Figure", "Doll", "Remote Control Car", "Drone", "Building Blocks",
+      "Marbles", "Slinky", "Water Gun", "Nerf Gun", "Bouncy Ball",
+      "Bubble Wand", "Jump Rope", "Hula Hoop", "Jigsaw Puzzle", "Card Game",
+      "Dice", "Chess Set", "Dominoes", "Kaleidoscope", "Magic Kit",
+      "Toy Train", "Finger Paint", "Stickers", "Coloring Book", "Stuffed Animal",
+      "Spinning Top", "Toy Soldiers", "Play Kitchen Set", "Puppet", "Sand Castle Set"
     ]
   }
 }

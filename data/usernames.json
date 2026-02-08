@@ -4,17 +4,32 @@
     "Clever", "Crazy", "Fresh", "Grand", "Lucky", "Mega", "Noble", "Prime", "Royal", "Sharp",
     "Silent", "Storm", "Super", "Ultra", "Vivid", "Zen", "Alpha", "Atomic", "Blazing", "Cosmic",
     "Digital", "Electric", "Fierce", "Golden", "Hyper", "Iron", "Jade", "Keen", "Lunar", "Mystic",
-    "Neon", "Omega", "Pixel", "Quantum", "Rapid", "Shadow", "Turbo", "Vapor", "Wicked", "Xtreme"
+    "Neon", "Omega", "Pixel", "Quantum", "Rapid", "Shadow", "Turbo", "Vapor", "Wicked", "Xtreme",
+    "Phantom", "Savage", "Frost", "Crimson", "Ancient", "Astral", "Binary", "Burning", "Celestial", "Chrome",
+    "Crystal", "Cyber", "Daring", "Deadly", "Deep", "Divine", "Doomed", "Dread", "Emerald", "Enigma",
+    "Eternal", "Fatal", "Feral", "Frozen", "Fury", "Galactic", "Ghost", "Grim", "Hollow", "Infernal",
+    "Lethal", "Liquid", "Lost", "Mad", "Majestic", "Midnight", "Mighty", "Molten", "Obsidian", "Primal",
+    "Rogue", "Scarlet", "Secret", "Sinister", "Stealth", "Stone", "Thunder", "Toxic", "Twisted", "Unstoppable",
+    "Void", "Raging", "Ruthless", "Sterling", "Vengeful", "Warp", "Spectral", "Radiant", "Arcane", "Runic"
   ],
   "nouns": [
     "Wolf", "Fox", "Tiger", "Eagle", "Lion", "Bear", "Hawk", "Dragon", "Phoenix", "Falcon",
     "Ninja", "Knight", "Wizard", "Pirate", "Rider", "Hunter", "Runner", "Gamer", "Coder", "Hacker",
     "Star", "Moon", "Sun", "Fire", "Ice", "Storm", "Thunder", "Blade", "Arrow", "Shield",
     "Spark", "Flash", "Byte", "Pixel", "Node", "Core", "Wave", "Pulse", "Volt", "Ray",
-    "Ghost", "Shadow", "Raven", "Viper", "Cobra", "Panther", "Raptor", "Titan", "Legend", "Hero"
+    "Ghost", "Shadow", "Raven", "Viper", "Cobra", "Panther", "Raptor", "Titan", "Legend", "Hero",
+    "Assassin", "Bandit", "Baron", "Berserker", "Captain", "Champion", "Cipher", "Commander", "Crusader", "Destroyer",
+    "Drifter", "Enforcer", "Exile", "Fighter", "Gladiator", "Guardian", "Hammer", "Harbinger", "Herald", "Judge",
+    "King", "Lancer", "Lurker", "Machine", "Maverick", "Mercenary", "Monarch", "Oracle", "Outlaw", "Phantom",
+    "Prophet", "Prowler", "Queen", "Ranger", "Reaper", "Rebel", "Sage", "Samurai", "Sentinel", "Serpent",
+    "Sniper", "Soldier", "Spartan", "Specter", "Striker", "Valkyrie", "Viking", "Wanderer", "Warden", "Warrior",
+    "Wraith", "Stalker", "Duelist", "Templar", "Corsair", "Nomad", "Overlord", "Slayer", "Tracker", "Warlord"
   ],
   "suffixes": [
     "X", "Z", "Pro", "Max", "HD", "XL", "Jr", "Sr", "One", "Go",
-    "99", "42", "007", "101", "360", "404", "777", "000", "321", "247"
+    "99", "42", "007", "101", "360", "404", "777", "000", "321", "247",
+    "V2", "3000", "Elite", "Neo", "Prime", "Plus", "Ultra", "Omega", "Alpha", "Zero",
+    "Ace", "Boss", "Chief", "King", "Lord", "Master", "Rex", "Top", "X1", "Z1",
+    "2K", "4K", "XO", "EX", "DX", "MX"
   ]
 }

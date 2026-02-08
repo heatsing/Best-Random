@@ -4,31 +4,68 @@
       "Software Engineer", "Data Scientist", "Product Manager", "UX Designer", "DevOps Engineer",
       "Frontend Developer", "Backend Developer", "Full Stack Developer", "Mobile Developer",
       "QA Engineer", "Security Engineer", "Cloud Architect", "Machine Learning Engineer",
-      "Blockchain Developer", "Game Developer", "Technical Writer", "Scrum Master"
+      "Blockchain Developer", "Game Developer", "Technical Writer", "Scrum Master",
+      "Data Engineer", "Site Reliability Engineer", "Systems Administrator",
+      "Network Engineer", "Database Administrator", "IT Support Specialist",
+      "Solutions Architect", "Embedded Systems Engineer", "AI Research Scientist",
+      "Cybersecurity Analyst", "Release Manager", "Platform Engineer"
     ],
     "health": [
       "Doctor", "Nurse", "Pharmacist", "Physical Therapist", "Dentist", "Veterinarian",
       "Psychologist", "Surgeon", "Radiologist", "Pediatrician", "Cardiologist",
-      "Neurologist", "Oncologist", "Anesthesiologist", "Optometrist", "Chiropractor"
+      "Neurologist", "Oncologist", "Anesthesiologist", "Optometrist", "Chiropractor",
+      "Occupational Therapist", "Speech Pathologist", "Dermatologist", "Psychiatrist",
+      "Paramedic", "Medical Lab Technician", "Respiratory Therapist", "Dietitian",
+      "Nurse Practitioner", "Dental Hygienist", "Phlebotomist", "Midwife"
     ],
     "creative": [
       "Graphic Designer", "Web Designer", "Illustrator", "Photographer", "Video Editor",
       "Animator", "Art Director", "Copywriter", "Content Creator", "Fashion Designer",
-      "Interior Designer", "Architect", "Musician", "Writer", "Filmmaker", "Game Designer"
+      "Interior Designer", "Architect", "Musician", "Writer", "Filmmaker", "Game Designer",
+      "Sound Designer", "Motion Graphics Designer", "Creative Director", "Brand Strategist",
+      "UX Researcher", "Tattoo Artist", "Calligrapher", "Ceramic Artist", "Choreographer",
+      "Voice Actor", "Podcast Producer", "Set Designer"
     ],
     "business": [
       "Marketing Manager", "Sales Manager", "Business Analyst", "Financial Analyst",
       "Accountant", "Consultant", "Project Manager", "HR Manager", "Operations Manager",
-      "CEO", "CFO", "CTO", "Investment Banker", "Real Estate Agent", "Entrepreneur"
+      "CEO", "CFO", "CTO", "Investment Banker", "Real Estate Agent", "Entrepreneur",
+      "Supply Chain Manager", "Risk Analyst", "Actuary", "Auditor", "Tax Advisor",
+      "Venture Capitalist", "Management Consultant", "Brand Manager", "Public Relations Specialist",
+      "Logistics Coordinator", "Procurement Manager", "Compliance Officer", "Business Development Manager"
     ],
     "education": [
       "Teacher", "Professor", "Principal", "Librarian", "Tutor", "Curriculum Developer",
-      "School Counselor", "Education Administrator", "Research Scientist", "Academic Advisor"
+      "School Counselor", "Education Administrator", "Research Scientist", "Academic Advisor",
+      "Special Education Teacher", "ESL Teacher", "Dean", "Instructional Designer",
+      "Education Policy Analyst", "School Psychologist", "Career Counselor",
+      "Admissions Counselor", "Financial Aid Advisor", "Athletic Director",
+      "Museum Educator", "Corporate Trainer", "Early Childhood Educator",
+      "Reading Specialist", "Department Chair"
     ],
     "service": [
       "Chef", "Waiter", "Bartender", "Barista", "Hotel Manager", "Travel Agent",
       "Event Planner", "Personal Trainer", "Massage Therapist", "Hair Stylist",
-      "Makeup Artist", "Fitness Instructor", "Life Coach", "Social Worker"
+      "Makeup Artist", "Fitness Instructor", "Life Coach", "Social Worker",
+      "Flight Attendant", "Real Estate Broker", "Tour Guide", "Concierge",
+      "Florist", "Wedding Planner", "Pet Groomer", "Nanny", "Butler",
+      "Security Guard", "Firefighter", "Police Officer", "Paramedic Dispatcher"
+    ],
+    "trades": [
+      "Electrician", "Plumber", "Carpenter", "Welder", "Mechanic",
+      "HVAC Technician", "Painter", "Roofer", "Mason", "Landscaper",
+      "Auto Body Technician", "Diesel Mechanic", "Industrial Electrician",
+      "Pipe Fitter", "Ironworker", "Crane Operator", "Heavy Equipment Operator",
+      "Construction Manager", "Surveyor", "Building Inspector",
+      "Elevator Installer", "Glazier", "Tile Setter", "Drywall Installer",
+      "Insulation Worker"
+    ],
+    "science": [
+      "Biologist", "Chemist", "Physicist", "Astronomer", "Geologist",
+      "Marine Biologist", "Ecologist", "Geneticist", "Microbiologist", "Botanist",
+      "Zoologist", "Archaeologist", "Paleontologist", "Meteorologist", "Oceanographer",
+      "Epidemiologist", "Toxicologist", "Forensic Scientist", "Environmental Scientist",
+      "Lab Technician"
     ]
   }
 }

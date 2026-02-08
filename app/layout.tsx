@@ -12,11 +12,11 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "BestRandom: 40+ Free Random Generators for Numbers, Names, Passwords & More",
+    default: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More",
     template: "%s | BestRandom",
   },
-  description: "The best free collection of 40+ random generators. Generate numbers, names, passwords, colors, teams, movies, and more. Seeded for repeatability, shareable with one link, and instant results.",
-  keywords: ["random generator", "random number generator", "random name generator", "random password generator", "random color generator", "random picker", "random team generator", "online random tools"],
+  description: "The #1 free random generator site with 44+ tools. Generate random numbers, names, passwords, colors, teams, movies & more. Instant results, shareable links. 100% free!",
+  keywords: ["random generator", "random number generator", "random name generator", "random password generator", "random color generator", "random picker", "random team generator", "wheel of names", "dice roller", "coin flip", "online random tools", "free random generator"],
   authors: [{ name: "BestRandom" }],
   creator: "BestRandom",
   icons: {
@@ -33,21 +33,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://bestrandom.net",
     siteName: "BestRandom",
-    title: "BestRandom: 40+ Free Random Generators for Numbers, Names, Passwords & More",
-    description: "The best free collection of 40+ random generators. Generate numbers, names, passwords, colors, teams, movies, and more. Seeded for repeatability, shareable with one link, and instant results.",
+    title: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More",
+    description: "The #1 free random generator site with 44+ tools. Generate random numbers, names, passwords, colors, teams, movies & more. Instant results, shareable links. 100% free!",
     images: [
       {
         url: "https://bestrandom.net/og-image-v2.png",
         width: 1200,
         height: 630,
-        alt: "BestRandom: 40+ Free Random Generators",
+        alt: "BestRandom - 44 Free Random Generators",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BestRandom: 40+ Free Random Generators for Numbers, Names, Passwords & More",
-    description: "The best free collection of 40+ random generators. Generate numbers, names, passwords, colors, teams, movies, and more. Seeded for repeatability, shareable with one link, and instant results.",
+    title: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More",
+    description: "The #1 free random generator site with 44+ tools. Generate random numbers, names, passwords, colors, teams, movies & more. Instant results, shareable links. 100% free!",
     images: ["https://bestrandom.net/og-image-v2.png"],
   },
   robots: {
