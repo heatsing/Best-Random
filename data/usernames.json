@@ -10,7 +10,20 @@
     "Eternal", "Fatal", "Feral", "Frozen", "Fury", "Galactic", "Ghost", "Grim", "Hollow", "Infernal",
     "Lethal", "Liquid", "Lost", "Mad", "Majestic", "Midnight", "Mighty", "Molten", "Obsidian", "Primal",
     "Rogue", "Scarlet", "Secret", "Sinister", "Stealth", "Stone", "Thunder", "Toxic", "Twisted", "Unstoppable",
-    "Void", "Raging", "Ruthless", "Sterling", "Vengeful", "Warp", "Spectral", "Radiant", "Arcane", "Runic"
+    "Void", "Raging", "Ruthless", "Sterling", "Vengeful", "Warp", "Spectral", "Radiant", "Arcane", "Runic",
+    "Red", "Blue", "Green", "Purple", "Orange", "Yellow", "Black", "White", "Silver", "Bronze",
+    "Pink", "Violet", "Indigo", "Teal", "Coral", "Maroon", "Navy", "Ivory", "Charcoal", "Auburn",
+    "Amber", "Sapphire", "Ruby", "Topaz", "Onyx", "Pearl", "Copper", "Platinum", "Aqua", "Magenta",
+    "Angry", "Joyful", "Sad", "Furious", "Excited", "Peaceful", "Anxious", "Bold", "Shy", "Proud",
+    "Fearless", "Hopeful", "Serene", "Fierce", "Gentle", "Moody", "Cheerful", "Grumpy", "Lively", "Mellow",
+    "Tiny", "Huge", "Giant", "Mini", "Massive", "Small", "Big", "Little", "Colossal", "Petite",
+    "Enormous", "Microscopic", "Vast", "Compact", "Jumbo", "Slim", "Thick", "Wide", "Narrow", "Tall",
+    "Soft", "Rough", "Smooth", "Fuzzy", "Silky", "Bumpy", "Slick", "Fluffy", "Gritty", "Glossy",
+    "Matte", "Velvety", "Coarse", "Grainy", "Polished", "Rugged", "Sleek", "Textured", "Woolly", "Prickly",
+    "Quick", "Slow", "Speedy", "Sluggish", "Brisk", "Hasty", "Nimble", "Agile", "Fleet", "Snappy",
+    "Zippy", "Dashing", "Racing", "Flying", "Rushing", "Crawling", "Soaring", "Gliding", "Sprinting", "Zooming",
+    "Hot", "Cold", "Warm", "Cool", "Freezing", "Burning", "Icy", "Fiery", "Chilly", "Toasty",
+    "Scorching", "Arctic", "Tropical", "Frigid", "Blazing", "Frosty", "Sizzling", "Glacial", "Steamy", "Breezy"
   ],
   "nouns": [
     "Wolf", "Fox", "Tiger", "Eagle", "Lion", "Bear", "Hawk", "Dragon", "Phoenix", "Falcon",
@@ -23,13 +36,31 @@
     "King", "Lancer", "Lurker", "Machine", "Maverick", "Mercenary", "Monarch", "Oracle", "Outlaw", "Phantom",
     "Prophet", "Prowler", "Queen", "Ranger", "Reaper", "Rebel", "Sage", "Samurai", "Sentinel", "Serpent",
     "Sniper", "Soldier", "Spartan", "Specter", "Striker", "Valkyrie", "Viking", "Wanderer", "Warden", "Warrior",
-    "Wraith", "Stalker", "Duelist", "Templar", "Corsair", "Nomad", "Overlord", "Slayer", "Tracker", "Warlord"
+    "Wraith", "Stalker", "Duelist", "Templar", "Corsair", "Nomad", "Overlord", "Slayer", "Tracker", "Warlord",
+    "Shark", "Dolphin", "Whale", "Octopus", "Squid", "Jaguar", "Cheetah", "Leopard", "Lynx", "Cougar",
+    "Gorilla", "Monkey", "Chimp", "Ape", "Bat", "Owl", "Crow", "Sparrow", "Finch", "Pelican",
+    "Stork", "Crane", "Heron", "Vulture", "Condor", "Parrot", "Toucan", "Panda", "Koala", "Kangaroo",
+    "Griffin", "Unicorn", "Pegasus", "Hydra", "Kraken", "Minotaur", "Centaur", "Cyclops", "Chimera", "Basilisk",
+    "Leviathan", "Wendigo", "Golem", "Yeti", "Werewolf", "Vampire", "Demon", "Angel", "Siren", "Sphinx",
+    "Djinn", "Banshee", "Goblin", "Troll", "Ogre", "Elf", "Dwarf", "Orc", "Imp", "Nymph",
+    "Pizza", "Burger", "Taco", "Sushi", "Ramen", "Curry", "Waffle", "Pancake", "Cookie", "Muffin",
+    "Donut", "Pretzel", "Bacon", "Cheese", "Pepper", "Pickle", "Mango", "Berry", "Peach", "Lemon",
+    "Tree", "Mountain", "River", "Ocean", "Forest", "Desert", "Valley", "Canyon", "Glacier", "Volcano",
+    "Meadow", "Prairie", "Tundra", "Jungle", "Reef", "Island", "Cave", "Cliff", "Waterfall", "Geyser",
+    "Sword", "Axe", "Spear", "Dagger", "Mace", "Hammer", "Staff", "Wand", "Bow", "Crossbow",
+    "Cannon", "Missile", "Rocket", "Bomb", "Grenade", "Tank", "Jet", "Chopper", "Sub", "Cruiser",
+    "Doctor", "Engineer", "Scientist", "Artist", "Chef", "Pilot", "Captain", "General", "Admiral", "Agent",
+    "Detective", "Scholar", "Monk", "Priest", "Shaman", "Druid", "Alchemist", "Blacksmith", "Archer", "Scout"
   ],
   "suffixes": [
     "X", "Z", "Pro", "Max", "HD", "XL", "Jr", "Sr", "One", "Go",
     "99", "42", "007", "101", "360", "404", "777", "000", "321", "247",
     "V2", "3000", "Elite", "Neo", "Prime", "Plus", "Ultra", "Omega", "Alpha", "Zero",
     "Ace", "Boss", "Chief", "King", "Lord", "Master", "Rex", "Top", "X1", "Z1",
-    "2K", "4K", "XO", "EX", "DX", "MX"
+    "2K", "4K", "XO", "EX", "DX", "MX",
+    "_pro", "_gamer", "_king", "_queen", "_master", "_boss", "_elite", "_god", "_legend", "_hero",
+    "_x", "_xx", "_xxx", "_official", "_real", "_og", "_vip", "_hq", "_tv", "_yt",
+    "2020", "2021", "2022", "2023", "2024", "2025", "2026", "1999", "2000", "1337",
+    "69", "420", "666", "123", "1234", "12345", "88", "11", "22", "33"
   ]
 }
