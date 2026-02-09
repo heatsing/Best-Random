@@ -39,10 +39,17 @@ export const randomAnimalTool: ToolConfig = {
     const results: any[] = []
     const seen = new Set<string>()
 
-    const allAnimals = animalsData.animals
+    // Flatten the categorized animals data into an array with category info
+    const allAnimals: { name: string; category: string }[] = []
+    const animalsObj = animalsData.animals as Record<string, string[]>
+    for (const [category, names] of Object.entries(animalsObj)) {
+      for (const name of names) {
+        allAnimals.push({ name, category })
+      }
+    }
 
     for (let i = 0; i < count; i++) {
-      let animal: typeof allAnimals[0]
+      let animal: { name: string; category: string }
       let attempts = 0
 
       do {
@@ -51,8 +58,8 @@ export const randomAnimalTool: ToolConfig = {
       } while (unique && seen.has(animal.name) && attempts < 1000)
 
       seen.add(animal.name)
-      
-      const displayValue = showCategory && animal.category 
+
+      const displayValue = showCategory && animal.category
         ? `${animal.name} (${animal.category})`
         : animal.name
 
@@ -353,7 +360,9 @@ export const randomFoodTool: ToolConfig = {
     const rng = ctx.rng
     const results: any[] = []
     const seen = new Set<string>()
-    const foods = foodData.food
+
+    // Flatten the categorized foods data into a flat array
+    const foods: string[] = Object.values(foodData.foods).flat()
 
     for (let i = 0; i < count; i++) {
       let food: string
