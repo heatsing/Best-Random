@@ -12,8 +12,8 @@ export const randomMovieTool: ToolConfig = {
   slug: "random-movie-generator",
   category: "fun",
   name: "Random Movie Generator",
-  shortDescription: "Discover random movies by genre",
-  longDescription: "Get random movie recommendations from top-rated films across genres. Choose from action, comedy, drama, horror, sci-fi, animation, romance, or thriller. Perfect for movie night decisions.",
+  shortDescription: "Discover random movies by genre — Disney, Marvel, Netflix & more",
+  longDescription: "Get random movie recommendations from 350+ top-rated films across 14 genres. Choose from Disney, Marvel, Netflix, Pixar, James Bond, Action, Comedy, Drama, Horror, Thriller, Animation, Sci-Fi/Fantasy, History/Biography, or Documentaries. Perfect for movie night decisions.",
   generatorType: "list",
   defaultOptions: {
     count: 5,
@@ -30,14 +30,22 @@ export const randomMovieTool: ToolConfig = {
         default: "all",
         options: [
           { value: "all", label: "All Genres" },
+          { value: "disney", label: "Disney" },
+          { value: "marvel", label: "Marvel" },
+          { value: "netflix", label: "Netflix" },
+          { value: "pixar", label: "Pixar" },
+          { value: "jamesbond", label: "James Bond" },
           { value: "action", label: "Action" },
           { value: "comedy", label: "Comedy" },
           { value: "drama", label: "Drama" },
           { value: "horror", label: "Horror" },
-          { value: "scifi", label: "Sci-Fi" },
+          { value: "thriller", label: "Thriller" },
           { value: "animation", label: "Animation" },
+          { value: "scifi_fantasy", label: "Sci-Fi / Fantasy" },
+          { value: "scifi", label: "Sci-Fi (Classic)" },
           { value: "romance", label: "Romance" },
-          { value: "thriller", label: "Thriller" }
+          { value: "history", label: "History / Biography" },
+          { value: "documentary", label: "Documentary" }
         ]
       },
       { key: "unique", label: "Unique movies", type: "checkbox", default: true }
@@ -79,14 +87,14 @@ export const randomMovieTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Movie Generator: What Should I Watch Tonight? | BestRandom",
-    description: "Get random movie picks from 160+ top-rated films across 8 genres. End the endless scrolling and let us pick your next movie night film.",
+    title: "Random Movie Generator - 350+ Films | Disney, Marvel, Netflix & More",
+    description: "What should I watch tonight? Get random movie picks from 14 genres: Disney, Marvel, Netflix, Pixar, James Bond & more. End Netflix scrolling now! Free!",
     h1: "Random Movie Generator",
     faq: [
-      { question: "What genres are available?", answer: "Action, comedy, drama, horror, sci-fi, animation, romance, and thriller." },
-      { question: "How many movies are in the database?", answer: "The database includes 160+ top-rated films across 8 genres." },
+      { question: "What genres are available?", answer: "Disney, Marvel, Netflix, Pixar, James Bond, Action, Comedy, Drama, Horror, Thriller, Animation, Sci-Fi/Fantasy, History/Biography, and Documentary — 14 genres in total." },
+      { question: "How many movies are in the database?", answer: "The database includes 350+ top-rated films across 14 genres." },
       { question: "Can I get unique results?", answer: "Yes. Enable 'Unique movies' to avoid duplicates." },
-      { question: "Can I repeat the same result?", answer: "Yes. Use the same seed to reproduce results." },
+      { question: "Can I filter by studio like Disney or Marvel?", answer: "Yes. Select Disney, Marvel, Netflix, or Pixar from the genre dropdown." },
       { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
     ]
   },
@@ -170,8 +178,8 @@ export const randomBookTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Book Generator: What Book Should I Read Next? | BestRandom",
-    description: "Discover your next read from 60+ highly-rated books across fiction, fantasy, sci-fi, mystery, and more. Each result includes the title and author.",
+    title: "Random Book Generator - 200+ Books by Genre | Fiction, Fantasy & More",
+    description: "What book should I read next? Get random book picks from 200+ titles across fiction, fantasy, sci-fi, mystery & romance. Includes author info. Free!",
     h1: "Random Book Generator",
     faq: [
       { question: "What genres are available?", answer: "Fiction, fantasy, sci-fi, horror, mystery, non-fiction, and romance." },
@@ -237,8 +245,8 @@ export const randomQuoteTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Quote Generator: Get Inspired by Famous Quotes | BestRandom",
-    description: "Discover inspiring quotes from famous thinkers, scientists, leaders, and artists. Perfect for daily motivation, social media, or presentations.",
+    title: "Random Quote Generator - 150+ Inspiring Quotes from Famous People",
+    description: "Get inspired by famous quotes from Einstein, Shakespeare, MLK & more. 150+ motivational quotes perfect for social media, speeches, or daily inspiration. Free!",
     h1: "Random Quote Generator",
     faq: [
       { question: "What kind of quotes are included?", answer: "Inspirational quotes from famous thinkers, leaders, scientists, and artists." },
@@ -322,8 +330,8 @@ export const randomSuperheroTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Superhero Generator: Discover Marvel & DC Heroes | BestRandom",
-    description: "Generate random superheroes from 80 Marvel and DC characters. Perfect for trivia nights, character debates, or discovering new heroes to read about.",
+    title: "Random Superhero Generator - 100+ Marvel & DC Heroes | Free",
+    description: "Discover random superheroes from Marvel and DC universes! 100+ heroes including Spider-Man, Batman, Iron Man & more. Perfect for trivia & debates. Free!",
     h1: "Random Superhero Generator",
     faq: [
       { question: "What heroes are included?", answer: "40 popular Marvel heroes and 40 popular DC heroes." },
@@ -384,8 +392,8 @@ export const randomSuperpowerTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Superpower Generator: What Power Would You Have? | BestRandom",
-    description: "Get a random superpower from 100 unique abilities. Ideal for creative writing, RPG character builds, party games, or \"what if\" conversations.",
+    title: "Random Superpower Generator - 150+ Unique Abilities | What's Yours?",
+    description: "What superpower would you have? Generate random abilities from 150+ unique powers. Perfect for RPG characters, creative writing, or party games. Free!",
     h1: "Random Superpower Generator",
     faq: [
       { question: "How many superpowers are available?", answer: "The database includes 100 unique superpowers." },
@@ -455,8 +463,8 @@ export const randomCardTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Card Generator: Draw Cards from a 52-Card Deck | BestRandom",
-    description: "Draw random playing cards from a standard 52-card deck with no-duplicate mode. Perfect for card games, magic tricks, or probability exercises.",
+    title: "Random Card Generator - Draw from a 52-Card Deck | Free Online",
+    description: "Draw random playing cards from a standard 52-card deck. No-duplicate mode available. Perfect for card games, magic tricks, poker practice, or probability. Free!",
     h1: "Random Playing Card Generator",
     faq: [
       { question: "Is this a standard deck?", answer: "Yes. 52 cards with 4 suits (Spades, Hearts, Diamonds, Clubs) and 13 ranks (A through K)." },

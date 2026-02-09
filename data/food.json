@@ -1,15 +1,224 @@
 {
-  "food": [
-    "Pizza", "Burger", "Pasta", "Sushi", "Tacos", "Burrito", "Ramen", "Curry",
-    "Steak", "Chicken", "Salmon", "Shrimp", "Lobster", "Crab", "Soup", "Salad",
-    "Sandwich", "Wrap", "Quesadilla", "Nachos", "Fries", "Onion Rings", "Wings",
-    "Ribs", "BBQ", "Hot Dog", "Sausage", "Bacon", "Eggs", "Pancakes", "Waffles",
-    "French Toast", "Omelet", "Cereal", "Oatmeal", "Yogurt", "Ice Cream", "Cake",
-    "Pie", "Cookies", "Brownies", "Donuts", "Muffins", "Bagel", "Croissant",
-    "Bread", "Rice", "Noodles", "Dumplings", "Spring Rolls", "Fried Rice",
-    "Pad Thai", "Pho", "Kimchi", "Sashimi", "Tempura", "Teriyaki", "Kebab",
-    "Falafel", "Hummus", "Pita", "Gyro", "Paella", "Risotto", "Lasagna",
-    "Ravioli", "Gnocchi", "Mac and Cheese", "Chili", "Gumbo", "Jambalaya",
-    "Clam Chowder", "Bisque", "Gazpacho", "Ratatouille", "Bouillabaisse"
-  ]
+  "foods": {
+    "american": [
+      "Cheeseburger", "Bacon Burger", "Mushroom Swiss Burger", "BBQ Burger", "Slider",
+      "Buffalo Wings", "Fried Chicken", "Nashville Hot Chicken", "Chicken Tenders",
+      "Pulled Pork Sandwich", "Brisket", "Smoked Ribs", "Baby Back Ribs", "Burnt Ends",
+      "Mac and Cheese", "Cornbread", "Coleslaw", "Baked Beans", "Potato Salad",
+      "Meatloaf", "Pot Roast", "Chicken Pot Pie", "Shepherd's Pie", "Beef Stew",
+      "Clam Chowder", "Lobster Roll", "Crab Cakes", "Shrimp Po'Boy", "Oyster Po'Boy",
+      "Gumbo", "Jambalaya", "Crawfish Etouffee", "Red Beans and Rice", "Cajun Shrimp",
+      "Hot Dog", "Corn Dog", "Philly Cheesesteak", "Reuben Sandwich", "BLT Sandwich",
+      "Club Sandwich", "Grilled Cheese", "Sloppy Joe", "Patty Melt", "French Dip",
+      "Chili Con Carne", "Biscuits and Gravy", "Country Fried Steak", "Chicken Fried Steak",
+      "Salisbury Steak", "Tater Tots", "Onion Rings", "Cheese Fries", "Loaded Potato Skins",
+      "Bloomin' Onion", "Fried Pickles", "Mozzarella Sticks", "Jalapeno Poppers"
+    ],
+    "italian": [
+      "Spaghetti Carbonara", "Spaghetti Bolognese", "Fettuccine Alfredo", "Penne Arrabbiata",
+      "Linguine Vongole", "Bucatini Amatriciana", "Rigatoni alla Norma", "Pappardelle",
+      "Lasagna", "Baked Ziti", "Cannelloni", "Manicotti", "Ravioli", "Tortellini",
+      "Gnocchi", "Risotto Milanese", "Risotto ai Funghi", "Risotto alla Pescatore",
+      "Margherita Pizza", "Quattro Formaggi Pizza", "Diavola Pizza", "Capricciosa Pizza",
+      "Calzone", "Focaccia", "Bruschetta", "Caprese Salad", "Insalata Mista",
+      "Osso Buco", "Veal Piccata", "Veal Saltimbocca", "Chicken Parmigiana",
+      "Eggplant Parmigiana", "Vitello Tonnato", "Beef Carpaccio", "Bresaola",
+      "Prosciutto e Melone", "Antipasto Misto", "Arancini", "Suppli",
+      "Minestrone Soup", "Ribollita", "Pasta e Fagioli", "Italian Wedding Soup",
+      "Tiramisu", "Panna Cotta", "Cannoli", "Gelato", "Affogato", "Zabaglione",
+      "Biscotti", "Panettone", "Pandoro", "Sfogliatella", "Cacio e Pepe"
+    ],
+    "mexican": [
+      "Tacos al Pastor", "Tacos Carnitas", "Tacos de Barbacoa", "Tacos de Birria",
+      "Fish Tacos", "Shrimp Tacos", "Beef Tacos", "Chicken Tacos", "Street Tacos",
+      "Enchiladas Rojas", "Enchiladas Verdes", "Enchiladas Suizas", "Enfrijoladas",
+      "Burrito", "Burrito Bowl", "Wet Burrito", "Chimichanga", "Quesadilla",
+      "Nachos", "Nachos Supreme", "Tostadas", "Sopes", "Gorditas", "Huaraches",
+      "Tamales", "Tamales de Rajas", "Tamales de Mole", "Pozole Rojo", "Pozole Verde",
+      "Menudo", "Birria", "Mole Poblano", "Mole Negro", "Mole Verde", "Pipian",
+      "Carne Asada", "Carnitas", "Barbacoa", "Cochinita Pibil", "Chiles Rellenos",
+      "Chile en Nogada", "Chilaquiles", "Huevos Rancheros", "Migas", "Machaca",
+      "Elote", "Esquites", "Ceviche", "Aguachile", "Coctel de Camaron",
+      "Churros", "Tres Leches Cake", "Flan", "Arroz con Leche", "Sopapillas",
+      "Guacamole", "Pico de Gallo", "Salsa Verde", "Queso Fundido", "Torta Ahogada"
+    ],
+    "chinese": [
+      "Kung Pao Chicken", "General Tso's Chicken", "Orange Chicken", "Sesame Chicken",
+      "Sweet and Sour Pork", "Char Siu", "Peking Duck", "Crispy Duck", "Tea Smoked Duck",
+      "Mapo Tofu", "Szechuan Beef", "Mongolian Beef", "Beef with Broccoli", "Pepper Steak",
+      "Hot Pot", "Hot and Sour Soup", "Wonton Soup", "Egg Drop Soup", "Winter Melon Soup",
+      "Dim Sum", "Har Gow", "Siu Mai", "Char Siu Bao", "Xiao Long Bao", "Cheung Fun",
+      "Chow Mein", "Lo Mein", "Dan Dan Noodles", "Zha Jiang Mian", "Beef Noodle Soup",
+      "Fried Rice", "Yangzhou Fried Rice", "Congee", "Zongzi", "Sticky Rice",
+      "Spring Rolls", "Egg Rolls", "Pot Stickers", "Scallion Pancakes", "Turnip Cake",
+      "Ma La Xiang Guo", "Kung Pao Shrimp", "Salt and Pepper Squid", "Steamed Fish",
+      "Buddha's Delight", "Twice Cooked Pork", "Cumin Lamb", "Braised Pork Belly",
+      "Century Egg", "Stir Fried Vegetables", "Gai Lan", "Bok Choy", "Eggplant in Garlic Sauce"
+    ],
+    "japanese": [
+      "Nigiri Sushi", "Maki Rolls", "California Roll", "Dragon Roll", "Rainbow Roll",
+      "Sashimi Platter", "Chirashi Don", "Tuna Tataki", "Salmon Tataki", "Poke Bowl",
+      "Tonkotsu Ramen", "Shoyu Ramen", "Miso Ramen", "Shio Ramen", "Tsukemen",
+      "Udon", "Kitsune Udon", "Nabeyaki Udon", "Soba", "Zaru Soba", "Yakisoba",
+      "Tempura", "Shrimp Tempura", "Vegetable Tempura", "Agedashi Tofu", "Korokke",
+      "Tonkatsu", "Katsu Curry", "Chicken Katsu", "Katsudon", "Gyudon", "Oyakodon",
+      "Teriyaki Chicken", "Teriyaki Salmon", "Grilled Mackerel", "Unagi Don",
+      "Yakitori", "Tsukune", "Negima", "Gyoza", "Edamame", "Takoyaki", "Okonomiyaki",
+      "Onigiri", "Tamagoyaki", "Chawanmushi", "Miso Soup", "Tonjiru",
+      "Mochi", "Daifuku", "Dorayaki", "Taiyaki", "Matcha Ice Cream", "Dango"
+    ],
+    "indian": [
+      "Chicken Tikka Masala", "Butter Chicken", "Chicken Korma", "Chicken Vindaloo",
+      "Lamb Rogan Josh", "Lamb Biryani", "Chicken Biryani", "Vegetable Biryani", "Hyderabadi Biryani",
+      "Palak Paneer", "Paneer Tikka", "Paneer Butter Masala", "Matar Paneer", "Shahi Paneer",
+      "Dal Makhani", "Dal Tadka", "Chana Masala", "Rajma", "Aloo Gobi", "Baingan Bharta",
+      "Samosa", "Pakora", "Bhaji", "Aloo Tikki", "Dahi Puri", "Pani Puri",
+      "Naan", "Garlic Naan", "Butter Naan", "Roti", "Paratha", "Puri", "Kulcha",
+      "Tandoori Chicken", "Seekh Kebab", "Malai Kebab", "Fish Tikka", "Shrimp Curry",
+      "Chole Bhature", "Pav Bhaji", "Dosa", "Idli", "Uttapam", "Vada",
+      "Raita", "Chutney", "Pickle", "Papadum",
+      "Gulab Jamun", "Rasmalai", "Kheer", "Jalebi", "Ladoo", "Barfi", "Kulfi"
+    ],
+    "french": [
+      "Coq au Vin", "Beef Bourguignon", "Duck Confit", "Cassoulet", "Blanquette de Veau",
+      "Boeuf en Daube", "Pot-au-Feu", "Steak Frites", "Steak Tartare", "Croque Monsieur",
+      "Croque Madame", "Quiche Lorraine", "Quiche Florentine", "Soufflé", "Cheese Soufflé",
+      "French Onion Soup", "Bouillabaisse", "Bisque", "Vichyssoise", "Potage",
+      "Ratatouille", "Gratin Dauphinois", "Pommes Frites", "Pommes Puree",
+      "Escargot", "Foie Gras", "Pate", "Terrine", "Beef Tartare",
+      "Croissant", "Pain au Chocolat", "Brioche", "Baguette", "Madeleines",
+      "Crème Brûlée", "Mousse au Chocolat", "Profiteroles", "Eclairs", "Mille-feuille",
+      "Tarte Tatin", "Tarte aux Fruits", "Crêpes", "Crêpes Suzette", "Macarons",
+      "Clafoutis", "Financiers", "Opera Cake"
+    ],
+    "thai": [
+      "Pad Thai", "Pad See Ew", "Drunken Noodles", "Pad Kra Pao", "Pad Woon Sen",
+      "Green Curry", "Red Curry", "Yellow Curry", "Massaman Curry", "Panang Curry",
+      "Tom Yum Soup", "Tom Kha Gai", "Khao Soi", "Boat Noodles", "Sukiyaki Thai",
+      "Som Tam", "Larb", "Yum Woon Sen", "Nam Tok", "Yum Pla Duk Fu",
+      "Satay", "Gai Yang", "Moo Ping", "Crying Tiger", "Grilled Prawns",
+      "Khao Pad", "Pineapple Fried Rice", "Basil Fried Rice", "Crab Fried Rice",
+      "Thai Fish Cakes", "Spring Rolls", "Fresh Rolls", "Crispy Wontons",
+      "Sticky Rice", "Mango Sticky Rice", "Coconut Ice Cream", "Thai Tea",
+      "Roti", "Khanom Krok", "Thai Iced Coffee", "Banana Roti"
+    ],
+    "mediterranean": [
+      "Moussaka", "Pastitsio", "Souvlaki", "Gyros", "Spanakopita", "Tiropita",
+      "Dolmades", "Tzatziki", "Saganaki", "Greek Salad", "Feta Cheese",
+      "Hummus", "Baba Ganoush", "Falafel", "Shawarma", "Kibbeh", "Kafta",
+      "Tabbouleh", "Fattoush", "Labneh", "Muhammara", "Manakeesh",
+      "Lamb Chops", "Grilled Fish", "Calamari", "Stuffed Peppers", "Stuffed Eggplant",
+      "Shakshuka", "Ful Medames", "Koshari", "Mahshi", "Kofta",
+      "Baklava", "Kanafeh", "Basbousa", "Halva", "Turkish Delight",
+      "Pita Bread", "Lavash", "Kofte", "Adana Kebab", "Iskender Kebab", "Doner Kebab"
+    ],
+    "korean": [
+      "Bibimbap", "Dolsot Bibimbap", "Bulgogi", "Galbi", "Samgyeopsal",
+      "Korean Fried Chicken", "Yangnyeom Chicken", "Dakgangjeong", "Bossam",
+      "Japchae", "Jajangmyeon", "Naengmyeon", "Ramyeon", "Kalguksu",
+      "Kimchi Jjigae", "Sundubu Jjigae", "Doenjang Jjigae", "Budae Jjigae", "Gamjatang",
+      "Tteokbokki", "Kimbap", "Mandu", "Hotteok", "Bungeoppang",
+      "Haemul Pajeon", "Kimchijeon", "Bindaetteok", "Jeon",
+      "Samgyetang", "Galbitang", "Seolleongtang", "Yukgaejang",
+      "Kimchi", "Kongnamul", "Japchae", "Oi Sobagi", "Sigeumchi Namul",
+      "Gyeran Jjim", "Sundae", "Dak Bokkeum Tang", "Dakdoritang", "Jokbal"
+    ],
+    "vietnamese": [
+      "Pho Bo", "Pho Ga", "Bun Bo Hue", "Bun Rieu", "Hu Tieu",
+      "Banh Mi", "Banh Mi Thit", "Banh Mi Cha", "Banh Cuon", "Banh Xeo",
+      "Goi Cuon", "Cha Gio", "Nem Nuong", "Bo La Lot", "Thit Nuong",
+      "Com Tam", "Com Chien", "Xoi", "Bun Cha", "Bun Thit Nuong",
+      "Bo Kho", "Ca Kho To", "Canh Chua", "Lau", "Bo Luc Lac",
+      "Goi Ga", "Goi Xoai", "Banh Bao", "Che", "Banh Flan",
+      "Ca Phe Sua Da", "Sinh To", "Nuoc Mia"
+    ],
+    "spanish": [
+      "Paella Valenciana", "Paella Mixta", "Seafood Paella", "Arroz Negro",
+      "Gazpacho", "Salmorejo", "Tortilla Espanola", "Patatas Bravas", "Patatas Aioli",
+      "Jamon Iberico", "Chorizo", "Croquetas", "Albondigas", "Gambas al Ajillo",
+      "Pulpo a la Gallega", "Pimientos de Padron", "Pan con Tomate", "Manchego Cheese",
+      "Churros con Chocolate", "Flan", "Tarta de Santiago", "Crema Catalana",
+      "Fabada Asturiana", "Cocido Madrileno", "Empanada Gallega", "Pisto"
+    ],
+    "greek": [
+      "Moussaka", "Pastitsio", "Souvlaki", "Gyros", "Kleftiko",
+      "Spanakopita", "Tiropita", "Kolokithopita", "Dolmades", "Gemista",
+      "Greek Salad", "Tzatziki", "Taramasalata", "Melitzanosalata", "Feta Saganaki",
+      "Stifado", "Fasolada", "Avgolemono Soup", "Gigantes Plaki",
+      "Loukoumades", "Baklava", "Galaktoboureko", "Kourabiedes", "Melomakarona",
+      "Souvla", "Lamb Kleftiko"
+    ],
+    "brazilian": [
+      "Churrasco", "Picanha", "Costela", "Fraldinha", "Linguica",
+      "Feijoada", "Feijao Tropeiro", "Tutu de Feijao", "Moqueca", "Vatapa",
+      "Coxinha", "Pao de Queijo", "Esfiha", "Pastel", "Kibe",
+      "Acaraje", "Tapioca", "Acai Bowl", "Brigadeiro", "Beijinho",
+      "Pudim", "Quindim", "Romeo e Julieta"
+    ],
+    "ethiopian": [
+      "Injera", "Doro Wat", "Siga Wat", "Misir Wat", "Yatakilt Wat",
+      "Tibs", "Kitfo", "Gored Gored", "Ayib", "Shiro",
+      "Berbere Spiced Chicken", "Zilzil Tibs", "Key Wat", "Alicha",
+      "Ethiopian Coffee", "Tej"
+    ],
+    "caribbean": [
+      "Jerk Chicken", "Jerk Pork", "Oxtail Stew", "Curry Goat", "Brown Stew Chicken",
+      "Rice and Peas", "Jamaican Patty", "Ackee and Saltfish", "Escovitch Fish",
+      "Callaloo", "Festival", "Bammy", "Plantains", "Roti",
+      "Doubles", "Pelau", "Cou-Cou", "Flying Fish", "Conch Fritters",
+      "Rum Cake", "Coconut Drops"
+    ],
+    "german": [
+      "Wiener Schnitzel", "Schweinshaxe", "Sauerbraten", "Rouladen", "Königsberger Klopse",
+      "Bratwurst", "Currywurst", "Weisswurst", "Bockwurst", "Leberkäse",
+      "Kartoffelsalat", "Sauerkraut", "Rotkohl", "Spätzle", "Knödel",
+      "Bretzel", "Brötchen", "Stollen", "Schwarzwälder Kirschtorte", "Apfelstrudel",
+      "Käsespätzle", "Maultaschen", "Labskaus"
+    ],
+    "british": [
+      "Fish and Chips", "Bangers and Mash", "Shepherd's Pie", "Cottage Pie", "Steak and Kidney Pie",
+      "Sunday Roast", "Yorkshire Pudding", "Toad in the Hole", "Cornish Pasty", "Scotch Egg",
+      "Full English Breakfast", "Black Pudding", "Kedgeree", "Ploughman's Lunch",
+      "Beef Wellington", "Lancashire Hotpot", "Bubble and Squeak", "Haggis",
+      "Sticky Toffee Pudding", "Trifle", "Spotted Dick", "Eton Mess", "Scones with Clotted Cream"
+    ],
+    "middle_eastern": [
+      "Shawarma", "Falafel", "Hummus", "Baba Ganoush", "Tabbouleh", "Fattoush",
+      "Kebab", "Shish Tawook", "Kofta Kebab", "Adana Kebab", "Doner Kebab",
+      "Kibbeh", "Sambousek", "Fatayer", "Manakish", "Lahmacun",
+      "Shakshuka", "Ful Medames", "Koshari", "Musakhan", "Mansaf",
+      "Lamb Shawarma", "Chicken Shawarma", "Mixed Grill", "Mahshi",
+      "Kanafeh", "Baklava", "Maamoul", "Basbousa", "Halva", "Umm Ali"
+    ],
+    "desserts": [
+      "Chocolate Cake", "Vanilla Cake", "Red Velvet Cake", "Carrot Cake", "Cheesecake",
+      "New York Cheesecake", "Tiramisu", "Black Forest Cake", "Angel Food Cake", "Pound Cake",
+      "Brownies", "Blondies", "Chocolate Chip Cookies", "Oatmeal Cookies", "Snickerdoodles",
+      "Sugar Cookies", "Peanut Butter Cookies", "Macarons", "Shortbread", "Biscotti",
+      "Apple Pie", "Pumpkin Pie", "Pecan Pie", "Key Lime Pie", "Lemon Meringue Pie",
+      "Banana Cream Pie", "Coconut Cream Pie", "Cherry Pie", "Blueberry Pie", "Peach Cobbler",
+      "Ice Cream", "Gelato", "Sorbet", "Frozen Yogurt", "Sundae", "Banana Split",
+      "Chocolate Mousse", "Panna Cotta", "Crème Brûlée", "Flan", "Custard", "Pudding",
+      "Donuts", "Churros", "Funnel Cake", "Cannoli", "Eclairs", "Cream Puffs",
+      "Croissant", "Danish Pastry", "Cinnamon Roll", "Baklava", "Mochi", "Tres Leches"
+    ],
+    "breakfast": [
+      "Pancakes", "Buttermilk Pancakes", "Blueberry Pancakes", "Chocolate Chip Pancakes",
+      "Waffles", "Belgian Waffles", "French Toast", "Stuffed French Toast",
+      "Scrambled Eggs", "Fried Eggs", "Poached Eggs", "Eggs Benedict", "Eggs Florentine",
+      "Omelet", "Western Omelet", "Cheese Omelet", "Spanish Omelet", "Frittata",
+      "Bacon", "Sausage Links", "Hash Browns", "Home Fries", "Breakfast Burrito",
+      "Avocado Toast", "Bagel with Cream Cheese", "English Muffin", "Toast and Jam",
+      "Oatmeal", "Granola", "Yogurt Parfait", "Acai Bowl", "Smoothie Bowl", "Cereal"
+    ],
+    "snacks": [
+      "Potato Chips", "Tortilla Chips", "Pretzels", "Popcorn", "Trail Mix",
+      "Mixed Nuts", "Almonds", "Cashews", "Peanuts", "Pistachios",
+      "Cheese and Crackers", "Hummus and Pita", "Guacamole and Chips", "Salsa and Chips",
+      "Veggie Sticks", "Fruit Salad", "Apple Slices", "Celery with Peanut Butter",
+      "Granola Bar", "Energy Bar", "Protein Bar", "Rice Cakes", "Dried Fruit",
+      "Beef Jerky", "Cheese Puffs", "Goldfish Crackers", "Animal Crackers",
+      "Fruit Snacks", "Yogurt Bites", "String Cheese", "Mozzarella Sticks"
+    ]
+  }
 }

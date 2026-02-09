@@ -2,14 +2,17 @@ import { randomNumberTool, diceRollerTool, coinFlipTool } from '../../tools/numb
 import { createPRNG } from '../../prng'
 
 describe('Number Tools', () => {
-  const createContext = (options: any = {}) => ({
-    seed: 'test-seed',
-    rng: () => createPRNG('test-seed').next(),
-    options: {
-      ...randomNumberTool.defaultOptions,
-      ...options,
-    },
-  })
+  const createContext = (options: any = {}) => {
+    const prng = createPRNG('test-seed')
+    return {
+      seed: 'test-seed',
+      rng: () => prng.next(),
+      options: {
+        ...randomNumberTool.defaultOptions,
+        ...options,
+      },
+    }
+  }
 
   describe('randomNumberTool', () => {
     test('should generate numbers within range', () => {

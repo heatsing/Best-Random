@@ -72,8 +72,8 @@ export const randomLetterTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Letter Generator: Pick Letters from A to Z | BestRandom",
-    description: "Generate random letters (A-Z) with optional numbers and symbols. Perfect for games, learning activities, password characters, or creative exercises.",
+    title: "Random Letter Generator - A to Z | Numbers & Symbols | Free",
+    description: "Generate random letters A-Z with optional numbers and symbols. Perfect for games, learning, password characters, or creative exercises. Free online!",
     h1: "Random Letter Generator",
     faq: [
       { question: "What characters can be generated?", answer: "Letters A-Z, optionally with numbers 0-9 and symbols." },
@@ -163,8 +163,8 @@ export const randomPhoneNumberTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Phone Number Generator: Get Fake Numbers for Testing | BestRandom",
-    description: "Generate random US phone numbers in standard or international format. Ideal for form testing, app development, or placeholder contact data.",
+    title: "Random Phone Number Generator - Fake US Numbers for Testing",
+    description: "Generate random US phone numbers in standard or international format. Ideal for form testing, app development, or placeholder data. Free online!",
     h1: "Random Phone Number Generator",
     faq: [
       { question: "What formats are available?", answer: "US format (XXX) XXX-XXXX and International format +1 XXX XXX XXXX are available." },
@@ -249,8 +249,8 @@ export const randomUsernameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Username Generator: What Should My Username Be? | BestRandom",
-    description: "Generate creative usernames for social media, gaming, or any online account. Choose from AdjectiveNoun, AdjectiveNounSuffix, or NounSuffix styles.",
+    title: "Random Username Generator - Creative Usernames for Gaming & Social",
+    description: "Generate creative usernames for gaming, social media, or online accounts. AdjectiveNoun, AdjectiveNounSuffix, or NounSuffix styles. Free & instant!",
     h1: "Random Username Generator",
     faq: [
       { question: "What styles are available?", answer: "AdjectiveNoun (e.g., CoolWolf), AdjectiveNounSuffix (e.g., CoolWolf99), and NounSuffix (e.g., Wolf99)." },
@@ -316,8 +316,8 @@ export const randomAddressTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Address Generator: Create Fake US Addresses | BestRandom",
-    description: "Generate realistic fictional US street addresses with city, state, and ZIP code. Perfect for form testing, app development, or mock data generation.",
+    title: "Random Address Generator - Fake US Addresses for Testing | Free",
+    description: "Generate realistic fake US addresses with street, city, state & ZIP. Perfect for form testing, development, or mock data. Free online address generator!",
     h1: "Random Address Generator",
     faq: [
       { question: "Are these real addresses?", answer: "No. All addresses are randomly generated and fictional." },
@@ -400,8 +400,8 @@ export const randomItemTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Item Generator: Pick a Random Everyday Object | BestRandom",
-    description: "Generate random everyday items from household, kitchen, office, outdoor, tech, and clothing categories. Over 120 objects for scavenger hunts or games.",
+    title: "Random Item Generator - 300+ Everyday Objects by Category | Free",
+    description: "Generate random everyday items from household, kitchen, office, outdoor, tech, sports, toys & clothing. 300+ objects for scavenger hunts or games. Free!",
     h1: "Random Item Generator",
     faq: [
       { question: "What categories are available?", answer: "Household, kitchen, office, outdoor, tech, and clothing." },
@@ -484,8 +484,8 @@ export const randomEmojiTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Emoji Generator: Get Random Emojis to Copy & Paste | BestRandom",
-    description: "Generate random emojis from smileys, animals, food, activities, travel, and objects. Over 180 emojis to copy and paste for messaging or social media.",
+    title: "Random Emoji Generator - 200+ Emojis to Copy & Paste | Free",
+    description: "Generate random emojis from smileys, animals, food, activities, travel & objects. 200+ emojis to copy & paste for messaging or social media. Free!",
     h1: "Random Emoji Generator",
     faq: [
       { question: "What categories are available?", answer: "Smileys, animals, food, activities, travel, and objects." },

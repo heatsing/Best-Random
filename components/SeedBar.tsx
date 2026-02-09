@@ -20,6 +20,13 @@ export function SeedBar({ seed, onSeedChange, onRandomSeed, onShare, className }
   const [copied, setCopied] = useState(false)
 
   const handleCopySeed = async () => {
+    if (!seed) {
+      toast({
+        title: "No seed",
+        description: "Click Generate first to create a seed",
+      })
+      return
+    }
     try {
       await navigator.clipboard.writeText(seed)
       setCopied(true)
@@ -98,6 +105,7 @@ export function SeedBar({ seed, onSeedChange, onRandomSeed, onShare, className }
           variant="outline"
           size="sm"
           onClick={handleCopySeed}
+          disabled={!seed}
           aria-label="Copy seed"
         >
           {copied ? (
@@ -118,6 +126,7 @@ export function SeedBar({ seed, onSeedChange, onRandomSeed, onShare, className }
             variant="outline"
             size="sm"
             onClick={handleShare}
+            disabled={!seed}
             aria-label="Share link"
           >
             <Share2 className="h-4 w-4 mr-2" aria-hidden="true" />

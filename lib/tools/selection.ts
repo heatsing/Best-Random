@@ -108,8 +108,8 @@ export const randomPickerTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Picker: Who Should Go First? Pick Instantly | BestRandom",
-    description: "Randomly pick a winner from any list. Spin a wheel or pick instantly with weighted probabilities. Fair, shareable, and repeatable with seeds.",
+    title: "Random Picker - Who Goes First? Pick From Any List | Free",
+    description: "Randomly pick a winner from any list. Spin a wheel or instant pick with weighted odds. Fair, shareable, and repeatable. Perfect for decisions! Free online!",
     h1: "Random Picker",
     faq: [
       { question: "How does the random picker work?", answer: "It randomly selects items from your input list." },
@@ -236,8 +236,8 @@ export const randomTeamTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Team Generator: Divide Groups Fairly in Seconds | BestRandom",
-    description: "Split any group into balanced random teams instantly. Perfect for sports, classrooms, hackathons, or project assignments. Shareable and repeatable.",
+    title: "Random Team Generator - Split Groups Fairly | Balanced Teams",
+    description: "Split any group into balanced random teams instantly. Perfect for sports, classrooms, hackathons, or projects. Shareable results. 100% free online!",
     h1: "Random Team Generator",
     faq: [
       { question: "How does the team generator work?", answer: "It randomly shuffles your members and distributes them evenly or randomly across the specified number of teams." },
@@ -394,8 +394,8 @@ export const secretSantaTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Secret Santa Generator: Create Gift Exchange Pairings Online | BestRandom",
-    description: "Generate fair Secret Santa assignments with custom exclusions. No one draws themselves, results are shareable, and pairings are completely random.",
+    title: "Secret Santa Generator - Create Gift Exchange Pairings | Free",
+    description: "Generate fair Secret Santa assignments with exclusion rules. No one draws themselves. Perfect for office parties, families, or friend groups. Free online!",
     h1: "Secret Santa Generator",
     faq: [
       { question: "How does Secret Santa assignment work?", answer: "It randomly pairs each person with another, ensuring no one gets themselves and all exclusions are respected." },
@@ -507,8 +507,8 @@ export const wheelOfNamesTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Wheel of Names: Spin the Wheel & Pick a Winner | BestRandom",
-    description: "Spin a colorful virtual wheel to pick a random name or item from your list. Assign weights, share results, and reproduce spins with a seed.",
+    title: "Wheel of Names - Spin & Pick a Random Winner | Free Online",
+    description: "Spin a colorful virtual wheel to pick a random name or item. Add weights, customize colors, share results. Perfect for giveaways & classrooms. Free!",
     h1: "Wheel of Names",
     faq: [
       { question: "How do I use the Wheel of Names?", answer: "Enter a list of names (one per line), optionally set weights (format: name:weight), then click 'Spin' to pick a random winner." },

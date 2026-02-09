@@ -10,65 +10,113 @@ export const randomNameTool: ToolConfig = {
   slug: "random-name-generator",
   category: "text",
   name: "Random Name Generator",
-  shortDescription: "Generate random names instantly",
-  longDescription: "Generate random names instantly. Choose between full names, first names only, or last names only.",
+  shortDescription: "Generate random names — boy, girl, baby, pet, Japanese & more",
+  longDescription: "Generate random names from 20+ categories. Choose boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, nicknames (cute/cool/funny), band names, Japanese names, or full random identities.",
   generatorType: "list",
   defaultOptions: {
     count: 10,
-    style: "mixed",
-    unique: false
+    nameType: "full",
+    unique: true
   },
   optionSchema: {
     fields: [
       { key: "count", label: "Count", type: "number", default: 10, min: 1, max: 100 },
       {
-        key: "style",
-        label: "Name Style",
+        key: "nameType",
+        label: "Name Type",
         type: "select",
-        default: "mixed",
+        default: "full",
         options: [
-          { value: "modern", label: "Modern" },
-          { value: "classic", label: "Classic" },
-          { value: "mixed", label: "Mixed" }
+          { value: "full", label: "Random Full Names" },
+          { value: "boy", label: "Boy Names" },
+          { value: "girl", label: "Girl Names" },
+          { value: "baby", label: "Baby Names" },
+          { value: "last", label: "Last Names" },
+          { value: "company", label: "Company Names" },
+          { value: "team", label: "Team Names" },
+          { value: "pet", label: "Pet Names" },
+          { value: "dog", label: "Dog Names" },
+          { value: "cat", label: "Cat Names" },
+          { value: "gamertag", label: "Gamertags" },
+          { value: "nickname_cute", label: "Cute Nicknames" },
+          { value: "nickname_cool", label: "Cool Nicknames" },
+          { value: "nickname_funny", label: "Funny Nicknames" },
+          { value: "band", label: "Band Names" },
+          { value: "japanese", label: "Japanese Names" },
+          { value: "identity", label: "Random Identity" }
         ]
       },
-      { key: "unique", label: "Unique names", type: "checkbox", default: false }
+      { key: "unique", label: "Unique names", type: "checkbox", default: true }
     ]
   },
   run: (ctx) => {
-    const { count, style, unique } = ctx.options
+    const { count, nameType, unique } = ctx.options
     const rng = ctx.rng
     const results: any[] = []
     const seen = new Set<string>()
 
-    const firstNames = style === 'modern' 
-      ? namesData.firstNames.modern 
-      : style === 'classic'
-      ? namesData.firstNames.classic
-      : [...namesData.firstNames.modern, ...namesData.firstNames.classic]
-
-    const lastNames = namesData.lastNames
+    const pick = (arr: string[]) => arr[Math.floor(rng() * arr.length)]
 
     for (let i = 0; i < count; i++) {
-      let firstName: string
-      let lastName: string
-      let fullName: string
+      let value: string
       let attempts = 0
 
       do {
-        firstName = firstNames[Math.floor(rng() * firstNames.length)]
-        lastName = lastNames[Math.floor(rng() * lastNames.length)]
-        fullName = `${firstName} ${lastName}`
+        if (nameType === 'full') {
+          const allFirst = [...namesData.firstNames.modern, ...namesData.firstNames.classic]
+          value = `${pick(allFirst)} ${pick(namesData.lastNames)}`
+        } else if (nameType === 'boy') {
+          value = pick(namesData.boyNames)
+        } else if (nameType === 'girl') {
+          value = pick(namesData.girlNames)
+        } else if (nameType === 'baby') {
+          value = pick(namesData.babyNames)
+        } else if (nameType === 'last') {
+          value = pick(namesData.lastNames)
+        } else if (nameType === 'company') {
+          value = pick(namesData.companyNames)
+        } else if (nameType === 'team') {
+          value = pick(namesData.teamNames)
+        } else if (nameType === 'pet') {
+          value = pick(namesData.petNames)
+        } else if (nameType === 'dog') {
+          value = pick(namesData.dogNames)
+        } else if (nameType === 'cat') {
+          value = pick(namesData.catNames)
+        } else if (nameType === 'gamertag') {
+          value = pick(namesData.gamertags)
+        } else if (nameType === 'nickname_cute') {
+          value = pick(namesData.nicknames.cute)
+        } else if (nameType === 'nickname_cool') {
+          value = pick(namesData.nicknames.cool)
+        } else if (nameType === 'nickname_funny') {
+          value = pick(namesData.nicknames.funny)
+        } else if (nameType === 'band') {
+          value = pick(namesData.bandNames)
+        } else if (nameType === 'japanese') {
+          const gender = rng() < 0.5 ? 'male' : 'female'
+          const first = pick(namesData.japaneseNames[gender])
+          const last = pick(namesData.japaneseNames.lastNames)
+          value = `${last} ${first}`
+        } else if (nameType === 'identity') {
+          const allFirst = [...namesData.firstNames.modern, ...namesData.firstNames.classic]
+          const name = `${pick(allFirst)} ${pick(namesData.lastNames)}`
+          const age = 18 + Math.floor(rng() * 50)
+          const occ = pick(namesData.identities.occupations)
+          const city = pick(namesData.identities.cities)
+          value = `${name}, ${age}, ${occ}, ${city}`
+        } else {
+          const allFirst = [...namesData.firstNames.modern, ...namesData.firstNames.classic]
+          value = `${pick(allFirst)} ${pick(namesData.lastNames)}`
+        }
         attempts++
-      } while (unique && seen.has(fullName) && attempts < 1000)
+      } while (unique && seen.has(value) && attempts < 1000)
 
-      seen.add(fullName)
+      seen.add(value)
       results.push({
         id: `name-${i}`,
-        value: fullName,
-        formatted: fullName,
-        firstName,
-        lastName
+        value,
+        formatted: value
       })
     }
 
@@ -83,16 +131,16 @@ export const randomNameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Name Generator: Create Realistic Names Instantly | BestRandom",
-    description: "Generate random first and last names for characters, testing, or creative projects. Choose modern or classic styles, ensure uniqueness, and share results with a seed.",
+    title: "Random Name Generator - 500+ Names | Boy, Girl, Baby, Pet & Japanese",
+    description: "Generate random names from 20+ categories: boy, girl, baby, last, company, team, pet, dog, cat, gamertag, nickname, band, Japanese & identities. Free!",
     h1: "Random Name Generator",
     faq: [
-      { question: "What types of names can I generate?", answer: "You can generate full names, first names, or last names." },
-      { question: "Are the names random every time?", answer: "Yes, unless you reuse the same seed to repeat results." },
-      { question: "Can I generate multiple names at once?", answer: "Yes. Choose how many names you want to generate." },
-      { question: "Can I avoid duplicate names?", answer: "Yes. Enable the unique option to remove duplicates." },
-      { question: "Can I share the generated names?", answer: "Yes. Shared links keep the same seed and settings." },
-      { question: "Are these names real?", answer: "They are generated from common English name datasets." }
+      { question: "What types of names can I generate?", answer: "Over 20 types: full names, boy names, girl names, baby names, last names, company names, team names, pet/dog/cat names, gamertags, cute/cool/funny nicknames, band names, Japanese names, and random identities." },
+      { question: "Can I generate boy or girl names?", answer: "Yes. Select 'Boy Names' or 'Girl Names' from the Name Type dropdown." },
+      { question: "Can I generate pet or dog names?", answer: "Yes. Choose 'Pet Names', 'Dog Names', or 'Cat Names' from the dropdown." },
+      { question: "What is Random Identity?", answer: "It generates a full fictional identity with name, age, occupation, and city." },
+      { question: "Can I generate Japanese names?", answer: "Yes. Select 'Japanese Names' to get authentic Japanese first and last names." },
+      { question: "Is this tool free?", answer: "Yes. No limits or sign-up required." }
     ]
   },
   icon: User,
@@ -167,8 +215,8 @@ export const randomWordTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Word Generator: Get Random English Words in Seconds | BestRandom",
-    description: "Generate random English words with adjustable length. Perfect for word games, brainstorming, vocabulary practice, or creative writing prompts.",
+    title: "Random Word Generator - 500+ English Words | Adjustable Length",
+    description: "Generate random English words with adjustable length (3-20 letters). Perfect for Scrabble, word games, vocabulary practice, or writing prompts. Free!",
     h1: "Random Word Generator",
     faq: [
       { question: "How are the random words generated?", answer: "Words are selected from a built-in English word list." },
@@ -236,8 +284,8 @@ export const lastNameTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Last Name Generator: Find Random Surnames & Family Names | BestRandom",
-    description: "Generate random last names from a dataset of real English surnames. Great for fiction writing, game characters, form testing, or genealogy research.",
+    title: "Last Name Generator - 100+ Real Surnames & Family Names | Free",
+    description: "Generate random last names from real English surnames. Great for fiction writing, character creation, form testing, or genealogy research. Free online!",
     h1: "Last Name Generator",
     faq: [
       { question: "What random last names are available?", answer: "Random last names are selected from a built-in dataset of common English surnames and family names." },
@@ -333,8 +381,8 @@ export const randomTextTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Text Generator: Create Placeholder Text Instantly | BestRandom",
-    description: "Generate random placeholder text for UI mockups, design testing, or layout prototyping. Choose short, medium, or long output with repeatable seeds.",
+    title: "Random Text Generator - Lorem Ipsum Alternative | Free Online",
+    description: "Generate random placeholder text for UI mockups, design testing, or layouts. Short, medium, or long output with repeatable seeds. Free alternative to Lorem Ipsum!",
     h1: "Random Text Generator",
     faq: [
       { question: "What kind of text is generated?", answer: "Short random sentences and placeholder-style text." },
@@ -465,8 +513,8 @@ export const randomEmailTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Email Generator: Create Test Email Addresses Fast | BestRandom",
-    description: "Generate realistic random email addresses for software testing, form validation, or placeholder data. Choose name-based, username, or random formats with custom domains.",
+    title: "Random Email Generator - Fake Test Emails | Custom Domains",
+    description: "Generate realistic fake email addresses for testing. Name-based, username, or random formats with custom domains. Perfect for QA testing. Free & instant!",
     h1: "Random Email Generator",
     faq: [
       { question: "What email formats are supported?", answer: "You can choose name-based (firstname.lastname123), username-based, or completely random formats." },
@@ -593,8 +641,8 @@ export const randomWebsiteTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Random Website Generator: Create Fake URLs for Testing | BestRandom",
-    description: "Generate random website URLs with custom TLDs, subdomains, and paths. Ideal for development testing, UI mockups, and placeholder data.",
+    title: "Random Website Generator - Fake URLs for Testing | Custom TLDs",
+    description: "Generate random website URLs with custom TLDs, subdomains, and paths. Perfect for dev testing, UI mockups, and placeholder data. Free URL generator!",
     h1: "Random Website Generator",
     faq: [
       { question: "What URL formats are supported?", answer: "You can choose simple domains (example.com), subdomains (blog.example.com), or paths (example.com/path/to/page)." },
