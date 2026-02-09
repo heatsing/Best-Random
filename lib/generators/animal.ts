@@ -24,21 +24,28 @@ function getCombinedSeed(baseSeed: string, params: Omit<AnimalGeneratorParams, '
 
 export function generateAnimals(params: AnimalGeneratorParams): AnimalResult[] {
   const { count, showCategory, unique = false, seed: baseSeed } = params;
-  
+
   // Generate deterministic seed from base seed + params
   const paramsForSeed = { count, showCategory, unique };
-  const combinedSeed = baseSeed 
+  const combinedSeed = baseSeed
     ? getCombinedSeed(baseSeed, paramsForSeed)
     : `${Date.now()}-${Math.random()}`;
-  
+
   const prng = createPRNG(combinedSeed);
   const results: AnimalResult[] = [];
   const seen = new Set<string>();
 
-  const allAnimals = animalsData.animals;
+  // Flatten the categorized animals data into an array with category info
+  const allAnimals: { name: string; category: string }[] = [];
+  const animalsObj = animalsData.animals as Record<string, string[]>;
+  for (const [category, names] of Object.entries(animalsObj)) {
+    for (const name of names) {
+      allAnimals.push({ name, category });
+    }
+  }
 
   for (let i = 0; i < count; i++) {
-    let animal: typeof allAnimals[0];
+    let animal: { name: string; category: string };
     let attempts = 0;
 
     do {
