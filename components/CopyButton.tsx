@@ -12,7 +12,7 @@ interface CopyButtonProps {
   className?: string
 }
 
-export function CopyButton({ text, label = "复制", className }: CopyButtonProps) {
+export function CopyButton({ text, label = "Copy", className }: CopyButtonProps) {
   const [copied, setCopied] = useState(false)
   const { toast } = useToast()
 
@@ -21,14 +21,14 @@ export function CopyButton({ text, label = "复制", className }: CopyButtonProp
       await copyToClipboard(text)
       setCopied(true)
       toast({
-        title: "已复制",
-        description: "内容已复制到剪贴板",
+        title: "Copied",
+        description: "Content has been copied to the clipboard",
       })
       setTimeout(() => setCopied(false), 2000)
     } catch (error) {
       toast({
-        title: "复制失败",
-        description: "无法复制到剪贴板",
+        title: "Copy failed",
+        description: "Unable to copy to the clipboard",
         variant: "destructive",
       })
     }
@@ -45,7 +45,7 @@ export function CopyButton({ text, label = "复制", className }: CopyButtonProp
       {copied ? (
         <>
           <Check className="mr-2 h-4 w-4" />
-          已复制
+          Copied
         </>
       ) : (
         <>

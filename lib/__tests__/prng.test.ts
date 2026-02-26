@@ -1,7 +1,7 @@
 import { Mulberry32, createPRNG } from '../prng'
 
 describe('Mulberry32 PRNG', () => {
-  test('相同种子产生相同序列', () => {
+  test('same seed produces same sequence', () => {
     const prng1 = createPRNG('test-seed-12345')
     const prng2 = createPRNG('test-seed-12345')
     
@@ -10,7 +10,7 @@ describe('Mulberry32 PRNG', () => {
     }
   })
 
-  test('不同种子产生不同序列', () => {
+  test('different seeds produce different sequences', () => {
     const prng1 = createPRNG('test-seed-12345')
     const prng2 = createPRNG('test-seed-67890')
     
@@ -20,7 +20,7 @@ describe('Mulberry32 PRNG', () => {
     expect(values1).not.toEqual(values2)
   })
 
-  test('nextInt 在范围内', () => {
+  test('nextInt returns values in range', () => {
     const prng = createPRNG('test-seed-12345')
     
     for (let i = 0; i < 100; i++) {
@@ -30,7 +30,7 @@ describe('Mulberry32 PRNG', () => {
     }
   })
 
-  test('nextFloat 在范围内', () => {
+  test('nextFloat returns values in range', () => {
     const prng = createPRNG('test-seed-12345')
     
     for (let i = 0; i < 100; i++) {
@@ -40,7 +40,7 @@ describe('Mulberry32 PRNG', () => {
     }
   })
 
-  test('shuffle 保持元素', () => {
+  test('shuffle keeps all elements', () => {
     const prng = createPRNG('test-seed-12345')
     const array = [1, 2, 3, 4, 5]
     const shuffled = prng.shuffle(array)
@@ -49,7 +49,7 @@ describe('Mulberry32 PRNG', () => {
     expect(shuffled.sort()).toEqual(array.sort())
   })
 
-  test('pick 从数组中选取', () => {
+  test('pick selects element from array', () => {
     const prng = createPRNG('test-seed-12345')
     const array = [1, 2, 3, 4, 5]
     const picked = prng.pick(array)
@@ -57,7 +57,7 @@ describe('Mulberry32 PRNG', () => {
     expect(array).toContain(picked)
   })
 
-  test('pickMultiple 返回正确数量', () => {
+  test('pickMultiple returns correct count', () => {
     const prng = createPRNG('test-seed-12345')
     const array = [1, 2, 3, 4, 5]
     const picked = prng.pickMultiple(array, 3)
