@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { generateWebsiteSchema } from "@/lib/seo"
 import { CommandPalette } from "@/components/SearchCommand"
 import { ThemeProvider } from "@/components/ThemeProvider"
+import { GoogleAnalytics } from "@/components/GoogleAnalytics"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -72,6 +73,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <GoogleAnalytics />
         <ThemeProvider>
           <Header />
           <main className="min-h-[calc(100vh-4rem)]">
