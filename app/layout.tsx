@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More",
-    template: "%s | BestRandom",
+    default: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More | BestRandom.net",
+    template: "%s | BestRandom.net",
   },
   description: "The #1 free random generator site with 44+ tools. Generate random numbers, names, passwords, colors, teams, movies & more. Instant results, shareable links. 100% free!",
   keywords: ["random generator", "random number generator", "random name generator", "random password generator", "random color generator", "random picker", "random team generator", "wheel of names", "dice roller", "coin flip", "online random tools", "free random generator"],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://bestrandom.net",
     siteName: "BestRandom",
-    title: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More",
+    title: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More | BestRandom.net",
     description: "The #1 free random generator site with 44+ tools. Generate random numbers, names, passwords, colors, teams, movies & more. Instant results, shareable links. 100% free!",
     images: [
       {
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More",
+    title: "BestRandom - 44 Free Random Generators | Numbers, Names, Passwords & More | BestRandom.net",
     description: "The #1 free random generator site with 44+ tools. Generate random numbers, names, passwords, colors, teams, movies & more. Instant results, shareable links. 100% free!",
     images: ["https://bestrandom.net/og-image-v2.png"],
   },

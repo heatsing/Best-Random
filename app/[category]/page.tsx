@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   
   return generateSEOMetadata({
-    title: `${category.name} Generators | BestRandom`,
+    title: `${category.name} Generators`,
     description: category.description,
     path: `/${category.id}`,
   })
