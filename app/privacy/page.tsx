@@ -2,7 +2,7 @@ import { generateMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = generateMetadata({
-  title: "Privacy Policy – BestRandom",
+  title: "Privacy Policy",
   description: "BestRandom's privacy policy explaining how we collect, use, and protect your data.",
   path: "/privacy",
 })
