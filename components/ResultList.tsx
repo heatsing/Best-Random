@@ -9,6 +9,11 @@ import { cn } from "@/lib/utils"
 export interface ResultItem {
   id: string
   value: string | React.ReactNode
+  /**
+   * Optional plain-text value used for copy/export.
+   * Falls back to `value` when not provided.
+   */
+  copyText?: string
   locked?: boolean
 }
 
@@ -37,9 +42,10 @@ export function ResultList({
 }: ResultListProps) {
   const { toast } = useToast()
 
-  const handleCopy = async (value: string) => {
+  const handleCopy = async (item: ResultItem) => {
     try {
-      const text = typeof value === 'string' ? value : String(value)
+      const raw = item.copyText ?? item.value
+      const text = typeof raw === 'string' ? raw : String(raw)
       await navigator.clipboard.writeText(text)
       toast({
         title: "Copied",
@@ -58,7 +64,10 @@ export function ResultList({
   const handleCopyAll = async () => {
     try {
       const allText = items
-        .map(item => typeof item.value === 'string' ? item.value : String(item.value))
+        .map(item => {
+          const raw = item.copyText ?? item.value
+          return typeof raw === 'string' ? raw : String(raw)
+        })
         .join('\n')
       await navigator.clipboard.writeText(allText)
       toast({
@@ -79,8 +88,9 @@ export function ResultList({
     if (!onDownloadCSV) {
       const csv = items
         .map(item => {
-          const value = typeof item.value === 'string' ? item.value : String(item.value)
-          return `"${value.replace(/"/g, '""')}"`
+          const raw = item.copyText ?? item.value
+          const text = typeof raw === 'string' ? raw : String(raw)
+          return `"${text.replace(/"/g, '""')}"`
         })
         .join('\n')
       
@@ -151,7 +161,7 @@ export function ResultList({
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => handleCopy(typeof item.value === 'string' ? item.value : String(item.value))}
+                  onClick={() => handleCopy(item)}
                   className="h-8 w-8"
                   aria-label="Copy item"
                 >

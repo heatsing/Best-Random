@@ -2,13 +2,14 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import * as React from "react"
+import Link from "next/link"
 import { useSearchParams, useRouter } from "next/navigation"
 import { ToolLayout } from "@/components/ToolLayout"
 import Script from "next/script"
 import { generateFAQSchema } from "@/lib/seo"
 import type { GeneratedResult } from "@/lib/registry"
 import { createPRNG } from "@/lib/prng"
-import { createCombinedSeed, getToolBySlug } from "@/lib/registry"
+import { createCombinedSeed, getToolBySlug, getToolsByCategory } from "@/lib/registry"
 
 interface ToolPageClientProps {
   toolData: {
@@ -91,6 +92,14 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
   
   // Get full tool config including run function on client side
   const tool = getToolBySlug(toolData.slug)
+
+  // Related tools from same category (excluding current tool)
+  const relatedTools = tool
+    ? getToolsByCategory(tool.category)
+        .filter(t => t.slug !== tool.slug)
+        .sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0))
+        .slice(0, 4)
+    : []
 
   // Generate results - always creates a fresh seed for new results
   const generate = useCallback(() => {
@@ -220,6 +229,35 @@ export function ToolPageClient({ toolData }: ToolPageClientProps) {
           ))}
         </div>
       </div>
+
+      {/* Related tools */}
+      {relatedTools.length > 0 && (
+        <div className="container py-8 max-w-6xl mx-auto mt-4 mb-16">
+          <h2 className="text-2xl font-semibold mb-4">Related Random Tools</h2>
+          <p className="text-muted-foreground mb-6">
+            Try these other random generators that users often explore next.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {relatedTools.map((related) => (
+              <Link
+                key={related.slug}
+                href={`/${related.category}/${related.slug}`}
+                className="group block border rounded-lg p-4 bg-card hover:bg-accent transition-colors"
+              >
+                <div className="text-sm uppercase text-muted-foreground tracking-wide mb-1">
+                  {related.category}
+                </div>
+                <h3 className="font-semibold mb-2 group-hover:text-primary line-clamp-2">
+                  {related.name}
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-3">
+                  {related.shortDescription}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   )
 }

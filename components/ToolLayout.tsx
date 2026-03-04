@@ -55,8 +55,8 @@ export function ToolLayout({
     if (!result) return ""
     return result.items.map((item: any) => {
       if (typeof item === 'string') return item
-      if (item.value !== undefined) return String(item.value)
       if (item.formatted !== undefined) return String(item.formatted)
+      if (item.value !== undefined) return String(item.value)
       return JSON.stringify(item)
     }).join("\n")
   }
@@ -66,8 +66,8 @@ export function ToolLayout({
     
     const csv = result.items.map((item: any) => {
       if (typeof item === 'string') return item
-      if (item.value !== undefined) return String(item.value)
       if (item.formatted !== undefined) return String(item.formatted)
+      if (item.value !== undefined) return String(item.value)
       return JSON.stringify(item)
     }).join('\n')
     
@@ -124,20 +124,45 @@ export function ToolLayout({
   }
 
   const resultItems = result?.items.map((item: any, i: number) => {
-    let value: string | ReactNode
+    // Plain text used for copy/export
+    let copyText: string
     if (typeof item === 'string') {
-      value = item
-    } else if (item.value !== undefined) {
-      value = String(item.value)
+      copyText = item
     } else if (item.formatted !== undefined) {
-      value = item.formatted
+      copyText = String(item.formatted)
+    } else if (item.value !== undefined) {
+      copyText = String(item.value)
     } else {
-      value = JSON.stringify(item)
+      copyText = JSON.stringify(item)
+    }
+
+    let value: string | ReactNode = copyText
+
+    // Special display for random-country-generator: SVG flag + name text
+    if (tool.slug === "random-country-generator" && typeof item === "object") {
+      const code = (item.code || "").toLowerCase()
+      const hasCode = code.length === 2
+      const flagUrl = hasCode ? `https://flagcdn.com/${code}.svg` : undefined
+
+      value = (
+        <span className="inline-flex items-center gap-2">
+          {flagUrl && (
+            <img
+              src={flagUrl}
+              alt={item.name ? `${item.name} flag` : "Country flag"}
+              className="h-4 w-6 rounded-sm border border-border object-cover"
+              loading="lazy"
+            />
+          )}
+          <span>{copyText}</span>
+        </span>
+      )
     }
     
     return {
       id: item.id || `item-${i}`,
       value,
+      copyText,
       locked: item.locked
     }
   }) || []
