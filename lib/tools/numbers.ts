@@ -216,11 +216,11 @@ export const diceRollerTool: ToolConfig = {
   popular: true
 }
 
-// Coin Flip
+// Coin Flipper
 export const coinFlipTool: ToolConfig = {
   slug: "coin-flip",
   category: "games",
-  name: "Coin Flip",
+  name: "Coin Flipper",
   shortDescription: "Flip a coin multiple times",
   longDescription: "Flip a coin one or multiple times. See results and statistics.",
   generatorType: "game",
@@ -270,9 +270,9 @@ export const coinFlipTool: ToolConfig = {
     }
   },
   seo: {
-    title: "Coin Flip Online - Heads or Tails? Flip Now | Free & Fair",
+    title: "Coin Flipper Online - Heads or Tails? Flip Now | Free & Fair",
     description: "Flip a coin online — heads or tails? See live statistics for multiple flips. Fair, instant, and shareable results. Perfect for decisions. 100% free!",
-    h1: "Coin Flip",
+    h1: "Coin Flipper",
     faq: [
       { question: "Can I flip multiple coins?", answer: "Yes. Set the number of flips to flip multiple times." },
       { question: "Are the results truly random?", answer: "Yes. Results are generated using a high-quality random number generator." }

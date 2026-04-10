@@ -6,7 +6,7 @@ import type { Metadata } from "next"
 import { categories, getPopularTools, tools } from "@/lib/registry"
 
 export const metadata: Metadata = generateMetadata({
-  title: "BestRandom – Fast, Seeded & Shareable Random Generators",
+  title: "The Best Random Tools & Generators Website Online",
   description: "Generate truly random numbers, names, words, colors, passwords, and more. All tools support seeds for repeatability and shareable links.",
   path: "/",
 })
@@ -19,7 +19,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section with Structural Lines */}
       <section className="border-b-2 border-border">
-        <div className="container max-w-7xl mx-auto px-6 py-20">
+        <div className="container max-w-7xl mx-auto px-6 py-[50px]">
           <div className="text-center mb-16">
             <Image
               src="/logo-v2.svg"
