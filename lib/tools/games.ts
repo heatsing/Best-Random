@@ -1,4 +1,4 @@
-import { Coins, Dice1, Ticket, Grid3X3, PlayingCards, Bird } from "lucide-react"
+import { Coins, Dice1, Ticket, Grid3X3, Shuffle, Bird } from "lucide-react"
 import type { ToolConfig } from "../registry"
 
 export const lotteryQuickPickTool: ToolConfig = {
@@ -530,7 +530,7 @@ export const playingCardShufflerTool: ToolConfig = {
       { question: "Can I repeat the same shuffle?", answer: "Yes. Use the same seed and options." },
     ],
   },
-  icon: PlayingCards,
+  icon: Shuffle,
 }
 
 export const birdieFundGeneratorTool: ToolConfig = {
