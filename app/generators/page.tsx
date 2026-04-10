@@ -3,6 +3,9 @@ import { generateMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 import { categories, getToolsByCategory } from "@/lib/registry"
 
+export const dynamic = "force-static"
+export const revalidate = 86400
+
 export const metadata: Metadata = generateMetadata({
   title: "All Generators",
   description: "Browse all available random generator tools including numbers, names, words, colors, passwords, animals, and more.",

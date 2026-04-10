@@ -5,51 +5,137 @@ export const lotteryQuickPickTool: ToolConfig = {
   slug: "lottery-quick-pick",
   category: "games",
   name: "Lottery Quick Pick",
-  shortDescription: "Generate random lottery numbers instantly",
-  longDescription: "Generate lottery quick pick numbers with unique picks in your chosen range. Perfect for practice, simulations, or fun random draws.",
+  shortDescription: "Quick pick lottery tickets with configurable rules",
+  longDescription: "Quick pick lottery tickets using configurable country, lottery style, and number rules. Built to match the familiar workflow while keeping BestRandom's site-wide UI.",
   generatorType: "list",
   defaultOptions: {
-    picks: 6,
-    maxNumber: 49,
-    includeBonus: true,
+    ticketCount: 2,
+    country: "usa",
+    lottery: "powerball",
+    mainCount: 5,
+    mainMax: 69,
+    bonusCount: 1,
+    bonusMax: 26,
   },
   optionSchema: {
     fields: [
-      { key: "picks", label: "Numbers to Pick", type: "number", default: 6, min: 3, max: 12 },
-      { key: "maxNumber", label: "Max Number", type: "number", default: 49, min: 20, max: 99 },
-      { key: "includeBonus", label: "Include bonus ball", type: "checkbox", default: true },
+      { key: "ticketCount", label: "Pick ticket(s)", type: "number", default: 2, min: 1, max: 50 },
+      {
+        key: "country",
+        label: "Lottery country",
+        type: "select",
+        default: "usa",
+        options: [
+          { value: "usa", label: "USA" },
+          { value: "uk", label: "United Kingdom" },
+          { value: "eu", label: "Europe" },
+          { value: "au", label: "Australia" },
+          { value: "ca", label: "Canada" },
+          { value: "other", label: "Other" },
+        ],
+      },
+      {
+        key: "lottery",
+        label: "Lottery",
+        type: "select",
+        default: "powerball",
+        options: [
+          { value: "powerball", label: "Powerball (Multi-State)" },
+          { value: "mega-millions", label: "Mega Millions (Multi-State)" },
+          { value: "euromillions", label: "EuroMillions" },
+          { value: "uk-lotto", label: "UK Lotto" },
+          { value: "other-lottery", label: "Other Lottery" },
+        ],
+      },
+      { key: "mainCount", label: "Main numbers count", type: "number", default: 5, min: 1, max: 12 },
+      { key: "mainMax", label: "Main numbers max", type: "number", default: 69, min: 2, max: 200 },
+      { key: "bonusCount", label: "Bonus numbers count", type: "number", default: 1, min: 0, max: 10 },
+      { key: "bonusMax", label: "Bonus numbers max", type: "number", default: 26, min: 2, max: 200 },
     ],
   },
   run: (ctx) => {
-    const { picks, maxNumber, includeBonus } = ctx.options
+    const { ticketCount, country, lottery, mainCount, mainMax, bonusCount, bonusMax } = ctx.options
     const rng = ctx.rng
-    const pool = Array.from({ length: maxNumber }, (_, i) => i + 1)
+    const safeMainCount = Math.max(1, Math.min(Number(mainCount) || 5, 12))
+    const safeMainMax = Math.max(safeMainCount, Number(mainMax) || 69)
+    const safeBonusCount = Math.max(0, Math.min(Number(bonusCount) || 0, 10))
+    const safeBonusMax = Math.max(2, Number(bonusMax) || 26)
+    const safeTicketCount = Math.max(1, Math.min(Number(ticketCount) || 1, 50))
 
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1))
-      ;[pool[i], pool[j]] = [pool[j], pool[i]]
+    const labelMap: Record<string, string> = {
+      powerball: "Powerball",
+      "mega-millions": "Mega Millions",
+      euromillions: "EuroMillions",
+      "uk-lotto": "UK Lotto",
+      "other-lottery": "Other Lottery",
+    }
+    const lotteryLabel = labelMap[lottery] || "Lottery"
+
+    const pickUnique = (count: number, max: number) => {
+      const pool = Array.from({ length: max }, (_, i) => i + 1)
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1))
+        ;[pool[i], pool[j]] = [pool[j], pool[i]]
+      }
+      return pool.slice(0, count).sort((a, b) => a - b)
     }
 
-    const main = pool.slice(0, Math.min(picks, maxNumber)).sort((a, b) => a - b)
-    const bonus = includeBonus && pool[picks] ? pool[picks] : undefined
-    const rows = main.map((n, i) => ({ id: `lottery-${i}`, value: n, formatted: String(n) }))
-    if (bonus !== undefined) {
-      rows.push({ id: "lottery-bonus", value: bonus, formatted: `Bonus: ${bonus}` } as any)
+    const rows: any[] = []
+    for (let t = 0; t < safeTicketCount; t++) {
+      const main = pickUnique(safeMainCount, safeMainMax)
+      const bonus = safeBonusCount > 0 ? pickUnique(safeBonusCount, safeBonusMax) : []
+      const line = bonus.length > 0
+        ? `Ticket ${t + 1} (${lotteryLabel}): ${main.join(" ")} + ${bonus.join(" ")}`
+        : `Ticket ${t + 1} (${lotteryLabel}): ${main.join(" ")}`
+
+      rows.push({
+        id: `lottery-ticket-${t}`,
+        value: line,
+        formatted: line,
+        ticket: t + 1,
+        country,
+        lottery,
+        main,
+        bonus,
+      })
     }
+
+    const combinations = (n: number, k: number) => {
+      if (k < 0 || k > n) return 0
+      if (k === 0 || k === n) return 1
+      let r = 1
+      for (let i = 1; i <= k; i++) r = (r * (n - (k - i))) / i
+      return r
+    }
+    const oddsMain = combinations(safeMainMax, safeMainCount)
+    const oddsBonus = safeBonusCount > 0 ? combinations(safeBonusMax, safeBonusCount) : 1
+    const totalOdds = Math.max(1, Math.round(oddsMain * oddsBonus))
+
+    rows.push({
+      id: "lottery-odds",
+      value: `Approx. jackpot odds: 1 in ${totalOdds.toLocaleString()}`,
+      formatted: `Approx. jackpot odds (using current rules): 1 in ${totalOdds.toLocaleString()}`,
+      isStats: true,
+    } as any)
 
     return {
       items: rows,
       meta: { seedUsed: ctx.seed, count: rows.length, generatedAt: Date.now() },
-      previewText: main.join(", "),
+      previewText: rows
+        .filter((r: any) => !r.isStats)
+        .slice(0, 2)
+        .map((r: any) => r.value)
+        .join(" | "),
     }
   },
   seo: {
     title: "Lottery Quick Pick - Random Lottery Numbers | BestRandom",
-    description: "Generate lottery quick pick numbers with optional bonus ball. Fast, shareable, and repeatable random picks.",
+    description: "Quick pick lottery tickets with country, lottery type, and number-rule controls. Fast, shareable, and repeatable.",
     h1: "Lottery Quick Pick",
     faq: [
-      { question: "Are numbers unique?", answer: "Yes. Main picks are always unique in the selected range." },
-      { question: "Can I include a bonus ball?", answer: "Yes. Toggle the bonus ball option on or off." },
+      { question: "Can I set ticket count and lottery type?", answer: "Yes. You can configure ticket count, country, and lottery style." },
+      { question: "Are numbers unique within each ticket?", answer: "Yes. Main and bonus groups are generated without duplicates in each group." },
+      { question: "Can I customize main and bonus rules?", answer: "Yes. Set count and max value for both main numbers and bonus numbers." },
       { question: "Can I reproduce the same result?", answer: "Yes. Use the same seed and options." },
     ],
   },
@@ -60,39 +146,95 @@ export const kenoQuickPickTool: ToolConfig = {
   slug: "keno-quick-pick",
   category: "games",
   name: "Keno Quick Pick",
-  shortDescription: "Generate random Keno picks (1-80)",
-  longDescription: "Generate Keno quick picks with unique numbers from 1 to 80. Choose your spots and instantly get a random ticket.",
+  shortDescription: "Quick pick Keno tickets with configurable rules",
+  longDescription: "Quick pick random Keno tickets by setting ticket count, numbers per ticket, and maximum value. Designed to match familiar Keno controls while fitting BestRandom UI.",
   generatorType: "list",
   defaultOptions: {
-    spots: 10,
+    ticketCount: 2,
+    numbersPerTicket: 4,
+    maxValue: 80,
   },
   optionSchema: {
-    fields: [{ key: "spots", label: "Spots", type: "number", default: 10, min: 1, max: 20 }],
+    fields: [
+      { key: "ticketCount", label: "Different ticket(s)", type: "number", default: 2, min: 1, max: 20 },
+      { key: "numbersPerTicket", label: "Number(s) each", type: "number", default: 4, min: 1, max: 20 },
+      {
+        key: "maxValue",
+        label: "Maximum value",
+        type: "select",
+        default: 80,
+        options: [
+          { value: 62, label: "62" },
+          { value: 70, label: "70" },
+          { value: 80, label: "80" },
+        ],
+      },
+    ],
   },
   run: (ctx) => {
-    const { spots } = ctx.options
+    const { ticketCount, numbersPerTicket, maxValue } = ctx.options
     const rng = ctx.rng
-    const pool = Array.from({ length: 80 }, (_, i) => i + 1)
 
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1))
-      ;[pool[i], pool[j]] = [pool[j], pool[i]]
+    const safeTicketCount = Math.max(1, Math.min(Number(ticketCount) || 1, 20))
+    const safeNumbersPerTicket = Math.max(1, Math.min(Number(numbersPerTicket) || 1, 20))
+    const safeMaxValue = [62, 70, 80].includes(Number(maxValue)) ? Number(maxValue) : 80
+
+    const pickUnique = (count: number, max: number) => {
+      const pool = Array.from({ length: max }, (_, i) => i + 1)
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1))
+        ;[pool[i], pool[j]] = [pool[j], pool[i]]
+      }
+      return pool.slice(0, Math.min(count, max)).sort((a, b) => a - b)
     }
 
-    const picks = pool.slice(0, spots).sort((a, b) => a - b)
+    const tickets: any[] = []
+    for (let t = 0; t < safeTicketCount; t++) {
+      const picks = pickUnique(safeNumbersPerTicket, safeMaxValue)
+      const line = `Ticket ${t + 1}: ${picks.join(" ")}`
+      tickets.push({
+        id: `keno-ticket-${t}`,
+        value: line,
+        formatted: line,
+        ticket: t + 1,
+        picks,
+      })
+    }
+
+    const combinations = (n: number, k: number) => {
+      if (k < 0 || k > n) return 0
+      if (k === 0 || k === n) return 1
+      let r = 1
+      for (let i = 1; i <= k; i++) r = (r * (n - (k - i))) / i
+      return r
+    }
+    const totalCombos = Math.max(1, Math.round(combinations(safeMaxValue, safeNumbersPerTicket)))
+
+    tickets.push({
+      id: "keno-stats",
+      value: `Combinations: ${totalCombos.toLocaleString()}`,
+      formatted: `Possible unique picks per ticket: ${totalCombos.toLocaleString()} (for ${safeNumbersPerTicket} of ${safeMaxValue})`,
+      isStats: true,
+    } as any)
+
     return {
-      items: picks.map((n, i) => ({ id: `keno-${i}`, value: n, formatted: String(n) })),
-      meta: { seedUsed: ctx.seed, count: picks.length, generatedAt: Date.now() },
-      previewText: picks.join(", "),
+      items: tickets,
+      meta: { seedUsed: ctx.seed, count: tickets.length, generatedAt: Date.now() },
+      previewText: tickets
+        .filter((t: any) => !t.isStats)
+        .slice(0, 2)
+        .map((t: any) => t.value)
+        .join(" | "),
     }
   },
   seo: {
     title: "Keno Quick Pick - Random Keno Numbers | BestRandom",
-    description: "Generate random Keno quick picks from 1 to 80 with configurable spots.",
+    description: "Quick pick random Keno tickets with configurable ticket count, numbers per ticket, and max value.",
     h1: "Keno Quick Pick",
     faq: [
-      { question: "What range is used?", answer: "Keno picks are generated from 1 to 80." },
-      { question: "Can I set spot count?", answer: "Yes. Choose from 1 to 20 spots." },
+      { question: "Can I set how many tickets to generate?", answer: "Yes. You can generate 1 to 20 different Keno tickets at once." },
+      { question: "Can I set numbers per ticket?", answer: "Yes. Choose from 1 to 20 numbers per ticket." },
+      { question: "What max values are supported?", answer: "You can choose 62, 70, or 80 as the maximum value." },
       { question: "Can I share results?", answer: "Yes. Use the generated URL with seed and options." },
     ],
   },
@@ -182,41 +324,43 @@ export const diceRollerGameTool: ToolConfig = {
   slug: "dice-roller-game",
   category: "games",
   name: "Dice Roller",
-  shortDescription: "Roll custom dice and see total",
-  longDescription: "Roll one or more dice with configurable sides and get per-die outcomes plus total sum.",
+  shortDescription: "Roll virtual dice instantly",
+  longDescription: "Roll virtual six-sided dice with a simple control for dice count, matching familiar dice roller behavior while keeping BestRandom UI.",
   generatorType: "game",
   defaultOptions: {
     diceCount: 2,
-    sides: 6,
   },
   optionSchema: {
     fields: [
-      { key: "diceCount", label: "Number of Dice", type: "number", default: 2, min: 1, max: 100 },
-      { key: "sides", label: "Sides per Die", type: "number", default: 6, min: 2, max: 1000 },
+      { key: "diceCount", label: "Roll virtual dice", type: "number", default: 2, min: 1, max: 60 },
     ],
   },
   run: (ctx) => {
-    const { diceCount, sides } = ctx.options
+    const { diceCount } = ctx.options
     const rng = ctx.rng
+    const sides = 6
+    const count = Math.max(1, Math.min(Number(diceCount) || 1, 60))
     const rolls: number[] = []
-    for (let i = 0; i < diceCount; i++) rolls.push(Math.floor(rng() * sides) + 1)
+    for (let i = 0; i < count; i++) rolls.push(Math.floor(rng() * sides) + 1)
     const sum = rolls.reduce((a, b) => a + b, 0)
     const items = rolls.map((roll, i) => ({ id: `dice-${i}`, value: roll, formatted: `Die ${i + 1}: ${roll}` }))
+    const average = (sum / count).toFixed(2)
     items.push({ id: "dice-sum", value: sum, formatted: `Total: ${sum}` } as any)
+    items.push({ id: "dice-stats", value: `Average: ${average}`, formatted: `Average: ${average} (over ${count} dice)` } as any)
     return {
       items,
       meta: { seedUsed: ctx.seed, count: items.length, generatedAt: Date.now() },
-      previewText: `Rolls: ${rolls.join(", ")} | Total: ${sum}`,
+      previewText: `Rolls: ${rolls.slice(0, 8).join(", ")}${rolls.length > 8 ? "..." : ""} | Total: ${sum}`,
     }
   },
   seo: {
     title: "Dice Roller - Roll Virtual Dice Online | BestRandom",
-    description: "Roll virtual dice with custom side count and multiple dice support.",
+    description: "Roll virtual six-sided dice online with configurable dice count. Fast, simple, and shareable.",
     h1: "Dice Roller",
     faq: [
-      { question: "Can I set custom sides?", answer: "Yes. Choose any side count from 2 to 1000." },
-      { question: "Can I roll many dice at once?", answer: "Yes. Set number of dice in options." },
-      { question: "Does it show total?", answer: "Yes. A total row is included with every roll." },
+      { question: "How many dice can I roll at once?", answer: "You can roll from 1 to 60 virtual dice at once." },
+      { question: "What type of dice are used?", answer: "This tool uses standard six-sided dice (d6)." },
+      { question: "Does it show total?", answer: "Yes. Total and average are included in the result." },
     ],
   },
   icon: Dice1,
@@ -226,44 +370,163 @@ export const playingCardShufflerTool: ToolConfig = {
   slug: "playing-card-shuffler",
   category: "games",
   name: "Playing Card Shuffler",
-  shortDescription: "Shuffle a deck and draw random cards",
-  longDescription: "Shuffle a standard 52-card deck and draw any number of cards for games, simulations, or quick random picks.",
+  shortDescription: "Draw cards from configurable shuffled decks",
+  longDescription: "Draw playing cards from randomly shuffled decks with configurable suits, ranks, jokers, and display options.",
   generatorType: "list",
   defaultOptions: {
-    drawCount: 5,
+    drawCount: 1,
+    deckCount: 1,
+    includeSpades: true,
+    includeHearts: true,
+    includeDiamonds: true,
+    includeClubs: true,
+    includeA: true,
+    include2: true,
+    include3: true,
+    include4: true,
+    include5: true,
+    include6: true,
+    include7: true,
+    include8: true,
+    include9: true,
+    include10: true,
+    includeJ: true,
+    includeQ: true,
+    includeK: true,
+    includeBlackJoker: false,
+    includeRedJoker: false,
+    showRemainingFaceDown: true,
+    showAsText: true,
   },
   optionSchema: {
-    fields: [{ key: "drawCount", label: "Cards to Draw", type: "number", default: 5, min: 1, max: 52 }],
+    fields: [
+      { key: "drawCount", label: "Step 1: Draw card(s)", type: "number", default: 1, min: 1, max: 416 },
+      { key: "deckCount", label: "From shuffled deck(s)", type: "number", default: 1, min: 1, max: 8 },
+      { key: "includeSpades", label: "Include Spades (♠)", type: "checkbox", default: true },
+      { key: "includeHearts", label: "Include Hearts (♥)", type: "checkbox", default: true },
+      { key: "includeDiamonds", label: "Include Diamonds (♦)", type: "checkbox", default: true },
+      { key: "includeClubs", label: "Include Clubs (♣)", type: "checkbox", default: true },
+      { key: "includeA", label: "Include Aces", type: "checkbox", default: true },
+      { key: "include2", label: "Include Twos", type: "checkbox", default: true },
+      { key: "include3", label: "Include Threes", type: "checkbox", default: true },
+      { key: "include4", label: "Include Fours", type: "checkbox", default: true },
+      { key: "include5", label: "Include Fives", type: "checkbox", default: true },
+      { key: "include6", label: "Include Sixes", type: "checkbox", default: true },
+      { key: "include7", label: "Include Sevens", type: "checkbox", default: true },
+      { key: "include8", label: "Include Eights", type: "checkbox", default: true },
+      { key: "include9", label: "Include Nines", type: "checkbox", default: true },
+      { key: "include10", label: "Include Tens", type: "checkbox", default: true },
+      { key: "includeJ", label: "Include Jacks", type: "checkbox", default: true },
+      { key: "includeQ", label: "Include Queens", type: "checkbox", default: true },
+      { key: "includeK", label: "Include Kings", type: "checkbox", default: true },
+      { key: "includeBlackJoker", label: "Include Black Joker", type: "checkbox", default: false },
+      { key: "includeRedJoker", label: "Include Red Joker", type: "checkbox", default: false },
+      { key: "showRemainingFaceDown", label: "Show remaining cards face down", type: "checkbox", default: true },
+      { key: "showAsText", label: "Show cards as text instead of images", type: "checkbox", default: true },
+    ],
   },
   run: (ctx) => {
-    const { drawCount } = ctx.options
+    const {
+      drawCount,
+      deckCount,
+      includeSpades,
+      includeHearts,
+      includeDiamonds,
+      includeClubs,
+      includeA,
+      include2,
+      include3,
+      include4,
+      include5,
+      include6,
+      include7,
+      include8,
+      include9,
+      include10,
+      includeJ,
+      includeQ,
+      includeK,
+      includeBlackJoker,
+      includeRedJoker,
+      showRemainingFaceDown,
+      showAsText,
+    } = ctx.options
     const rng = ctx.rng
-    const suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
-    const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-    const deck: string[] = []
-    for (const suit of suits) {
-      for (const rank of ranks) deck.push(`${rank} of ${suit}`)
+
+    const selectedSuits: string[] = []
+    if (includeSpades) selectedSuits.push("Spades")
+    if (includeHearts) selectedSuits.push("Hearts")
+    if (includeDiamonds) selectedSuits.push("Diamonds")
+    if (includeClubs) selectedSuits.push("Clubs")
+    if (selectedSuits.length === 0) selectedSuits.push("Spades", "Hearts", "Diamonds", "Clubs")
+
+    const selectedRanks: string[] = []
+    if (includeA) selectedRanks.push("A")
+    if (include2) selectedRanks.push("2")
+    if (include3) selectedRanks.push("3")
+    if (include4) selectedRanks.push("4")
+    if (include5) selectedRanks.push("5")
+    if (include6) selectedRanks.push("6")
+    if (include7) selectedRanks.push("7")
+    if (include8) selectedRanks.push("8")
+    if (include9) selectedRanks.push("9")
+    if (include10) selectedRanks.push("10")
+    if (includeJ) selectedRanks.push("J")
+    if (includeQ) selectedRanks.push("Q")
+    if (includeK) selectedRanks.push("K")
+    if (selectedRanks.length === 0) {
+      selectedRanks.push("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
     }
 
-    for (let i = deck.length - 1; i > 0; i--) {
+    const baseDeck: string[] = []
+    for (const suit of selectedSuits) {
+      for (const rank of selectedRanks) baseDeck.push(`${rank} of ${suit}`)
+    }
+    if (includeBlackJoker) baseDeck.push("Black Joker")
+    if (includeRedJoker) baseDeck.push("Red Joker")
+    if (baseDeck.length === 0) baseDeck.push("A of Spades")
+
+    const safeDeckCount = Math.max(1, Math.min(Number(deckCount) || 1, 8))
+    const fullDeck: string[] = []
+    for (let d = 0; d < safeDeckCount; d++) fullDeck.push(...baseDeck)
+
+    for (let i = fullDeck.length - 1; i > 0; i--) {
       const j = Math.floor(rng() * (i + 1))
-      ;[deck[i], deck[j]] = [deck[j], deck[i]]
+      ;[fullDeck[i], fullDeck[j]] = [fullDeck[j], fullDeck[i]]
     }
 
-    const drawn = deck.slice(0, drawCount)
+    const safeDrawCount = Math.max(1, Math.min(Number(drawCount) || 1, fullDeck.length))
+    const drawn = fullDeck.slice(0, safeDrawCount)
+    const remaining = fullDeck.length - drawn.length
+
+    const items = drawn.map((card, i) => ({
+      id: `card-${i}`,
+      value: card,
+      formatted: showAsText ? `Card ${i + 1}: ${card}` : card,
+    }))
+    if (showRemainingFaceDown) {
+      items.push({
+        id: "cards-remaining",
+        value: `${remaining} card(s) remaining`,
+        formatted: `${remaining} card(s) remaining face down`,
+        isStats: true,
+      } as any)
+    }
+
     return {
-      items: drawn.map((card, i) => ({ id: `card-${i}`, value: card, formatted: card })),
-      meta: { seedUsed: ctx.seed, count: drawn.length, generatedAt: Date.now() },
+      items,
+      meta: { seedUsed: ctx.seed, count: items.length, generatedAt: Date.now() },
       previewText: drawn.slice(0, 3).join(", "),
     }
   },
   seo: {
     title: "Playing Card Shuffler - Shuffle and Draw Cards | BestRandom",
-    description: "Shuffle a 52-card deck and draw random cards instantly.",
+    description: "Draw cards from configurable shuffled decks with suit/rank filters, jokers, and display options.",
     h1: "Playing Card Shuffler",
     faq: [
-      { question: "How many cards can I draw?", answer: "You can draw from 1 to 52 cards." },
-      { question: "Is a full deck used?", answer: "Yes. Standard 52-card deck with 4 suits." },
+      { question: "How many cards can I draw?", answer: "You can draw from 1 card up to the total cards in your configured decks." },
+      { question: "Can I customize suits and ranks?", answer: "Yes. You can include or exclude any suit and rank." },
+      { question: "Can I include jokers?", answer: "Yes. Black Joker and Red Joker are optional." },
       { question: "Can I repeat the same shuffle?", answer: "Yes. Use the same seed and options." },
     ],
   },
@@ -273,62 +536,88 @@ export const playingCardShufflerTool: ToolConfig = {
 export const birdieFundGeneratorTool: ToolConfig = {
   slug: "birdie-fund-generator",
   category: "games",
-  name: "Birdie Fund Generator",
-  shortDescription: "Generate random Birdie fund challenge ideas",
-  longDescription: "Create random Birdie fund challenge names, goals, and contribution rules for fun golf pools or team games.",
+  name: "Birdie Fund Randomizer",
+  shortDescription: "Generate random birdie holes for golf funds",
+  longDescription: "Generate random birdie holes for golf birdie funds based on course type. Built to match familiar controls while keeping BestRandom's unified UI.",
   generatorType: "list",
   defaultOptions: {
-    count: 5,
-    minGoal: 100,
-    maxGoal: 5000,
+    holeCount: 1,
+    courseType: "18-hole",
   },
   optionSchema: {
     fields: [
-      { key: "count", label: "Ideas", type: "number", default: 5, min: 1, max: 20 },
-      { key: "minGoal", label: "Min Goal ($)", type: "number", default: 100, min: 10, max: 100000 },
-      { key: "maxGoal", label: "Max Goal ($)", type: "number", default: 5000, min: 20, max: 200000 },
+      { key: "holeCount", label: "Generate birdie hole(s)", type: "number", default: 1, min: 1, max: 18 },
+      {
+        key: "courseType",
+        label: "Course Type",
+        type: "select",
+        default: "18-hole",
+        options: [
+          { value: "front-9", label: "9-hole (Front 9)" },
+          { value: "back-9", label: "9-hole (Back 9)" },
+          { value: "18-hole", label: "18-hole" },
+        ],
+      },
     ],
   },
   run: (ctx) => {
-    const { count, minGoal, maxGoal } = ctx.options
+    const { holeCount, courseType } = ctx.options
     const rng = ctx.rng
-    const adjectives = ["Weekend", "Clubhouse", "Sunrise", "Rookie", "Pro", "Eagle", "Fairway", "Green"]
-    const nouns = ["Birdie Fund", "Putter Pot", "Par Challenge", "Back Nine Pool", "Ace Bank", "Mulligan Jar"]
-    const rules = [
-      "$5 per birdie",
-      "$2 per par save",
-      "$10 for nearest pin",
-      "$3 per front-nine birdie",
-      "$7 for longest putt",
-      "$1 per green in regulation",
-    ]
-    const low = Math.min(minGoal, maxGoal)
-    const high = Math.max(minGoal, maxGoal)
-    const items: any[] = []
 
-    for (let i = 0; i < count; i++) {
-      const adj = adjectives[Math.floor(rng() * adjectives.length)]
-      const noun = nouns[Math.floor(rng() * nouns.length)]
-      const rule = rules[Math.floor(rng() * rules.length)]
-      const goal = Math.floor(rng() * (high - low + 1)) + low
-      const line = `${adj} ${noun} - Goal: $${goal} - Rule: ${rule}`
-      items.push({ id: `birdie-${i}`, value: line, formatted: line })
+    let holeRange: number[] = []
+    if (courseType === "front-9") {
+      holeRange = Array.from({ length: 9 }, (_, i) => i + 1)
+    } else if (courseType === "back-9") {
+      holeRange = Array.from({ length: 9 }, (_, i) => i + 10)
+    } else {
+      holeRange = Array.from({ length: 18 }, (_, i) => i + 1)
     }
+
+    const maxSelectable = holeRange.length
+    const safeHoleCount = Math.max(1, Math.min(Number(holeCount) || 1, maxSelectable))
+
+    // Fisher-Yates shuffle
+    for (let i = holeRange.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1))
+      ;[holeRange[i], holeRange[j]] = [holeRange[j], holeRange[i]]
+    }
+
+    const selected = holeRange.slice(0, safeHoleCount).sort((a, b) => a - b)
+    const items: any[] = selected.map((hole, idx) => ({
+      id: `birdie-hole-${idx}`,
+      value: `Hole ${hole}`,
+      formatted: `Hole ${hole}`,
+      hole,
+    }))
+
+    const courseLabel =
+      courseType === "front-9"
+        ? "9-hole (Front 9)"
+        : courseType === "back-9"
+        ? "9-hole (Back 9)"
+        : "18-hole"
+
+    items.push({
+      id: "birdie-summary",
+      value: `Course: ${courseLabel} | Holes: ${selected.join(", ")}`,
+      formatted: `Course: ${courseLabel} | Selected birdie holes: ${selected.join(", ")}`,
+      isStats: true,
+    } as any)
 
     return {
       items,
       meta: { seedUsed: ctx.seed, count: items.length, generatedAt: Date.now() },
-      previewText: items.slice(0, 2).map((x) => x.value).join(" | "),
+      previewText: selected.map((h) => `Hole ${h}`).join(", "),
     }
   },
   seo: {
-    title: "Birdie Fund Generator - Random Golf Fund Ideas | BestRandom",
-    description: "Generate random Birdie fund challenge ideas with goals and contribution rules.",
-    h1: "Birdie Fund Generator",
+    title: "Birdie Fund Randomizer - Random Golf Birdie Holes | BestRandom",
+    description: "Generate random birdie holes for front 9, back 9, or full 18-hole courses. Fast, fair, and repeatable with seed.",
+    h1: "Birdie Fund Randomizer",
     faq: [
-      { question: "What does this generate?", answer: "It creates random Birdie fund names, goal amounts, and simple rules." },
-      { question: "Can I control goal range?", answer: "Yes. Set minimum and maximum goal values." },
-      { question: "Can I create multiple ideas?", answer: "Yes. Choose how many ideas to generate." },
+      { question: "What does this randomizer generate?", answer: "It generates random birdie hole numbers for your selected golf course type." },
+      { question: "Can I choose front 9, back 9, or full 18?", answer: "Yes. Select the course type in options before generating." },
+      { question: "Can I generate multiple holes at once?", answer: "Yes. Set how many birdie holes to generate." },
     ],
   },
   icon: Bird,

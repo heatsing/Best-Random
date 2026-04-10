@@ -51,6 +51,38 @@ export function ToolLayout({
 }: ToolLayoutProps) {
   const { toast } = useToast()
 
+  const isStepStyleTool = [
+    "lottery-quick-pick",
+    "keno-quick-pick",
+    "dice-roller-game",
+    "birdie-fund-generator",
+  ].includes(tool.slug)
+
+  const stepIntroMap: Record<string, string> = {
+    "lottery-quick-pick":
+      "This form allows you to quick pick lottery tickets with configurable rules.",
+    "keno-quick-pick":
+      "This form allows you to quick pick random keno tickets with configurable rules.",
+    "dice-roller-game":
+      "This form allows you to roll virtual dice with a simple quantity control.",
+    "birdie-fund-generator":
+      "This form allows you to generate random birdie holes for golf funds.",
+  }
+
+  const stepOneTitleMap: Record<string, string> = {
+    "lottery-quick-pick": "Step 1: Lottery Setup",
+    "keno-quick-pick": "Step 1: Keno Setup",
+    "dice-roller-game": "Step 1: Dice Setup",
+    "birdie-fund-generator": "Part 1: The Golf Course",
+  }
+
+  const stepTwoTitleMap: Record<string, string> = {
+    "lottery-quick-pick": "Step 2: Go!",
+    "keno-quick-pick": "Step 2: Go!",
+    "dice-roller-game": "Step 2: Go!",
+    "birdie-fund-generator": "Part 2: Go!",
+  }
+
   const handleCopyAll = () => {
     if (!result) return ""
     return result.items.map((item: any) => {
@@ -174,6 +206,9 @@ export function ToolLayout({
         <div className="container max-w-7xl mx-auto px-6 py-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">{tool.seo.h1}</h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">{tool.longDescription}</p>
+          {isStepStyleTool && (
+            <p className="text-muted-foreground mt-4 max-w-4xl">{stepIntroMap[tool.slug]}</p>
+          )}
         </div>
       </section>
 
@@ -198,7 +233,9 @@ export function ToolLayout({
         {/* Options Panel with Structural Border */}
         <div className="space-y-6 border-r-2 border-border pr-8">
           <div>
-            <h2 className="text-xl font-semibold mb-6 tracking-tight border-b-2 border-border pb-3">Options</h2>
+            <h2 className="text-xl font-semibold mb-6 tracking-tight border-b-2 border-border pb-3">
+              {isStepStyleTool ? stepOneTitleMap[tool.slug] : "Options"}
+            </h2>
             <div className="space-y-4">
               <OptionsRenderer
                 schema={tool.optionSchema}
@@ -207,7 +244,17 @@ export function ToolLayout({
               />
             </div>
           </div>
+
+          {isStepStyleTool && (
+            <div className="text-sm text-muted-foreground border-t border-border pt-4">
+              Be patient! It may take a little while to generate your results...
+            </div>
+          )}
           
+          {isStepStyleTool && (
+            <p className="text-sm font-medium">{stepTwoTitleMap[tool.slug]}</p>
+          )}
+
           <Button
             onClick={result ? onRegenerate : onGenerate}
             className="w-full border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"

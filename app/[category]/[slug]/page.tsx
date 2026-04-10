@@ -5,6 +5,10 @@ import { ToolPageClient } from "./client"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 
+export const dynamic = "force-static"
+export const dynamicParams = false
+export const revalidate = 86400
+
 interface PageProps {
   params: {
     category: string
