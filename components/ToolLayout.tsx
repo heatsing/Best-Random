@@ -1,6 +1,7 @@
 "use client"
 
 import { ReactNode } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { SeedBar } from "./SeedBar"
 import { OptionsRenderer } from "./OptionsRenderer"
@@ -179,11 +180,13 @@ export function ToolLayout({
       value = (
         <span className="inline-flex items-center gap-2">
           {flagUrl && (
-            <img
+            <Image
               src={flagUrl}
               alt={item.name ? `${item.name} flag` : "Country flag"}
+              width={24}
+              height={16}
               className="h-4 w-6 rounded-sm border border-border object-cover"
-              loading="lazy"
+              unoptimized
             />
           )}
           <span>{copyText}</span>
