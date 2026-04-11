@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { SearchCommand } from "./SearchCommand"
+import { SearchOpenButton, OPEN_COMMAND_PALETTE_EVENT } from "./SearchCommand"
 import { ThemeToggle } from "./ThemeToggle"
 import { Button } from "@/components/ui/button"
-import { Menu, ChevronDown } from "lucide-react"
+import { Menu, Search } from "lucide-react"
 import { useState } from "react"
 import { categories } from "@/lib/registry"
 import { usePathname } from "next/navigation"
@@ -47,7 +47,19 @@ export function Header() {
             )
           })}
           <Link
+            href="/generators"
+            data-touch-target="comfortable"
+            className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+              pathname === "/generators"
+                ? "bg-primary/10 text-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-accent"
+            }`}
+          >
+            Generators
+          </Link>
+          <Link
             href="/tools"
+            data-touch-target="comfortable"
             className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
               pathname === "/tools" || pathname?.startsWith("/tools/")
                 ? "bg-primary/10 text-primary"
@@ -69,9 +81,23 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:block w-64">
-            <SearchCommand />
+          <div className="hidden md:block w-64 min-w-0">
+            <SearchOpenButton className="w-full" />
           </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            aria-label="Search tools"
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent(OPEN_COMMAND_PALETTE_EVENT))
+              }
+            }}
+          >
+            <Search className="h-5 w-5" aria-hidden />
+          </Button>
           <ThemeToggle />
           <Button
             variant="ghost"
@@ -90,7 +116,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div id="mobile-menu" className="lg:hidden border-t">
           <div className="container py-4 space-y-4">
-            <SearchCommand />
+            <SearchOpenButton className="w-full" onOpen={() => setMobileMenuOpen(false)} />
             <nav className="flex flex-col space-y-1" aria-label="Mobile navigation">
               {categories.map((category) => {
                 const isActive = pathname?.startsWith(`/${category.id}`)
@@ -109,6 +135,17 @@ export function Header() {
                   </Link>
                 )
               })}
+              <Link
+                href="/generators"
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                  pathname === "/generators"
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Generators
+              </Link>
               <Link
                 href="/tools"
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${

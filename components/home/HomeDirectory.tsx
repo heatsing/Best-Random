@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useMemo, useState } from "react"
+import { LayoutGrid } from "lucide-react"
 import type { CategoryId } from "@/lib/category-catalog"
 import { categories, homeCategoryColumns } from "@/lib/category-catalog"
 
@@ -13,6 +14,12 @@ export interface HomeToolRow {
   name: string
 }
 
+/** /tools/* lightweight demos — paths differ from /{category}/{slug} */
+export interface HomeSaasToolRow {
+  slug: string
+  name: string
+}
+
 function firstLetter(name: string): string {
   const c = name.trim().charAt(0).toUpperCase()
   if (/[A-Z]/.test(c)) return c
@@ -21,10 +28,14 @@ function firstLetter(name: string): string {
 
 interface HomeDirectoryProps {
   tools: HomeToolRow[]
+  saasTools: HomeSaasToolRow[]
 }
 
-export function HomeDirectory({ tools }: HomeDirectoryProps) {
+export function HomeDirectory({ tools, saasTools }: HomeDirectoryProps) {
   const [letter, setLetter] = useState<string | null>(null)
+
+  /** A–Z only indexes main-catalog generator names (/{category}/{slug}), not /tools demos. */
+  const mainToolNames = useMemo(() => tools.map((t) => t.name), [tools])
 
   const filtered = useMemo(() => {
     if (!letter) return tools
@@ -38,6 +49,9 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
       const list = map.get(t.category) ?? []
       list.push(t)
       map.set(t.category, list)
+    }
+    for (const list of map.values()) {
+      list.sort((a, b) => a.name.localeCompare(b.name))
     }
     return map
   }, [filtered])
@@ -57,10 +71,13 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
       >
         <h2
           id="az-nav-title"
-          className="text-center text-base md:text-lg font-bold text-foreground mb-5 tracking-tight"
+          className="text-center text-base md:text-lg font-bold text-foreground mb-2 tracking-tight"
         >
           Find a tool
         </h2>
+        <p className="text-center text-xs text-muted-foreground mb-5 max-w-md mx-auto leading-relaxed">
+          Letters match each generator in the categories below—not the separate Tools hub list.
+        </p>
         <div className="flex flex-wrap items-center justify-center gap-y-2 gap-x-0.5 sm:gap-x-1">
           <button
             type="button"
@@ -77,7 +94,7 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
             ·
           </span>
           {LETTERS.map((L) => {
-            const hasAny = tools.some((t) => firstLetter(t.name) === L)
+            const hasAny = mainToolNames.some((name) => firstLetter(name) === L)
             const active = letter === L
             return (
               <button
@@ -99,7 +116,7 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
               </button>
             )
           })}
-          {tools.some((t) => firstLetter(t.name) === "#") && (
+          {mainToolNames.some((name) => firstLetter(name) === "#") && (
             <button
               type="button"
               onClick={() => setLetter("#")}
@@ -116,8 +133,8 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
         {letter && (
           <p className="text-center text-sm text-muted-foreground mt-4">
             {letter === "#"
-              ? "Showing tools that do not start with A–Z."
-              : `Showing tools starting with “${letter}”.`}{" "}
+              ? "Showing main generators that do not start with A–Z."
+              : `Showing main generators starting with “${letter}”.`}{" "}
             <button
               type="button"
               className="underline underline-offset-4 hover:text-foreground"
@@ -135,7 +152,7 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
           id="categories-heading"
           className="text-center text-xl md:text-2xl font-bold tracking-tight mb-10 md:mb-12 text-balance"
         >
-          Browse our popular categories
+          Browse all series
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 lg:gap-14">
@@ -146,7 +163,6 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
                 if (!category) return null
                 const Icon = category.icon
                 const list = toolsByCategory.get(category.id) ?? []
-                if (list.length === 0) return null
 
                 return (
                   <div key={category.id}>
@@ -159,24 +175,28 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
                         {category.name}
                       </span>
                     </Link>
-                    <ul className="space-y-0">
-                      {list.map((tool) => (
-                        <li key={`${tool.category}-${tool.slug}`}>
-                          <Link
-                            href={`/${tool.category}/${tool.slug}`}
-                            className="group flex items-start gap-2.5 py-2 text-[13px] md:text-sm leading-snug text-muted-foreground hover:text-foreground transition-colors"
-                          >
-                            <Icon
-                              className="h-4 w-4 mt-0.5 shrink-0 opacity-80 group-hover:opacity-100 text-primary"
-                              aria-hidden
-                            />
-                            <span className="group-hover:underline underline-offset-4 decoration-border">
-                              {tool.name}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    {list.length > 0 ? (
+                      <ul className="space-y-0">
+                        {list.map((tool) => (
+                          <li key={`${tool.category}-${tool.slug}`}>
+                            <Link
+                              href={`/${tool.category}/${tool.slug}`}
+                              className="group flex items-start gap-2.5 py-2 text-[13px] md:text-sm leading-snug text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                              <Icon
+                                className="h-4 w-4 mt-0.5 shrink-0 opacity-80 group-hover:opacity-100 text-primary"
+                                aria-hidden
+                              />
+                              <span className="group-hover:underline underline-offset-4 decoration-border">
+                                {tool.name}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : letter ? (
+                      <p className="text-xs text-muted-foreground py-2 pl-0.5">No tools match this letter.</p>
+                    ) : null}
                   </div>
                 )
               })}
@@ -184,7 +204,43 @@ export function HomeDirectory({ tools }: HomeDirectoryProps) {
           ))}
         </div>
 
-        {filtered.length === 0 && (
+        {/* /tools 系列 — 与主站分类并列 */}
+        <div className="mt-14 md:mt-16 pt-12 border-t border-border/80">
+          <div className="max-w-xl">
+            <Link
+              href="/tools"
+              className="group inline-flex items-center gap-2 border-b-2 border-foreground/75 pb-1.5 mb-3"
+            >
+              <LayoutGrid className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+              <span className="font-bold text-[15px] md:text-base text-foreground tracking-tight group-hover:text-primary transition-colors">
+                Tools
+              </span>
+            </Link>
+            <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+              Modular demos on <span className="font-mono">/tools/…</span>. Not filtered by the letter bar above.
+            </p>
+            {saasTools.length > 0 ? (
+              <ul className="space-y-0">
+                {saasTools.map((tool) => (
+                  <li key={`saas-${tool.slug}`}>
+                    <Link
+                      href={`/tools/${tool.slug}`}
+                      className="group flex items-start gap-2.5 py-2 text-[13px] md:text-sm leading-snug text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <LayoutGrid
+                        className="h-4 w-4 mt-0.5 shrink-0 opacity-80 group-hover:opacity-100 text-primary"
+                        aria-hidden
+                      />
+                      <span className="group-hover:underline underline-offset-4 decoration-border">{tool.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        </div>
+
+        {filtered.length === 0 && letter && (
           <p className="text-center text-muted-foreground py-10 text-sm">
             No tools match this filter.{" "}
             <button type="button" className="underline underline-offset-4" onClick={() => setLetter(null)}>

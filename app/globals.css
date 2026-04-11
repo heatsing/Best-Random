@@ -106,17 +106,26 @@
     }
   }
   
-  /* Ensure minimum touch target size (44x44px) */
-  button,
-  a,
+  /* Touch targets: primary controls (not every inline text link — avoids broken directory layout) */
+  button:not(:disabled),
   [role="button"],
   input[type="button"],
-  input[type="submit"] {
+  input[type="submit"],
+  input[type="checkbox"],
+  input[type="radio"] {
     min-height: 44px;
     min-width: 44px;
   }
-  
-  /* Cursor pointer for interactive elements */
+
+  /* Nav / pill links: keep comfortable tap area without forcing all anchors to 44px */
+  nav a,
+  [data-touch-target="comfortable"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
   button,
   a,
   [role="button"],

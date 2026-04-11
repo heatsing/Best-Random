@@ -81,13 +81,9 @@ export function generateWebsiteSchema() {
     '@type': 'WebSite',
     name: 'BestRandom',
     url: 'https://bestrandom.net',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://bestrandom.net/generators?q={search_term_string}',
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    description:
+      'Free online random generators for numbers, names, passwords, colors, teams, and more—with seeds and shareable links.',
+    inLanguage: 'en-US',
+    /** Omit SearchAction until a URL-based search results page exists (avoids invalid rich results). */
   };
 }

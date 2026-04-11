@@ -54,6 +54,7 @@ export const categorySeriesContent: Record<CategoryId, CategorySeriesContent> = 
     useCasesHeading: "Use Cases",
     useCases: [
       "Pick a random integer between two values for contests and classroom callouts.",
+      "Generate random percentages (any min/max) for mock metrics, probability demos, or QA dashboards.",
       "Generate multiple random numbers for spreadsheet or load-test seeding.",
       "Simulate dice rolls and coin flips without physical props.",
       "Create quick samples for statistics exercises and Monte Carlo intuition.",
@@ -66,6 +67,12 @@ export const categorySeriesContent: Record<CategoryId, CategorySeriesContent> = 
         category: "selection",
         title: "Random Picker",
         blurb: "Turn lines of text into a single unbiased choice.",
+      },
+      {
+        slug: "random-yes-no-generator",
+        category: "selection",
+        title: "Random Yes or No Generator",
+        blurb: "Binary outcomes when you only need a fair yes/no, not a full range.",
       },
       {
         slug: "random-password-generator",
@@ -155,6 +162,7 @@ export const categorySeriesContent: Record<CategoryId, CategorySeriesContent> = 
     useCasesHeading: "Use Cases",
     useCases: [
       "Run fair standup order or retrospective facilitation.",
+      "Get fast Yes/No (or True/False) chains when you only need a binary answer.",
       "Choose giveaway winners from a pasted list of entrants.",
       "Split players into balanced teams for sports or games.",
       "Shuffle quiz answer order to reduce pattern bias.",
@@ -167,6 +175,12 @@ export const categorySeriesContent: Record<CategoryId, CategorySeriesContent> = 
         category: "numbers",
         title: "Random Number Generator",
         blurb: "Draw numeric ranges when weights or counts matter.",
+      },
+      {
+        slug: "random-percentage-generator",
+        category: "numbers",
+        title: "Random Percentage Generator",
+        blurb: "Pair labeled picks with believable mock percentages.",
       },
       {
         slug: "wheel-of-names",

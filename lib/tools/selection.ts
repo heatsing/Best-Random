@@ -1,4 +1,4 @@
-import { Shuffle, Users, CircleDot } from "lucide-react"
+import { Shuffle, Users, CircleDot, Scale } from "lucide-react"
 import type { ToolConfig } from "../registry"
 
 // Random Picker
@@ -523,9 +523,99 @@ export const wheelOfNamesTool: ToolConfig = {
   popular: true
 }
 
+// Random Yes / No Generator
+export const randomYesNoTool: ToolConfig = {
+  slug: "random-yes-no-generator",
+  category: "selection",
+  name: "Random Yes or No Generator",
+  shortDescription: "Quick Yes/No, True/False, or On/Off answers",
+  longDescription:
+    "Need a fair binary decision? Generate one or many Yes/No style answers with a seed for repeatability—great for standups, games, and breaking ties without debate.",
+  generatorType: "list",
+  defaultOptions: {
+    count: 12,
+    format: "yes-no" as "yes-no" | "true-false" | "on-off",
+  },
+  optionSchema: {
+    fields: [
+      {
+        key: "count",
+        label: "How many answers",
+        type: "number",
+        default: 12,
+        min: 1,
+        max: 500,
+      },
+      {
+        key: "format",
+        label: "Label style",
+        type: "select",
+        default: "yes-no",
+        options: [
+          { value: "yes-no", label: "Yes / No" },
+          { value: "true-false", label: "True / False" },
+          { value: "on-off", label: "On / Off" },
+        ],
+      },
+    ],
+  },
+  run: (ctx) => {
+    const count = Math.min(500, Math.max(1, Number(ctx.options.count) || 1))
+    const format = (ctx.options.format || "yes-no") as "yes-no" | "true-false" | "on-off"
+    const rng = ctx.rng
+    const pairs: Record<typeof format, [string, string]> = {
+      "yes-no": ["Yes", "No"],
+      "true-false": ["True", "False"],
+      "on-off": ["On", "Off"],
+    }
+    const [a, b] = pairs[format]
+    const items: { id: string; value: string; formatted: string }[] = []
+    for (let i = 0; i < count; i++) {
+      const yes = rng() >= 0.5
+      const text = yes ? a : b
+      items.push({
+        id: `yn-${i}`,
+        value: text,
+        formatted: text,
+      })
+    }
+    return {
+      items,
+      meta: { seedUsed: ctx.seed, count: items.length, generatedAt: Date.now() },
+      previewText: items
+        .slice(0, 5)
+        .map((x) => x.formatted)
+        .join(", "),
+    }
+  },
+  seo: {
+    title: "Random Yes or No Generator — Fair Binary Decisions Online",
+    description:
+      "Get instant Yes or No answers (or True/False, On/Off). Multiple draws, seed-based repeatability, free in the browser.",
+    h1: "Random Yes or No Generator",
+    faq: [
+      {
+        question: "Is it 50/50?",
+        answer: "Each draw uses an unbiased random choice between the two outcomes.",
+      },
+      {
+        question: "Can I get many answers at once?",
+        answer: "Yes. Increase “how many answers” for a full list (e.g. for classroom or testing).",
+      },
+      {
+        question: "Can I share a repeatable result?",
+        answer: "Yes. Copy the share link or reuse the same seed with identical options.",
+      },
+    ],
+  },
+  icon: Scale,
+  popular: true,
+}
+
 export const selectionTools: ToolConfig[] = [
   randomPickerTool,
+  randomYesNoTool,
   randomTeamTool,
   secretSantaTool,
-  wheelOfNamesTool
+  wheelOfNamesTool,
 ]

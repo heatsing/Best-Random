@@ -3,6 +3,7 @@ import Image from "next/image"
 import { generateMetadata } from "@/lib/seo"
 import type { Metadata } from "next"
 import { tools } from "@/lib/registry"
+import { SAAS_TOOLS } from "@/lib/saas-tools"
 import { HomeDirectory } from "@/components/home/HomeDirectory"
 
 export const dynamic = "force-static"
@@ -21,6 +22,8 @@ export default function HomePage() {
     category: t.category,
     name: t.name,
   }))
+
+  const saasTools = SAAS_TOOLS.map((t) => ({ slug: t.slug, name: t.name }))
 
   return (
     <div className="min-h-screen bg-background">
@@ -41,8 +44,8 @@ export default function HomePage() {
                 BestRandom
               </h1>
               <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Free random generators with seeds, share links, and a clean directory—pick a letter or browse by
-                category.
+                Free random generators with seeds and share links. Use A–Z for main catalog tools; the{" "}
+                <span className="font-mono text-foreground/90">/tools</span> hub is listed in full below.
               </p>
             </div>
           </Link>
@@ -58,8 +61,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-        <HomeDirectory tools={directoryTools} />
+      <section className="container max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <HomeDirectory tools={directoryTools} saasTools={saasTools} />
       </section>
     </div>
   )

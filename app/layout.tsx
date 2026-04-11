@@ -1,15 +1,22 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { FooterTags } from "@/components/FooterTags"
 import { Toaster } from "@/components/ui/toaster"
 import { generateWebsiteSchema } from "@/lib/seo"
 import { CommandPalette } from "@/components/SearchCommand"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { GoogleAnalytics } from "@/components/GoogleAnalytics"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -57,6 +64,15 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -65,20 +81,27 @@ export default function RootLayout({
   const websiteSchema = generateWebsiteSchema()
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border-2 focus:border-primary focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+        >
+          Skip to main content
+        </a>
         <GoogleAnalytics />
         <ThemeProvider>
           <Header />
-          <main className="min-h-[calc(100vh-4rem)]">
+          <main id="main-content" tabIndex={-1} className="min-h-[calc(100vh-4rem)] outline-none">
             {children}
           </main>
+          <FooterTags />
           <Footer />
           <CommandPalette />
           <Toaster />

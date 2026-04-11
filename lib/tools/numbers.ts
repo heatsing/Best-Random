@@ -1,4 +1,4 @@
-import { Hash, Dice1, Coins, Calendar, Clock } from "lucide-react"
+import { Hash, Dice1, Coins, Calendar, Clock, Percent } from "lucide-react"
 import type { ToolConfig } from "../registry"
 import { createCombinedSeed } from "../registry"
 import { createPRNG } from "../prng"
@@ -498,10 +498,102 @@ export const randomTimeTool: ToolConfig = {
   popular: true
 }
 
+// Random Percentage Generator
+export const randomPercentageTool: ToolConfig = {
+  slug: "random-percentage-generator",
+  category: "numbers",
+  name: "Random Percentage Generator",
+  shortDescription: "Random percentages in any range with decimals",
+  longDescription:
+    "Generate random percentages for mock data, games, probability demos, or classroom statistics. Set min/max (e.g. 0–100 or 10–90), choose count and decimal places, and optionally require unique values.",
+  generatorType: "list",
+  defaultOptions: {
+    min: 0,
+    max: 100,
+    count: 8,
+    decimals: 1,
+    unique: false,
+  },
+  optionSchema: {
+    fields: [
+      { key: "min", label: "Minimum %", type: "number", default: 0, min: -1000000, max: 1000000 },
+      { key: "max", label: "Maximum %", type: "number", default: 100, min: -1000000, max: 1000000 },
+      { key: "count", label: "How many", type: "number", default: 8, min: 1, max: 500 },
+      { key: "decimals", label: "Decimal places", type: "number", default: 1, min: 0, max: 6 },
+      { key: "unique", label: "Unique values only", type: "checkbox", default: false },
+    ],
+  },
+  run: (ctx) => {
+    const { min, max, count, decimals, unique } = ctx.options
+    const rng = ctx.rng
+    if (min > max) {
+      return {
+        items: [],
+        meta: { seedUsed: ctx.seed, count: 0, generatedAt: Date.now() },
+        previewText: "",
+      }
+    }
+    const results: { id: string; value: number; formatted: string }[] = []
+    const seen = new Set<string>()
+    for (let i = 0; i < count; i++) {
+      let value: number
+      let label: string
+      let attempts = 0
+      do {
+        value = rng() * (max - min) + min
+        label =
+          decimals <= 0
+            ? String(Math.round(value))
+            : value.toFixed(decimals).replace(/\.?0+$/, "")
+        attempts++
+      } while (unique && seen.has(label) && attempts < 3000)
+      if (unique) seen.add(label)
+      const numeric =
+        decimals <= 0 ? Math.round(value) : parseFloat(Number(value).toFixed(decimals))
+      results.push({
+        id: `pct-${i}`,
+        value: numeric,
+        formatted: `${label}%`,
+      })
+    }
+    return {
+      items: results,
+      meta: { seedUsed: ctx.seed, count: results.length, generatedAt: Date.now() },
+      previewText: results
+        .slice(0, 3)
+        .map((r) => r.formatted)
+        .join(", "),
+    }
+  },
+  seo: {
+    title: "Random Percentage Generator — Any Range & Decimals | Free Online",
+    description:
+      "Create random percentages between any min and max. Great for mock metrics, probability lessons, and QA data. Seeds for repeatable results. Free, no sign-up.",
+    h1: "Random Percentage Generator",
+    faq: [
+      {
+        question: "Can I use a range other than 0–100?",
+        answer: "Yes. Set any minimum and maximum percentage (including negatives if you need offsets).",
+      },
+      {
+        question: "Are duplicate percentages allowed?",
+        answer: "By default yes. Turn on “unique values only” to avoid duplicates when mathematically possible.",
+      },
+      {
+        question: "Can I reproduce the same list?",
+        answer: "Yes. Use the same seed and options to regenerate identical percentages.",
+      },
+    ],
+  },
+  icon: Percent,
+  popular: true,
+}
+
 export const numbersTools: ToolConfig[] = [
   randomNumberTool,
+  randomPercentageTool,
   diceRollerTool,
   coinFlipTool,
   randomDateTool,
-  randomTimeTool
+  randomTimeTool,
 ]
