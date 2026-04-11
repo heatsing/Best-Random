@@ -47,6 +47,16 @@ export function Header() {
             )
           })}
           <Link
+            href="/tools"
+            className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+              pathname === "/tools" || pathname?.startsWith("/tools/")
+                ? "bg-primary/10 text-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-accent"
+            }`}
+          >
+            Tools
+          </Link>
+          <Link
             href="/about"
             className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
               pathname === "/about"
@@ -99,6 +109,17 @@ export function Header() {
                   </Link>
                 )
               })}
+              <Link
+                href="/tools"
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                  pathname === "/tools" || pathname?.startsWith("/tools/")
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Tools
+              </Link>
               <Link
                 href="/about"
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${

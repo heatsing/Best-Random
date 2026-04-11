@@ -1,11 +1,14 @@
 import { MetadataRoute } from 'next'
 import { tools, categories } from '@/lib/registry'
+import { getAllSaasSlugs } from '@/lib/saas-tools'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://bestrandom.net'
   
   // Generate routes for all tools using new registry system
   const toolRoutes = tools.map(tool => `/${tool.category}/${tool.slug}`)
+
+  const saasToolRoutes = getAllSaasSlugs().map((slug) => `/tools/${slug}`)
   
   // Generate category routes
   const categoryRoutes = categories.map(cat => `/${cat.id}`)
@@ -13,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/generators',
+    '/tools',
+    ...saasToolRoutes,
     ...categoryRoutes,
     ...toolRoutes,
     '/about',

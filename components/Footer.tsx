@@ -47,6 +47,11 @@ export function Footer() {
                   All Generators
                 </Link>
               </li>
+              <li>
+                <Link href="/tools" className="text-muted-foreground hover:text-primary transition-colors">
+                  Tools directory
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
