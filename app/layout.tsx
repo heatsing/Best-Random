@@ -88,7 +88,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} font-sans antialiased`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border-2 focus:border-primary focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
@@ -98,7 +98,11 @@ export default function RootLayout({
         <GoogleAnalytics />
         <ThemeProvider>
           <Header />
-          <main id="main-content" tabIndex={-1} className="min-h-[calc(100vh-4rem)] outline-none">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="app-main min-h-[calc(100vh-4rem)] outline-none"
+          >
             {children}
           </main>
           <FooterTags />

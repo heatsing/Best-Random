@@ -20,13 +20,13 @@ export const metadata: Metadata = buildMeta({
 
 export default function ToolsDirectoryPage() {
   return (
-    <div className="container max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+    <div className="container mx-auto max-w-5xl px-4 py-10 sm:px-6 md:py-16">
       <Breadcrumbs
         items={[{ label: "Home", href: "/" }, { label: "Tools" }]}
       />
 
-      <header className="mt-8 max-w-2xl">
-        <p className="text-sm font-medium uppercase tracking-widest text-primary mb-3">Platform</p>
+      <header className="mt-8 max-w-2xl border-b border-border pb-10">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Platform</p>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">
           Random tools that scale
         </h1>

@@ -66,16 +66,16 @@ export function HomeDirectory({ tools, saasTools }: HomeDirectoryProps) {
     <div className="space-y-12 md:space-y-16">
       {/* A–Z index — light panel, directory style */}
       <section
-        className="rounded-xl border border-border/70 bg-muted/35 px-4 py-6 md:px-8 md:py-7 shadow-sm"
+        className="structure-card rounded-xl px-4 py-6 md:px-8 md:py-8"
         aria-labelledby="az-nav-title"
       >
         <h2
           id="az-nav-title"
-          className="text-center text-base md:text-lg font-bold text-foreground mb-2 tracking-tight"
+          className="mb-2 text-center text-base font-bold tracking-tight text-foreground md:text-lg"
         >
           Find a tool
         </h2>
-        <p className="text-center text-xs text-muted-foreground mb-5 max-w-md mx-auto leading-relaxed">
+        <p className="mx-auto mb-6 max-w-md text-center text-xs leading-relaxed text-muted-foreground">
           Letters match each generator in the categories below—not the separate Tools hub list.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-y-2 gap-x-0.5 sm:gap-x-1">
@@ -150,10 +150,13 @@ export function HomeDirectory({ tools, saasTools }: HomeDirectoryProps) {
       <section aria-labelledby="categories-heading">
         <h2
           id="categories-heading"
-          className="text-center text-xl md:text-2xl font-bold tracking-tight mb-10 md:mb-12 text-balance"
+          className="mb-3 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground"
         >
-          Browse all series
+          Series
         </h2>
+        <p className="mb-10 text-center text-2xl font-bold tracking-tight text-balance text-foreground md:mb-12 md:text-3xl">
+          Browse all generators
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 lg:gap-14">
           {homeCategoryColumns.map((colIds, colIdx) => (
@@ -165,13 +168,16 @@ export function HomeDirectory({ tools, saasTools }: HomeDirectoryProps) {
                 const list = toolsByCategory.get(category.id) ?? []
 
                 return (
-                  <div key={category.id}>
+                  <div
+                    key={category.id}
+                    className="rounded-xl border border-border bg-card/50 p-4 shadow-sm transition-colors hover:border-primary/25 hover:bg-card"
+                  >
                     <Link
                       href={`/${category.id}`}
-                      className="group inline-flex items-center gap-2 border-b-2 border-foreground/75 pb-1.5 mb-3 w-full sm:w-auto"
+                      className="group mb-3 inline-flex w-full items-center gap-2 border-b border-border pb-2 sm:w-auto"
                     >
                       <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden />
-                      <span className="font-bold text-[15px] md:text-base text-foreground tracking-tight group-hover:text-primary transition-colors">
+                      <span className="text-[15px] font-bold tracking-tight text-foreground transition-colors group-hover:text-primary md:text-base">
                         {category.name}
                       </span>
                     </Link>
@@ -205,12 +211,9 @@ export function HomeDirectory({ tools, saasTools }: HomeDirectoryProps) {
         </div>
 
         {/* /tools 系列 — 与主站分类并列 */}
-        <div className="mt-14 md:mt-16 pt-12 border-t border-border/80">
-          <div className="max-w-xl">
-            <Link
-              href="/tools"
-              className="group inline-flex items-center gap-2 border-b-2 border-foreground/75 pb-1.5 mb-3"
-            >
+        <div className="mt-14 border-t border-border pt-12 md:mt-16">
+          <div className="max-w-xl rounded-xl border border-dashed border-border bg-muted/20 p-6">
+            <Link href="/tools" className="group mb-3 inline-flex items-center gap-2 border-b border-border pb-2">
               <LayoutGrid className="h-4 w-4 shrink-0 text-primary" aria-hidden />
               <span className="font-bold text-[15px] md:text-base text-foreground tracking-tight group-hover:text-primary transition-colors">
                 Tools

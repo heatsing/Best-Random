@@ -42,14 +42,14 @@ export default function GeneratorsPage() {
   }
 
   return (
-    <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+    <div className="container mx-auto max-w-[1400px] px-4 py-10 sm:px-6 md:py-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <div className="mb-10 max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Directory</p>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">All generators</h1>
+      <div className="mb-12 max-w-2xl border-b border-border pb-10">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">Directory</p>
+        <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">All generators</h1>
         <p className="text-muted-foreground leading-relaxed">
           Every tool in one place—organized by category. Use the header or{" "}
           <Link href="/" className="text-primary underline underline-offset-4 hover:no-underline">
@@ -87,7 +87,7 @@ export default function GeneratorsPage() {
                   <Link
                     key={tool.slug}
                     href={`/${tool.category}/${tool.slug}`}
-                    className="block p-5 border-2 border-border rounded-xl bg-card/40 hover:border-primary/50 hover:bg-card/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="block rounded-xl border border-border bg-card/60 p-5 shadow-sm transition-colors hover:border-primary/35 hover:bg-card hover:shadow-structure focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     aria-label={`Use ${tool.name} - ${tool.shortDescription}`}
                   >
                     {Icon && <Icon className="h-8 w-8 mb-3 text-primary" aria-hidden="true" />}

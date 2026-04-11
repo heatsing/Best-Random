@@ -205,10 +205,13 @@ export function ToolLayout({
   return (
     <div className={`min-h-screen ${className || ""}`}>
       {/* Header Section with Structural Line */}
-      <section className="border-b-2 border-border">
-        <div className="container max-w-7xl mx-auto px-6 py-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">{tool.seo.h1}</h1>
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">{tool.longDescription}</p>
+      <section className="border-b border-border bg-gradient-to-b from-muted/30 to-background">
+        <div className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-14">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Generator</p>
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+            {tool.seo.h1}
+          </h1>
+          <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">{tool.longDescription}</p>
           {isStepStyleTool && (
             <p className="text-muted-foreground mt-4 max-w-4xl">{stepIntroMap[tool.slug]}</p>
           )}
@@ -216,8 +219,8 @@ export function ToolLayout({
       </section>
 
       {/* Seed Bar with Structural Border */}
-      <section className="border-b-2 border-border">
-        <div className="container max-w-7xl mx-auto px-6 py-6">
+      <section className="border-b border-border">
+        <div className="container mx-auto max-w-7xl px-4 py-6 sm:px-6">
           <div className="structure-card">
             <SeedBar
               seed={seed}
@@ -231,12 +234,12 @@ export function ToolLayout({
 
       {/* Main Content Grid */}
       <section>
-        <div className="container max-w-7xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-2 gap-8 border-t-2 border-border pt-12">
+        <div className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 md:py-12">
+          <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-border md:pt-12">
         {/* Options Panel with Structural Border */}
-        <div className="space-y-6 border-r-2 border-border pr-8">
+        <div className="space-y-6 border-b border-border pb-10 md:border-b-0 md:pb-0 md:pr-10">
           <div>
-            <h2 className="text-xl font-semibold mb-6 tracking-tight border-b-2 border-border pb-3">
+            <h2 className="mb-6 border-b border-border pb-3 text-xl font-semibold tracking-tight">
               {isStepStyleTool ? stepOneTitleMap[tool.slug] : "Options"}
             </h2>
             <div className="space-y-4">
@@ -260,7 +263,7 @@ export function ToolLayout({
 
           <Button
             onClick={result ? onRegenerate : onGenerate}
-            className="w-full border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+            className="w-full font-semibold shadow-sm"
             size="lg"
             disabled={isGenerating}
             aria-label={isGenerating ? "Generating results" : result ? "Regenerate results" : "Generate results"}
@@ -271,8 +274,8 @@ export function ToolLayout({
         </div>
 
         {/* Results Panel */}
-        <div className="space-y-4 pl-8">
-          <div className="flex items-center justify-between border-b-2 border-border pb-3">
+        <div className="space-y-4 md:pl-10">
+          <div className="flex items-center justify-between border-b border-border pb-3">
             <h2 className="text-xl font-semibold tracking-tight">Results</h2>
             {result && (
               <div className="flex gap-2">

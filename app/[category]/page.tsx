@@ -55,14 +55,16 @@ export default function CategoryPage({ params }: PageProps) {
   const series = getCategorySeriesContent(category.id)
 
   return (
-    <div className="container py-12 max-w-4xl mx-auto px-4 sm:px-6">
+    <div className="container mx-auto max-w-4xl px-4 py-12 sm:px-6 md:py-14">
       <header className="mb-10 md:mb-12">
-        <p className="text-sm font-medium uppercase tracking-widest text-primary mb-3">Series</p>
-        <div className="flex items-center gap-3 mb-4">
-          <Icon className="h-9 w-9 md:h-10 md:w-10 shrink-0" aria-hidden />
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{category.name}</h1>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Series</p>
+        <div className="mb-4 flex items-center gap-3">
+          <span className="flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-card shadow-sm md:h-14 md:w-14">
+            <Icon className="h-7 w-7 shrink-0 text-primary md:h-8 md:w-8" aria-hidden />
+          </span>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{category.name}</h1>
         </div>
-        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">{category.description}</p>
+        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">{category.description}</p>
       </header>
 
       <section aria-labelledby="tools-grid-heading" className="mb-2">
@@ -72,14 +74,14 @@ export default function CategoryPage({ params }: PageProps) {
         <p className="text-sm font-semibold text-foreground mb-4" aria-hidden>
           Tools
         </p>
-        <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-5">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {tools.map((tool) => {
             const ToolIcon = tool.icon || category.icon
             return (
               <Link
                 key={tool.slug}
                 href={`/${tool.category}/${tool.slug}`}
-                className="group border-2 border-border rounded-xl p-5 hover:border-primary/50 transition-colors bg-card/40 hover:bg-card"
+                className="group rounded-xl border border-border bg-card/60 p-5 shadow-sm transition-colors hover:border-primary/35 hover:bg-card hover:shadow-structure"
               >
                 <div className="flex items-start gap-4">
                   <ToolIcon className="h-6 w-6 mt-0.5 flex-shrink-0 text-primary" aria-hidden />
@@ -98,7 +100,7 @@ export default function CategoryPage({ params }: PageProps) {
         </div>
 
         {tools.length === 0 && (
-          <div className="text-center py-12 text-muted-foreground border border-dashed rounded-xl">
+          <div className="rounded-xl border border-dashed border-border bg-muted/20 py-12 text-center text-muted-foreground">
             No tools in this category yet.
           </div>
         )}

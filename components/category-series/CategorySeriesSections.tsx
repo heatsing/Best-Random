@@ -11,7 +11,12 @@ interface CategorySeriesSectionsProps {
 }
 
 function SeriesDivider() {
-  return <hr className="my-14 md:my-16 border-border" aria-hidden />
+  return (
+    <div
+      className="my-12 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent md:my-16"
+      aria-hidden
+    />
+  )
 }
 
 export function CategorySeriesSections({
@@ -92,7 +97,7 @@ export function CategorySeriesSections({
               <li key={tool.slug}>
                 <Link
                   href={`/${tool.category}/${tool.slug}`}
-                  className="block rounded-xl border border-border bg-card/60 p-4 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                  className="block rounded-xl border border-border bg-card/80 p-4 shadow-sm transition-colors hover:border-primary/35 hover:bg-primary/5 hover:shadow-structure"
                 >
                   <span className="font-semibold text-foreground">{tool.name}</span>
                   <span className="mt-1 block text-sm text-muted-foreground line-clamp-2">
@@ -125,7 +130,7 @@ export function CategorySeriesSections({
             <li key={s.id}>
               <Link
                 href={`/${s.id}`}
-                className="block rounded-xl border border-border p-4 transition-colors hover:border-primary/40 hover:bg-muted/40"
+                className="block rounded-xl border border-border bg-card/40 p-4 shadow-sm transition-colors hover:border-primary/35 hover:bg-muted/50 hover:shadow-structure"
               >
                 <span className="font-medium">{s.title}</span>
                 <span className="mt-1 block text-sm text-muted-foreground">{s.blurb}</span>
@@ -144,7 +149,7 @@ export function CategorySeriesSections({
                 <li key={`${x.category}-${x.slug}`}>
                   <Link
                     href={x.href}
-                    className="block rounded-xl border border-dashed border-border p-4 transition-colors hover:border-primary/50 hover:bg-primary/5"
+                    className="block rounded-xl border border-dashed border-border bg-card/30 p-4 transition-colors hover:border-primary/45 hover:bg-primary/5"
                   >
                     <span className="font-medium">{x.title}</span>
                     <span className="mt-1 block text-sm text-muted-foreground">{x.blurb}</span>

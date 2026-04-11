@@ -18,6 +18,14 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        structure:
+          "0 0 0 1px hsl(var(--border)), 0 4px 24px -6px rgb(0 0 0 / 0.06)",
+        "glow-sm": "0 0 32px -8px hsl(var(--primary) / 0.35)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

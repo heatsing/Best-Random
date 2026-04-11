@@ -53,7 +53,7 @@ export function SearchOpenButton({
       type="button"
       variant="outline"
       className={cn(
-        "justify-start gap-2 text-muted-foreground font-normal h-9 md:h-10",
+        "justify-start gap-2 rounded-lg border-border/90 bg-muted/25 font-normal text-muted-foreground shadow-sm transition-colors hover:border-primary/35 hover:bg-muted/45 h-9 md:h-10",
         className
       )}
       onClick={() => {
@@ -211,13 +211,17 @@ export function CommandPalette({ className }: SearchCommandProps) {
       aria-modal="true"
       aria-labelledby="command-palette-title"
     >
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setOpen(false)} />
-      <div className="relative bg-background border rounded-lg shadow-lg p-4 max-w-2xl mx-auto mt-20">
+      <div
+        className="absolute inset-0 bg-background/75 backdrop-blur-md"
+        onClick={() => setOpen(false)}
+        aria-hidden
+      />
+      <div className="relative mx-auto mt-[8vh] max-w-2xl rounded-xl border-2 border-border bg-card p-5 shadow-2xl shadow-black/10 ring-1 ring-primary/10">
         <h2 id="command-palette-title" className="sr-only">
           Search tools
         </h2>
-        <div className="flex items-center gap-2 mb-4">
-          <Search className="h-4 w-4 text-muted-foreground" aria-hidden />
+        <div className="mb-4 flex items-center gap-2 border-b border-border pb-4">
+          <Search className="h-4 w-4 shrink-0 text-primary" aria-hidden />
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -231,7 +235,7 @@ export function CommandPalette({ className }: SearchCommandProps) {
               if (pick) handleSelect(pick.slug, pick.category)
             }}
             placeholder="Search tools..."
-            className="flex-1"
+            className="flex-1 border-border/90 bg-background"
             autoFocus
             aria-controls="command-palette-results"
           />
@@ -239,9 +243,11 @@ export function CommandPalette({ className }: SearchCommandProps) {
             <X className="h-4 w-4" />
           </Button>
         </div>
-        <div className="max-h-96 overflow-y-auto">
-          <div className="mb-4 pb-4 border-b">
-            <div className="text-xs font-semibold text-muted-foreground mb-2 px-2">Site</div>
+        <div className="max-h-[min(24rem,70vh)] overflow-y-auto">
+          <div className="mb-4 border-b border-border/80 pb-4">
+            <div className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Site
+            </div>
             <div className="flex flex-wrap gap-2 px-2">
               <Button variant="outline" size="sm" className="h-8" asChild>
                 <Link href="/" onClick={() => setOpen(false)}>
@@ -261,8 +267,10 @@ export function CommandPalette({ className }: SearchCommandProps) {
             </div>
           </div>
           {isToolPage && currentTool && (
-            <div className="mb-4 pb-4 border-b">
-              <div className="text-xs font-semibold text-muted-foreground mb-2 px-2">Quick Actions</div>
+            <div className="mb-4 border-b border-border/80 pb-4">
+              <div className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Quick actions
+              </div>
               <div className="space-y-1">
                 <button
                   type="button"
@@ -316,8 +324,8 @@ export function CommandPalette({ className }: SearchCommandProps) {
             </div>
           )}
           <div id="command-palette-results">
-            <div className="text-xs font-semibold text-muted-foreground mb-2 px-2">
-              {query ? "Search Results" : "All Tools"}
+            <div className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {query ? "Search results" : "All tools"}
             </div>
             {sortedTools.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">No tools found</div>
@@ -336,11 +344,20 @@ export function CommandPalette({ className }: SearchCommandProps) {
                       onClick={() => handleSelect(tool.slug, tool.category)}
                       onMouseEnter={() => setActiveIndex(idx)}
                       className={cn(
-                        "w-full text-left px-4 py-3 rounded-md transition-colors flex items-center gap-3",
-                        isActive ? "bg-accent" : "hover:bg-accent"
+                        "flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors",
+                        isActive
+                          ? "border border-primary/30 bg-primary/10"
+                          : "border border-transparent hover:bg-muted/60"
                       )}
                     >
-                      {Icon && <Icon className="h-5 w-5 text-muted-foreground shrink-0" />}
+                      {Icon && (
+                        <Icon
+                          className={cn(
+                            "h-5 w-5 shrink-0",
+                            isActive ? "text-primary" : "text-muted-foreground"
+                          )}
+                        />
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="font-medium">{tool.name}</div>
                         <div className="text-sm text-muted-foreground line-clamp-1">
@@ -355,7 +372,7 @@ export function CommandPalette({ className }: SearchCommandProps) {
             )}
           </div>
         </div>
-        <p className="mt-3 px-2 text-[11px] text-muted-foreground border-t pt-3">
+        <p className="mt-4 border-t border-border pt-4 px-2 text-[11px] text-muted-foreground">
           <kbd className="rounded border bg-muted px-1 font-mono">↑</kbd>{" "}
           <kbd className="rounded border bg-muted px-1 font-mono">↓</kbd> to move ·{" "}
           <kbd className="rounded border bg-muted px-1 font-mono">Enter</kbd> to open
